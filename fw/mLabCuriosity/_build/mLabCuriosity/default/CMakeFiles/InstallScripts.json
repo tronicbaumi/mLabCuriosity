@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

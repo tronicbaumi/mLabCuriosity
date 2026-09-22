@@ -1,0 +1,19 @@
+# ninja log v7
+11	747	8117808262606279	CMakeFiles/mLabCuriosity_default_default_XC_DSC_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt_asm.s.o	b88ee7ccfd3938cb
+63	774	8117808263123957	CMakeFiles/mLabCuriosity_default_default_XC_DSC_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/where_was_i.s.o	bc88b1516e1b17e7
+158	775	8117808264077823	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc1.c.o	67c23761f8ec40a2
+200	778	8117808264487710	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/input_capture/src/sccp1.c.o	7d03637227fca966
+249	778	8117808264980646	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp2.c.o	7aeb3ed348a5cdf9
+301	779	8117808265509136	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/spi_client/src/spi1.c.o	3b9955780f266fed
+333	780	8117808265826180	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/spi_host/src/spi2.c.o	8c7c6239b99bc92f
+370	781	8117808266190897	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/clock.c.o	b2ce7521cd9024ff
+440	840	8117808266881659	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt.c.o	65aaf7561a236522
+474	846	8117808267234867	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/interrupt.c.o	ffa43dad5335801e
+402	859	8117808266514895	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/config_bits.c.o	17c1d5242d83ba95
+513	876	8117808267630308	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/pins.c.o	c472f0ec085d8b13
+111	877	8117808263598619	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c.o	ad2e94f81b10e1a4
+554	910	8117808268040699	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/reset.c.o	87a71499f7528cb7
+594	950	8117808268424909	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/system.c.o	cc997827c7efc659
+631	984	8117808268793585	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/traps.c.o	1aab79ce38a41072
+667	1013	8117808269167549	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/timer/src/sccp3.c.o	742dd12c7a1a8293
+705	1056	8117808269536673	CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart1.c.o	2f08bc17fa9a953d

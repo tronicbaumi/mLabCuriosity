@@ -1,0 +1,6 @@
+C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/CMakeFiles/mLabCuriosity_default_default_XC_DSC_assemble.dir
+C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir
+C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/CMakeFiles/mLabCuriosity_default_image__L_givq0.dir
+C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/CMakeFiles/mLabCuriosity_default_Bin2Hex.dir
+C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/CMakeFiles/edit_cache.dir
+C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/CMakeFiles/rebuild_cache.dir
