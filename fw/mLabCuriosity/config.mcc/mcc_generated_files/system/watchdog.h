@@ -9,7 +9,7 @@
  *
  * @skipline @version   PLIB Version 1.0.4
  *
- * @skipline  Device : dsPIC33AK512MPS206
+ * @skipline  Device : dsPIC33AK512MPS506
 */
 /*
 © [2026] Microchip Technology Inc. and its subsidiaries.

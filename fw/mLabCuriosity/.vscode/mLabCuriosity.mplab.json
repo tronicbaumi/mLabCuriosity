@@ -3,9 +3,10 @@
     "configurations": [
         {
             "name": "default",
-            "id": "",
+            "id": "conf1",
             "device": "dsPIC33AK512MPS506",
             "imagePath": "./out/mLabCuriosity/default.elf",
+            "tool": "PKOB nano",
             "packs": [
                 {
                     "name": "dsPIC33AK-MP_DFP",
@@ -31,29 +32,37 @@
             "files": [
                 {
                     "include": "**/*",
-                    "exclude": "**/@(build|_build|out|cmake|.vscode|helper)/**/*"
+                    "exclude": "**/@(build|_build|out|cmake|.vscode)/**/*"
                 },
-                "config.mcc/mcc_generated_files/spi_client/src/spi1.c",
-                "config.mcc/mcc_generated_files/system/src/dmt.c",
+                "config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c",
+                "config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c",
+                "config.mcc/mcc_generated_files/timer/src/tmr1.c",
                 "config.mcc/mcc_generated_files/system/src/dmt_asm.s",
-                "config.mcc/mcc_generated_files/adc/src/adc1.c",
-                "config.mcc/mcc_generated_files/spi_host/src/spi2.c",
+                "config.mcc/mcc_generated_files/system/src/dmt.c",
                 "config.mcc/mcc_generated_files/system/src/clock.c",
                 "config.mcc/mcc_generated_files/system/src/config_bits.c",
-                "config.mcc/mcc_generated_files/timer/src/sccp3.c",
                 "config.mcc/mcc_generated_files/uart/src/uart1.c",
-                "config.mcc/mcc_generated_files/input_capture/src/sccp1.c",
-                "config.mcc/mcc_generated_files/pwm/src/sccp2.c",
-                "config.mcc/mcc_generated_files/system/src/traps.c",
-                "config.mcc/mcc_generated_files/system/src/where_was_i.s",
                 "config.mcc/mcc_generated_files/system/src/interrupt.c",
+                "config.mcc/mcc_generated_files/system/src/where_was_i.s",
+                "config.mcc/mcc_generated_files/system/src/traps.c",
                 "config.mcc/main.c",
                 "config.mcc/mcc_generated_files/system/src/system.c",
                 "config.mcc/mcc_generated_files/system/src/pins.c",
                 "config.mcc/mcc_generated_files/system/src/reset.c",
-                "X2Cscope/X2Cscope.c",
-                "X2Cscope/X2CscopeComm.c",
-                "X2Cscope/libx2cscope-generic-32dsp-dspic33a-elf.a"
+                "config.mcc/mcc_generated_files/adc/src/adc1.c",
+                "config.mcc/mcc_generated_files/adc/src/adc3.c",
+                "config.mcc/mcc_generated_files/adc/src/adc2.c",
+                "config.mcc/mcc_generated_files/adc/src/adc5.c",
+                "config.mcc/mcc_generated_files/adc/src/adc4.c",
+                "config.mcc/mcc_generated_files/spi_host/src/spi1.c",
+                "config.mcc/mcc_generated_files/i2c_host/src/i2c1.c",
+                "config.mcc/mcc_generated_files/uart/src/uart3.c",
+                "config.mcc/mcc_generated_files/uart/src/uart2.c",
+                "config.mcc/mcc_generated_files/pwm/src/sccp3.c",
+                "config.mcc/mcc_generated_files/pwm/src/sccp4.c",
+                "config.mcc/mcc_generated_files/pwm/src/sccp1.c",
+                "config.mcc/mcc_generated_files/pwm/src/sccp2.c",
+                "config.mcc/mcc_generated_files/pulse_output/src/sccp5.c"
             ]
         }
     ]

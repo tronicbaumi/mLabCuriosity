@@ -7,7 +7,7 @@
  *            
  * @brief     This is the generated driver header file for the System driver
  *            
- * @skipline  Device : dsPIC33AK512MPS206
+ * @skipline  Device : dsPIC33AK512MPS506
 */
 /*
 © [2026] Microchip Technology Inc. and its subsidiaries.
@@ -35,14 +35,24 @@
 #include "../clock.h"
 #include "../pins.h"
 #include "../../adc/adc1.h"
+#include "../../adc/adc2.h"
+#include "../../adc/adc3.h"
+#include "../../adc/adc4.h"
+#include "../../adc/adc5.h"
 #include "../dmt.h"
-#include "../../input_capture/sccp1.h"
+#include "../../i2c_host/i2c1.h"
+#include "../../pwm/sccp1.h"
 #include "../../pwm/sccp2.h"
-#include "../../timer/sccp3.h"
-#include "../../spi_client/spi1.h"
-#include "../../spi_host/spi2.h"
+#include "../../pwm/sccp3.h"
+#include "../../pwm/sccp4.h"
+#include "../../pulse_output/sccp5.h"
+#include "../../spi_host/spi1.h"
+#include "../../timer/tmr1.h"
 #include "../../uart/uart1.h"
+#include "../../uart/uart2.h"
+#include "../../uart/uart3.h"
 #include "../interrupt.h"
+#include "../../X2Cscope/X2Cscope.h"
 
 
 void SYSTEM_Initialize(void)
@@ -50,15 +60,25 @@ void SYSTEM_Initialize(void)
     CLOCK_Initialize();
     PINS_Initialize();
     ADC1_Initialize();
+    ADC2_Initialize();
+    ADC3_Initialize();
+    ADC4_Initialize();
+    ADC5_Initialize();
     DMT_Initialize();
-    SCCP1_InputCapture_Initialize();
+    I2C1_Initialize();
+    SCCP1_PWM_Initialize();
     SCCP2_PWM_Initialize();
-    SCCP3_Timer_Initialize();
+    SCCP3_PWM_Initialize();
+    SCCP4_PWM_Initialize();
+    SCCP5_PulseOutput_Initialize();
     SPI1_Initialize();
-    SPI2_Initialize();
+    TMR1_Initialize();
     UART1_Initialize();
+    UART2_Initialize();
+    UART3_Initialize();
     INTERRUPT_GlobalEnable();
     INTERRUPT_Initialize();
+    X2Cscope_Init();
 }
 
 /**

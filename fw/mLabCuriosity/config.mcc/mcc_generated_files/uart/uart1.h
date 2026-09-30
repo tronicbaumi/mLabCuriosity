@@ -9,7 +9,7 @@
  *
  * @skipline @version   PLIB Version 1.1.4
  *            
- * @skipline  Device : dsPIC33AK512MPS206
+ * @skipline  Device : dsPIC33AK512MPS506
 */
 
 /*
@@ -60,109 +60,109 @@ extern "C" {
            using the 'Custom Name' field. Application specific name allows the 
            API Portability.
 */
-extern const struct UART_INTERFACE UART1_Drv;
+extern const struct UART_INTERFACE X2CScopeUart;
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_Initialize API
  */
-#define UART1_Drv_Initialize UART1_Initialize
+#define X2CScopeUart_Initialize UART1_Initialize
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_Deinitialize API
  */
-#define UART1_Drv_Deinitialize UART1_Deinitialize
+#define X2CScopeUart_Deinitialize UART1_Deinitialize
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_Read API
  */
-#define UART1_Drv_Read UART1_Read
+#define X2CScopeUart_Read UART1_Read
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_Write API
  */
-#define UART1_Drv_Write UART1_Write
+#define X2CScopeUart_Write UART1_Write
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_IsRxReady API
  */
-#define UART1_Drv_IsRxReady UART1_IsRxReady
+#define X2CScopeUart_IsRxReady UART1_IsRxReady
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_IsTxReady API
  */
-#define UART1_Drv_IsTxReady UART1_IsTxReady
+#define X2CScopeUart_IsTxReady UART1_IsTxReady
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_IsTxDone API
  */
-#define UART1_Drv_IsTxDone UART1_IsTxDone
+#define X2CScopeUart_IsTxDone UART1_IsTxDone
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_TransmitEnable API
  */
-#define UART1_Drv_TransmitEnable UART1_TransmitEnable
+#define X2CScopeUart_TransmitEnable UART1_TransmitEnable
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_TransmitDisable API
  */
-#define UART1_Drv_TransmitDisable UART1_TransmitDisable
+#define X2CScopeUart_TransmitDisable UART1_TransmitDisable
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_AutoBaudSet API
  */
-#define UART1_Drv_AutoBaudSet UART1_AutoBaudSet
+#define X2CScopeUart_AutoBaudSet UART1_AutoBaudSet
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_AutoBaudQuery API
  */
-#define UART1_Drv_AutoBaudQuery UART1_AutoBaudQuery
+#define X2CScopeUart_AutoBaudQuery UART1_AutoBaudQuery
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_AutoBaudEventEnableGet API
  */
-#define UART1_Drv_AutoBaudEventEnableGet UART1_AutoBaudEventEnableGet
+#define X2CScopeUart_AutoBaudEventEnableGet UART1_AutoBaudEventEnableGet
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_ErrorGet API
  */
-#define UART1_Drv_ErrorGet UART1_ErrorGet
+#define X2CScopeUart_ErrorGet UART1_ErrorGet
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_BRGCountSet API
  */
-#define UART1_Drv_BRGCountSet UART1_BRGCountSet
+#define X2CScopeUart_BRGCountSet UART1_BRGCountSet
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_BRGCountGet API
  */
-#define UART1_Drv_BRGCountGet UART1_BRGCountGet
+#define X2CScopeUart_BRGCountGet UART1_BRGCountGet
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_BaudRateSet API
  */
-#define UART1_Drv_BaudRateSet UART1_BaudRateSet
+#define X2CScopeUart_BaudRateSet UART1_BaudRateSet
 
 /**
  * @ingroup  uartdriver
  * @brief    This macro defines the Custom Name for \ref UART1_BaudRateGet API
  */
-#define UART1_Drv_BaudRateGet UART1_BaudRateGet
+#define X2CScopeUart_BaudRateGet UART1_BaudRateGet
 
 // Section: UART1 Driver Routines
 

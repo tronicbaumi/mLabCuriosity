@@ -2,7 +2,7 @@
 
 configName: config
 fileVersion: 1.0.0
-device: dsPIC33AK512MPS206
+device: dsPIC33AK512MPS506
 associatedIDEProjects:
   MPLAB:
     - name: mLabCuriosity

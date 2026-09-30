@@ -9,7 +9,7 @@
  *
  * @skipline @version   PLIB Version 1.2.3
  *
- * @skipline  Device : dsPIC33AK512MPS206
+ * @skipline  Device : dsPIC33AK512MPS506
 */
 
 /*
@@ -45,7 +45,7 @@ static void (*SCCP2_PWMHandler)(void) = NULL;
 
 // Section: Driver Interface
 
-const struct PWM_INTERFACE PWM2 = {
+const struct PWM_INTERFACE PWM1 = {
     .Initialize          = &SCCP2_PWM_Initialize,
     .Deinitialize        = &SCCP2_PWM_Deinitialize,
     .Enable              = &SCCP2_PWM_Enable,
@@ -65,22 +65,22 @@ void SCCP2_PWM_Initialize (void)
 {
     // MOD Dual Edge Compare, Buffered(PWM); CCSEL disabled; T32 16 Bit; TMRPS 1:1; CLKSEL Standard Speed Peripheral Clock; TMRSYNC disabled; SIDL disabled; ON disabled; SYNC None; ALTSYNC disabled; ONESHOT disabled; TRIGEN disabled; OPS Each Time Base Period Match; RTRGEN disabled; OPSSRC Timer Interrupt Event; 
     CCP2CON1 = 0x5UL;
-    // ASDG disabled; SSDG disabled; ASDGM disabled; PWMRSEN disabled; ICS ; AUXOUT Disabled; ICGSM Level-Sensitive mode; OCAEN disabled; OENSYNC disabled; 
-    CCP2CON2 = 0x0UL;
+    // ASDG disabled; SSDG disabled; ASDGM disabled; PWMRSEN disabled; ICS ; AUXOUT Disabled; ICGSM Level-Sensitive mode; OCAEN enabled; OENSYNC disabled; 
+    CCP2CON2 = 0x1000000UL;
     // PSSACE Tri-state; POLACE disabled; OSCNT None; OETRIG disabled; PSSBDF Tri-state; POLBDF disabled; 
     CCP2CON3 = 0x0UL;
     // ICOV disabled; SCEVT disabled; ASEVT disabled; TRCLR disabled; TRSET disabled; ICGARM disabled; RAWIP disabled; RBWIP disabled; TMRLWIP disabled; TMRHWIP disabled; PRLWIP disabled; 
     CCP2STAT = 0x0UL;
     // TMRL 0x0; TMRH 0x0; 
     CCP2TMR = 0x0UL;
-    // PRL 40000; PRH 0; 
-    CCP2PR = 0x9C40UL;
+    // PRL 800; PRH 0; 
+    CCP2PR = 0x320UL;
     // BUFL 0x0; BUFH 0x0; 
     CCP2BUF = 0x0UL;
     // CMPA 0; 
     CCP2RA = 0x0UL;
-    // CMPB 20000; 
-    CCP2RB = 0x4E20UL;
+    // CMPB 400; 
+    CCP2RB = 0x190UL;
     SCCP2_PWM_CallbackRegister(&SCCP2_PWM_Callback);
     
     CCP2CON1bits.ON = 1; //Enable Module

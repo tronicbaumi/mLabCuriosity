@@ -9,7 +9,7 @@
  *
  * @skipline @version   PLIB Version 1.2.3
  *
- * @skipline  Device : dsPIC33AK512MPS206
+ * @skipline  Device : dsPIC33AK512MPS506
 */
 
 /*
@@ -58,53 +58,53 @@ extern "C" {
  *           the 'Custom Name' field. Application specific name allows the API Portability.
 */
 
-extern const struct PWM_INTERFACE PWM2;
+extern const struct PWM_INTERFACE PWM1;
 
 /**
  * @ingroup  pwmdriver
  * @brief    This macro defines the Custom Name for \ref SCCP2_PWM_Initialize API
  */
-#define PWM2_Initialize SCCP2_PWM_Initialize
+#define PWM1_Initialize SCCP2_PWM_Initialize
 /**
  * @ingroup  pwmdriver
  * @brief    This macro defines the Custom Name for \ref SCCP2_PWM_Deinitialize API
  */
-#define PWM2_Deinitialize SCCP2_PWM_Deinitialize
+#define PWM1_Deinitialize SCCP2_PWM_Deinitialize
 /**
  * @ingroup  pwmdriver
  * @brief    This macro defines the Custom Name for \ref SCCP2_PWM_Enable API
  */
-#define PWM2_Enable SCCP2_PWM_Enable
+#define PWM1_Enable SCCP2_PWM_Enable
 /**
  * @ingroup  pwmdriver
  * @brief    This macro defines the Custom Name for \ref SCCP2_PWM_Disable API
  */
-#define PWM2_Disable SCCP2_PWM_Disable
+#define PWM1_Disable SCCP2_PWM_Disable
 /**
  * @ingroup  pwmdriver
  * @brief    This macro defines the Custom Name for \ref SCCP2_PWM_PeriodSet API
  */
-#define PWM2_PeriodSet SCCP2_PWM_PeriodSet
+#define PWM1_PeriodSet SCCP2_PWM_PeriodSet
 /**
  * @ingroup  pwmdriver
  * @brief    This macro defines the Custom Name for \ref SCCP2_PWM_DutyCycleSet API
  */
-#define PWM2_DutyCycleSet SCCP2_PWM_DutyCycleSet
+#define PWM1_DutyCycleSet SCCP2_PWM_DutyCycleSet
 /**
  * @ingroup  pwmdriver
  * @brief    This macro defines the Custom Name for \ref SCCP2_PWM_SoftwareTriggerSet API
  */
-#define PWM2_SoftwareTriggerSet SCCP2_PWM_SoftwareTriggerSet
+#define PWM1_SoftwareTriggerSet SCCP2_PWM_SoftwareTriggerSet
 /**
  * @ingroup  pwmdriver
  * @brief    This macro defines the Custom Name for \ref SCCP2_PWM_Tasks API
  */
-#define PWM2_Tasks SCCP2_PWM_Tasks
+#define PWM1_Tasks SCCP2_PWM_Tasks
 /**
  * @ingroup  pwmdriver
  * @brief    This macro defines the Custom Name for \ref SCCP2_PWM_CallbackRegister API
  */
-#define PWM2_PWM_CallbackRegister SCCP2_PWM_CallbackRegister
+#define PWM1_PWM_CallbackRegister SCCP2_PWM_CallbackRegister
 
 // Section: SCCP2 Module APIs
 

@@ -1,0 +1,636 @@
+ERROR:root:DataPoller error: 'NoneType' object has no attribute 'hEvent'
+ERROR:root:'NoneType' object has no attribute 'hEvent'
+ERROR:root:Error checking scope data ready: ord() expected a character, but string of length 0 found
+ERROR:root:Error checking scope data ready: ord() expected a character, but string of length 0 found
+ERROR:root:Error checking scope data ready: ord() expected a character, but string of length 0 found
+ERROR:root:Error checking scope data ready: ord() expected a character, but string of length 0 found
+ERROR:root:ord() expected a character, but string of length 0 found
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:ord() expected a character, but string of length 0 found
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Error checking scope data ready: ord() expected a character, but string of length 0 found
+ERROR:root:ord() expected a character, but string of length 0 found
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:DataPoller error: 'NoneType' object has no attribute 'hEvent'
+ERROR:root:'NoneType' object has no attribute 'hEvent'
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Attempting to use a port that is not open
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Error reading chunk 60: ord() expected a character, but string of length 0 found
+ERROR:root:Error reading chunk 61: ord() expected a character, but string of length 0 found
+ERROR:root:Error reading chunk 62: ord() expected a character, but string of length 0 found
+ERROR:root:Error reading chunk 63: ord() expected a character, but string of length 0 found
+ERROR:root:Error reading chunk 64: ord() expected a character, but string of length 0 found
+ERROR:root:DataPoller error: WriteFile failed (OSError(9, 'The handle is invalid.', None, 6))
+ERROR:root:WriteFile failed (OSError(9, 'The handle is invalid.', None, 6))
+ERROR:root:UART connection error: ord() expected a character, but string of length 0 found
+ERROR:root:UART connection error: ord() expected a character, but string of length 0 found
+ERROR:root:UART connection error: could not open port 'COM19': PermissionError(13, 'Access is denied.', None, 5)
+ERROR:root:UART connection error: could not open port 'COM19': PermissionError(13, 'Access is denied.', None, 5)
+ERROR:root:UART connection error: could not open port 'COM19': PermissionError(13, 'Access is denied.', None, 5)
+ERROR:root:UART connection error: could not open port 'COM19': PermissionError(13, 'Access is denied.', None, 5)
+ERROR:root:UART connection error: No LNet device found on any available COM port: ['COM7', 'COM16', 'COM19', 'COM17', 'COM3', 'COM6', 'COM1']
+ERROR:root:UART connection error: No LNet device found on any available COM port: ['COM7', 'COM16', 'COM19', 'COM17', 'COM3', 'COM6', 'COM1']
+ERROR:root:UART connection error: No LNet device found on any available COM port: ['COM7', 'COM16', 'COM19', 'COM17', 'COM3', 'COM6', 'COM1']
+ERROR:root:UART connection error: No LNet device found on any available COM port: ['COM7', 'COM16', 'COM19', 'COM17', 'COM3', 'COM6', 'COM1']
+ERROR:root:UART connection error: could not open port 'COM19': PermissionError(13, 'Access is denied.', None, 5)
+ERROR:root:UART connection error: could not open port 'COM19': PermissionError(13, 'Access is denied.', None, 5)
+ERROR:root:UART connection error: could not open port 'COM19': PermissionError(13, 'Access is denied.', None, 5)
+ERROR:root:UART connection error: could not open port 'COM19': PermissionError(13, 'Access is denied.', None, 5)

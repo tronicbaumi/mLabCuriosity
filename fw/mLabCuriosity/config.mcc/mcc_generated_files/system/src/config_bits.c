@@ -9,7 +9,7 @@
  *
  * @version   PLIB Version 1.1.3
  *
- * @skipline  Device : dsPIC33AK512MPS206
+ * @skipline  Device : dsPIC33AK512MPS506
 */
 
 /*

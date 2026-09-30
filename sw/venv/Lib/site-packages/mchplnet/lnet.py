@@ -1,0 +1,188 @@
+"""LNet protocol handler for microcontroller communication."""
+
+import threading
+
+from mchplnet.interfaces.abstract_interface import Interface
+from mchplnet.services.frame_device_info import DeviceInfo, FrameDeviceInfo
+from mchplnet.services.frame_getram import FrameGetRam
+from mchplnet.services.frame_load_parameter import FrameLoadParameter, LoadScopeData
+from mchplnet.services.frame_putram import FramePutRam
+from mchplnet.services.frame_reboot import FrameReboot
+from mchplnet.services.frame_save_parameter import FrameSaveParameter
+from mchplnet.services.scope import ScopeSetup
+
+
+class LNet:
+    """LNet is a class that handles communication with a microcontroller.
+
+    This class facilitates interface handshake, retrieving device information, saving and loading scope parameters,
+    and reading/writing data to the microcontroller's RAM.
+
+    When initialized with an interface that supports auto-detection (e.g., LNetSerial with port="AUTO"),
+    the class automatically sets up connection validation using get_device_info() and the interface
+    will find and connect to the first available device that responds correctly to LNet protocol.
+
+    Example:
+        >>> # Auto-detection
+        >>> interface = LNetSerial(port="AUTO")
+        >>> lnet = LNet(interface)
+        >>> print(f"Connected to {interface.com_port}")
+
+        >>> # Manual port
+        >>> interface = LNetSerial(port="COM3")
+        >>> lnet = LNet(interface)
+    """
+
+    def __init__(self, interface: Interface, handshake: bool = True):
+        """Initialize the LNet instance.
+
+        Args:
+            interface (Interface): The interface for communication with the microcontroller.
+            handshake (bool, optional): If True, performs an interface handshake upon initialization. Defaults to True.
+        """
+        self.scope_data = None
+        self.interface = interface
+        self.device_info = None
+        self.scope_setup = ScopeSetup()
+        self._lock = threading.Lock()
+        if handshake:
+            # Set the test connection callback for auto-detection
+            self.interface.set_test_connection(self.get_device_info)
+            if self.interface.start():
+                self.load_parameters()
+
+    def get_device_info(self) -> DeviceInfo:
+        """Retrieve and return the device information.
+
+        Returns:
+            DeviceInfo: The device information retrieved from the microcontroller.
+        """
+        if not self.device_info:
+            device_info_frame = FrameDeviceInfo()
+            device_info_frame.received = self._xchg_data(device_info_frame.serialize())
+            self.device_info = device_info_frame.deserialize()
+        return self.device_info
+
+    def reboot_device(self):
+        """Retrieve and return the device information.
+
+        Returns:
+            DeviceInfo: The device information retrieved from the microcontroller.
+        """
+        reboot_device = FrameReboot()
+        print(reboot_device.serialize())
+        reboot_device.received = self._xchg_data(reboot_device.serialize())
+        return reboot_device.received
+
+    def save_parameter(self):
+        """Save the current scope configuration parameters to the microcontroller.
+
+        Returns:
+            The response from the microcontroller.
+
+        Raises:
+            RuntimeError: If device information is not retrieved before saving parameters.
+        """
+        frame_save_param = FrameSaveParameter()
+        frame_save_param.set_scope_setup(self.scope_setup)
+        frame_save_param.received = self._xchg_data(frame_save_param.serialize())
+        return frame_save_param.deserialize()
+
+    def load_parameters(self) -> LoadScopeData:
+        """Load and return the scope parameters from the microcontroller.
+
+        Returns:
+            LoadScopeData: The loaded scope parameters.
+
+        Raises:
+            RuntimeError: If device information is not retrieved before loading parameters.
+        """
+        frame_load_param = FrameLoadParameter()
+        frame_load_param.received = self._xchg_data(frame_load_param.serialize())
+        self.scope_data = frame_load_param.deserialize()
+        return self.scope_data
+
+    def get_ram_array(self, address: int, bytes_to_read: int, data_type: int):
+        """Read an array of data from the microcontroller's RAM.
+
+        Args:
+            address (int): The starting address in RAM to read data from.
+            bytes_to_read (int): The number of bytes to read.
+            data_type (int): The data type to read.
+
+        Returns:
+            An array of data read from RAM.
+
+        Raises:
+            RuntimeError: If device information is not retrieved before reading RAM.
+        """
+        get_ram_frame = FrameGetRam(address, bytes_to_read, data_type, self.device_info.uc_width)
+        get_ram_frame.received = self._xchg_data(get_ram_frame.serialize())
+        return get_ram_frame.deserialize()
+
+    def get_ram(self, address: int, data_type: int) -> bytearray:
+        """Read data from the microcontroller's RAM.
+
+        Args:
+            address (int): The address to read data from in the microcontroller's RAM.
+            data_type (int): The data type (number of bytes) to read.
+
+        Returns:
+            bytearray: The data read from the RAM.
+
+        Raises:
+            RuntimeError: If device information is not retrieved before reading RAM.
+        """
+        get_ram_frame = FrameGetRam(address, data_type, data_type, self.device_info.uc_width)
+        get_ram_frame.received = self._xchg_data(get_ram_frame.serialize())
+        return get_ram_frame.deserialize()
+
+    def put_ram(self, address: int, size: int, value: bytearray):
+        """Write data to the microcontroller's RAM.
+
+        Args:
+            address (int): The address in the microcontroller's RAM to write data to.
+            size (int): The size (number of bytes) of the data to write.
+            value (bytearray): The data to be written to RAM.
+
+        Returns:
+            The response from the microcontroller.
+
+        Raises:
+            RuntimeError: If device information is not retrieved before writing to RAM.
+        """
+        put_ram_frame = FramePutRam(address, size, self.device_info.uc_width, value)
+        put_ram_frame.received = self._xchg_data(put_ram_frame.serialize())
+        return put_ram_frame.deserialize()
+
+    def _xchg_data(self, frame):
+        """Send a frame to the microcontroller and read the response.
+
+        This method is thread-safe and ensures that only one thread can access the interface at a time.
+
+        Args:
+            frame: The frame data to be sent.
+
+        Returns:
+            The response from the microcontroller.
+        """
+        with self._lock:
+            try:
+                self.interface.write(frame)
+                return self.interface.read()
+            except TimeoutError:
+                if not self.interface.initialised:
+                    raise TimeoutError("Interface not initialized, check connection parameters.")
+                self.interface.stop()
+                self.interface.start()
+                self.interface.write(frame)
+                return self.interface.read()
+
+
+    def get_scope_setup(self) -> ScopeSetup:
+        """Get the current scope setup.
+
+        Returns:
+            ScopeSetup: The current scope setup instance.
+        """
+        return self.scope_setup

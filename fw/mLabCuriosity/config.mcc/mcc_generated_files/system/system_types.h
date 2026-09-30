@@ -9,7 +9,7 @@
  *            
  * @version   Driver Version 1.0.1
  *            
- * @skipline  Device : dsPIC33AK512MPS206
+ * @skipline  Device : dsPIC33AK512MPS506
 */
 
 /*

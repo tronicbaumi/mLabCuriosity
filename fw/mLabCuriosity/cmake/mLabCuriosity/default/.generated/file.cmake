@@ -18,14 +18,21 @@ foreach(source_file ${mLabCuriosity_default_default_XC_DSC_FILE_TYPE_assemblePre
 endforeach()
 
 set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_compile
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../X2Cscope/X2Cscope.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../X2Cscope/X2CscopeComm.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/main.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/adc/src/adc1.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/input_capture/src/sccp1.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/adc/src/adc2.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/adc/src/adc3.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/adc/src/adc4.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/adc/src/adc5.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/i2c_host/src/i2c1.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/pulse_output/src/sccp5.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/pwm/src/sccp1.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/pwm/src/sccp2.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/spi_client/src/spi1.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/spi_host/src/spi2.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/pwm/src/sccp3.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/pwm/src/sccp4.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/spi_host/src/spi1.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/system/src/clock.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/system/src/config_bits.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/system/src/dmt.c"
@@ -34,12 +41,14 @@ set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_compile
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/system/src/reset.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/system/src/system.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/system/src/traps.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/timer/src/sccp3.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/uart/src/uart1.c")
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/timer/src/tmr1.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/uart/src/uart1.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/uart/src/uart2.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/uart/src/uart3.c")
 set_source_files_properties(${mLabCuriosity_default_default_XC_DSC_FILE_TYPE_compile} PROPERTIES LANGUAGE C)
 set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_compile_cpp)
 set_source_files_properties(${mLabCuriosity_default_default_XC_DSC_FILE_TYPE_compile_cpp} PROPERTIES LANGUAGE CXX)
-set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_link "${CMAKE_CURRENT_SOURCE_DIR}/../../../X2Cscope/libx2cscope-generic-32dsp-dspic33a-elf.a")
+set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_link "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/X2Cscope/libx2cscope-generic-32dsp-dspic33a-elf.a")
 set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_bin2hex)
 set(mLabCuriosity_default_image_name "default.elf")
 set(mLabCuriosity_default_image_base_name "default")

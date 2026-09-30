@@ -9,7 +9,7 @@
  *
  * @skipline @version   PLIB Version 1.1.4
  *            
- * @skipline  Device : dsPIC33AK512MPS206
+ * @skipline  Device : dsPIC33AK512MPS506
 */
 
 /*
@@ -41,7 +41,7 @@
 #include "../uart1.h"
 
 // Section: Macro Definitions
-#define UART1_CLOCK 4000000U
+#define UART1_CLOCK 80000000U
 #define UART1_BAUD_TO_BRG_WITH_FRACTIONAL(x) (UART1_CLOCK/(x))
 #define UART1_BAUD_TO_BRG_WITH_BRGS_1(x) (UART1_CLOCK/(4U*(x))-1U)
 #define UART1_BAUD_TO_BRG_WITH_BRGS_0(x) (UART1_CLOCK/(16U*(x))-1U)
@@ -49,12 +49,12 @@
 #define UART1_BRG_TO_BAUD_WITH_BRGS_1(x) (UART1_CLOCK/(4U*((x)+1U)))
 #define UART1_BRG_TO_BAUD_WITH_BRGS_0(x) (UART1_CLOCK/(16U*((x)+1U)))
 
-#define UART1_MIN_ACHIEVABLE_BAUD_WITH_FRACTIONAL 4U
-#define UART1_MIN_ACHIEVABLE_BAUD_WITH_BRGS_1 1U
+#define UART1_MIN_ACHIEVABLE_BAUD_WITH_FRACTIONAL 76U
+#define UART1_MIN_ACHIEVABLE_BAUD_WITH_BRGS_1 19U
 
 // Section: Driver Interface
 
-const struct UART_INTERFACE UART1_Drv = {
+const struct UART_INTERFACE X2CScopeUart = {
     .Initialize = &UART1_Initialize,
     .Deinitialize = &UART1_Deinitialize,
     .Read = &UART1_Read,
@@ -109,8 +109,8 @@ void UART1_Initialize(void)
     U1CON = 0x8000000UL;
     // TXCIF ; RXFOIF ; RXBKIF ; CERIF ; ABDOVIF ; TXCIE ; RXFOIE ; RXBKIE ; FERIE ; CERIE ; ABDOVIE ; PERIE ; TXMTIE ; STPMD ; TXWRE ; RXWM ; TXWM ; 
     U1STAT = 0x2E0080UL;
-    // BaudRate 114285.71; Frequency 4000000 Hz; BRG 35; 
-    U1BRG = 0x23UL;
+    // BaudRate 459770.11; Frequency 80000000 Hz; BRG 174; 
+    U1BRG = 0xAEUL;
     
     U1CONbits.ON = 1;   // enabling UART ON bit
     U1CONbits.TXEN = 1;
@@ -241,11 +241,17 @@ void UART1_BaudRateSet(uint32_t baudRate)
         U1CONbits.BRGS = 0;
         brgValue = UART1_BAUD_TO_BRG_WITH_FRACTIONAL(baudRate);
     }
-    else
+    else if(baudRate >= UART1_MIN_ACHIEVABLE_BAUD_WITH_BRGS_1)
     {
         U1CONbits.CLKMOD = 0;
         U1CONbits.BRGS = 1;
         brgValue = UART1_BAUD_TO_BRG_WITH_BRGS_1(baudRate);
+    }
+    else
+    {
+        U1CONbits.CLKMOD = 0;
+        U1CONbits.BRGS = 0;
+        brgValue = UART1_BAUD_TO_BRG_WITH_BRGS_0(baudRate);
     }
     U1BRG = brgValue;
 }

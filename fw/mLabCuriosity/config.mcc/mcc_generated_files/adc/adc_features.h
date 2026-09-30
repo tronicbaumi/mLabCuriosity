@@ -11,7 +11,7 @@
  *            the user application to other device which might have varied feature list. 
  *            The content in this file is strictly "read only" and should not be altered.
  *            
- * @skipline  Device : dsPIC33AK512MPS206
+ * @skipline  Device : dsPIC33AK512MPS506
 */
 
 /*
