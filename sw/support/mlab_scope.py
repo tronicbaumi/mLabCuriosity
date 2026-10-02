@@ -159,12 +159,21 @@ class MLAbScopeWindow(QMainWindow):
         conn_layout.addWidget(self._connect_btn)
         root.addWidget(conn_box)
 
-        # ---- Channels ----
+        # ---- Channels (placed as sidebar next to plot below) ----
         ch_box = QGroupBox("Channels")
         ch_grid = QGridLayout(ch_box)
-        ch_grid.setSpacing(6)
-        for col, header in enumerate(["Enable", "Channel", "Gain", "Offset", "Trig source"]):
-            ch_grid.addWidget(QLabel(f"<b>{header}</b>"), 0, col)
+        ch_grid.setSpacing(3)
+        ch_grid.setContentsMargins(4, 4, 4, 4)
+        for col, (hdr, tip) in enumerate([
+            ("En",   "Enable channel"),
+            ("Ch",   "Channel"),
+            ("Gain", "Gain multiplier"),
+            ("Off",  "Additive offset after gain"),
+            ("Trig", "Trigger source"),
+        ]):
+            lbl = QLabel(f"<b>{hdr}</b>")
+            lbl.setToolTip(tip)
+            ch_grid.addWidget(lbl, 0, col, Qt.AlignCenter)
 
         self._ch_enable: list[QCheckBox] = []
         self._ch_gain: list[QDoubleSpinBox] = []
@@ -187,7 +196,8 @@ class MLAbScopeWindow(QMainWindow):
             gain.setValue(1.0)
             gain.setDecimals(4)
             gain.setSingleStep(0.1)
-            gain.setToolTip("Multiplier applied before plotting")
+            gain.setFixedWidth(80)
+            gain.setToolTip("Gain multiplier")
             ch_grid.addWidget(gain, row, 2)
             self._ch_gain.append(gain)
 
@@ -196,7 +206,8 @@ class MLAbScopeWindow(QMainWindow):
             offset.setValue(0.0)
             offset.setDecimals(2)
             offset.setSingleStep(1.0)
-            offset.setToolTip("Additive offset applied after gain")
+            offset.setFixedWidth(72)
+            offset.setToolTip("Additive offset after gain")
             ch_grid.addWidget(offset, row, 3)
             self._ch_offset.append(offset)
 
@@ -206,17 +217,19 @@ class MLAbScopeWindow(QMainWindow):
             ch_grid.addWidget(rb, row, 4, Qt.AlignCenter)
             self._ch_trig.append(rb)
 
-        root.addWidget(ch_box)
+        self._ch_box = ch_box  # inserted into plot area below
 
-        # ---- PWM control ----
+        # ---- PWM control (placed in left sidebar below) ----
         pwm_box = QGroupBox("PWM Control")
         pwm_grid = QGridLayout(pwm_box)
-        pwm_grid.setSpacing(6)
-        for col, header in enumerate(["Ch", "Duty cycle (raw)", "Period (raw)", "Set"]):
-            pwm_grid.addWidget(QLabel(f"<b>{header}</b>"), 0, col)
+        pwm_grid.setSpacing(4)
+        pwm_grid.setContentsMargins(6, 4, 6, 4)
+        for col, hdr in enumerate(["Ch", "Duty", "Period", "Set"]):
+            pwm_grid.addWidget(QLabel(f"<b>{hdr}</b>"), 0, col)
 
         self._pwm_dc_sb: list[QSpinBox] = []
         self._pwm_f_sb: list[QSpinBox] = []
+        self._pwm_set_btns: list[QPushButton] = []
 
         for i in range(PWM_COUNT):
             row = i + 1
@@ -225,35 +238,35 @@ class MLAbScopeWindow(QMainWindow):
             dc_sb = QSpinBox()
             dc_sb.setRange(0, 65535)
             dc_sb.setValue(PWM_DC_DEFAULT)
-            dc_sb.setToolTip("Duty cycle register value (0–65535)")
+            dc_sb.setToolTip(f"PWM{i} duty cycle (0–65535)")
             dc_sb.setEnabled(False)
-            dc_sb.returnPressed = lambda idx=i: self._write_pwm(idx)
+            dc_sb.setFixedWidth(68)
             pwm_grid.addWidget(dc_sb, row, 1)
             self._pwm_dc_sb.append(dc_sb)
 
             f_sb = QSpinBox()
             f_sb.setRange(1, 65535)
             f_sb.setValue(PWM_F_DEFAULT)
-            f_sb.setToolTip("Period register value (1–65535)")
+            f_sb.setToolTip(f"PWM{i} period (1–65535)")
             f_sb.setEnabled(False)
+            f_sb.setFixedWidth(68)
             pwm_grid.addWidget(f_sb, row, 2)
             self._pwm_f_sb.append(f_sb)
 
             set_btn = QPushButton("Set")
-            set_btn.setFixedWidth(48)
+            set_btn.setFixedWidth(38)
             set_btn.setEnabled(False)
             set_btn.clicked.connect(lambda _=False, idx=i: self._write_pwm(idx))
             pwm_grid.addWidget(set_btn, row, 3)
+            self._pwm_set_btns.append(set_btn)
 
-        # keep references to Set buttons for enable/disable
-        self._pwm_set_btns = [
-            pwm_grid.itemAtPosition(i + 1, 3).widget() for i in range(PWM_COUNT)
-        ]
-        root.addWidget(pwm_box)
+        self._pwm_box = pwm_box  # inserted into left sidebar below
 
-        # ---- Digital I/O ----
+        # ---- Digital I/O (placed in left sidebar below) ----
         dio_box = QGroupBox("Digital I/O")
-        dio_layout = QHBoxLayout(dio_box)
+        dio_layout = QVBoxLayout(dio_box)
+        dio_layout.setSpacing(4)
+        dio_layout.setContentsMargins(4, 4, 4, 4)
 
         gpo_box = QGroupBox("GPO (write)")
         gpo_grid = QGridLayout(gpo_box)
@@ -284,8 +297,7 @@ class MLAbScopeWindow(QMainWindow):
         gpi_grid.addWidget(self._gpi_sw_label, 1, GPI_COUNT, Qt.AlignCenter)
         dio_layout.addWidget(gpi_box)
 
-        dio_layout.addStretch()
-        root.addWidget(dio_box)
+        self._dio_box = dio_box  # inserted into left sidebar below
 
         # ---- Scope settings ----
         scope_box = QGroupBox("Scope Settings")
@@ -344,11 +356,35 @@ class MLAbScopeWindow(QMainWindow):
         scope_layout.addWidget(self._sample_btn)
 
         scope_layout.addStretch()
-        root.addWidget(scope_box)
+        self._scope_box = scope_box  # inserted below plot in main area
 
-        # ---- plot placeholder ----
+        # ---- main area: left sidebar (channels + PWM + DIO) + plot ----
+        main_area = QWidget()
+        main_h = QHBoxLayout(main_area)
+        main_h.setContentsMargins(0, 0, 0, 0)
+        main_h.setSpacing(4)
+
+        sidebar = QWidget()
+        sidebar_vbox = QVBoxLayout(sidebar)
+        sidebar_vbox.setContentsMargins(0, 0, 0, 0)
+        sidebar_vbox.setSpacing(4)
+        sidebar_vbox.addWidget(self._ch_box)
+        sidebar_vbox.addWidget(self._pwm_box)
+        sidebar_vbox.addWidget(self._dio_box)
+        sidebar_vbox.addStretch()
+        main_h.addWidget(sidebar)
+
+        right_side = QWidget()
+        right_vbox = QVBoxLayout(right_side)
+        right_vbox.setContentsMargins(0, 0, 0, 0)
+        right_vbox.setSpacing(4)
         self._plot_placeholder = QVBoxLayout()
-        root.addLayout(self._plot_placeholder, stretch=1)
+        _plot_container = QWidget()
+        _plot_container.setLayout(self._plot_placeholder)
+        right_vbox.addWidget(_plot_container, stretch=1)
+        right_vbox.addWidget(self._scope_box)
+        main_h.addWidget(right_side, stretch=1)
+        root.addWidget(main_area, stretch=1)
 
         # ---- status bar ----
         self._status = QStatusBar()
@@ -363,7 +399,7 @@ class MLAbScopeWindow(QMainWindow):
         self._plot.setTitle("ADC Channels")
         self._plot.showGrid(x=True, y=True, alpha=0.3)
         self._plot.setLabel("left", "Value")
-        self._plot.setLabel("bottom", "Sample")
+        self._plot.setLabel("bottom", "Time (ms)")
         self._plot.addLegend(offset=(10, 10))
 
         self._curves = []
@@ -688,7 +724,9 @@ class MLAbScopeWindow(QMainWindow):
             gain = self._ch_gain[i].value()
             offset = self._ch_offset[i].value()
             y = np.array(ch_data, dtype=float) * gain + offset
-            self._curves[i].setData(np.arange(len(y)), y)
+            dt_ms = self._sample_time_sb.value() * 0.005  # sample_time × 5 µs → ms
+            t = np.arange(len(y)) * dt_ms
+            self._curves[i].setData(t, y)
 
     def _on_worker_error(self, msg: str):
         self._set_status(f"Scope error: {msg}", ok=False)
