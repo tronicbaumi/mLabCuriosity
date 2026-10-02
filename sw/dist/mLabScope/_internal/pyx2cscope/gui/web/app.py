@@ -1,0 +1,527 @@
+"""This is the main Web entry point for Flask server.
+
+This module holds and handles the main url and forward the relative urls to the specific
+pages (blueprints).
+"""
+import json
+import logging
+import os
+import socket
+import tempfile
+import webbrowser
+
+import serial.tools.list_ports
+from flask import Flask, Response, jsonify, render_template, request
+
+from pyx2cscope import __version__, set_logger
+from pyx2cscope.gui import web
+from pyx2cscope.gui.web.scope import web_scope
+from pyx2cscope.gui.web.ws_handlers import socketio
+from pyx2cscope.variable.variable_factory import FileType
+
+set_logger(logging.ERROR)
+
+def create_app():
+    """Create and configure the Flask application.
+
+    Returns:
+        Flask: Configured Flask application instance.
+    """
+    app = Flask(__name__)
+
+    from pyx2cscope.gui.web.views.dashboard_view import dv_bp as dashboard_view
+    from pyx2cscope.gui.web.views.scope_view import sv_bp as scope_view
+    from pyx2cscope.gui.web.views.script_view import script_bp as script_view
+    from pyx2cscope.gui.web.views.watch_view import wv_bp as watch_view
+
+    app.register_blueprint(watch_view, url_prefix="/watch")
+    app.register_blueprint(scope_view, url_prefix="/scope")
+    app.register_blueprint(dashboard_view, url_prefix="/dashboard")
+    app.register_blueprint(script_view, url_prefix="/scripting")
+
+    app.add_url_rule("/", view_func=index)
+    app.add_url_rule("/serial-ports", view_func=list_serial_ports)
+    app.add_url_rule("/local-ips", view_func=get_local_ips)
+    app.add_url_rule("/version-info", view_func=get_version_info)
+    app.add_url_rule("/connect", view_func=connect, methods=["POST"])
+    app.add_url_rule("/disconnect", view_func=disconnect)
+    app.add_url_rule("/is-connected", view_func=is_connected)
+    app.add_url_rule("/variables", view_func=variables_autocomplete, methods=["POST", "GET"])
+    app.add_url_rule("/variables/all", view_func=get_variables, methods=["POST", "GET"])
+    app.add_url_rule("/variables/export", view_func=export_variables, methods=["GET"])
+    app.add_url_rule("/config/save", view_func=save_config, methods=["GET"])
+    app.add_url_rule("/config/load", view_func=load_config, methods=["POST"])
+
+    socketio.init_app(app)
+
+    # IMPORTANT: Import after socketio exists to register all @socketio.on handlers
+    from pyx2cscope.gui.web import ws_handlers  # noqa: F401
+
+    return app
+
+
+def index():
+    """Web X2CScope url entry point. Calling the page {url_server} will render the web X2CScope view page."""
+    return render_template("index.html", title="pyX2Cscope", version=__version__)
+
+
+def list_serial_ports():
+    """Return a list of all serial ports available on the server.
+
+    call {server_url}/serial-ports to execute.
+    """
+    ports = serial.tools.list_ports.comports()
+    return jsonify([port.device for port in ports])
+
+
+def get_local_ips():
+    """Return a list of local IP addresses for this host.
+
+    call {server_url}/local-ips to execute.
+    """
+    ips = []
+    try:
+        # Get hostname
+        hostname = socket.gethostname()
+        # Get all IP addresses for this hostname
+        for info in socket.getaddrinfo(hostname, None):
+            ip = info[4][0]
+            # Filter IPv4 addresses and exclude localhost
+            if ':' not in ip and ip != '127.0.0.1' and ip not in ips:
+                ips.append(ip)
+    except Exception:
+        pass
+
+    # If no IPs found, add default
+    if not ips:
+        ips = ['0.0.0.0']
+
+    return jsonify({"ips": ips})
+
+
+def get_version_info():
+    """Return version information for all dependencies.
+
+    call {server_url}/version-info to execute.
+    """
+    import importlib.metadata
+    versions = {}
+
+    def get_package_version(package_name, module_name=None, attr_name='__version__'):
+        """Get version from package metadata or module attribute."""
+        try:
+            # Try importlib.metadata first (standard way)
+            return importlib.metadata.version(package_name)
+        except Exception:
+            # Fall back to module attribute
+            if module_name:
+                try:
+                    module = __import__(module_name)
+                    return getattr(module, attr_name, 'Unknown')
+                except (ImportError, AttributeError):
+                    pass
+        return 'Not installed'
+
+    # Web interface dependencies
+    versions['flask'] = get_package_version('flask', 'flask')
+    versions['flask_socketio'] = get_package_version('flask-socketio', 'flask_socketio')
+    versions['mchplnet'] = get_package_version('mchplnet', 'mchplnet')
+    versions['python_can'] = get_package_version('python-can', 'can')
+
+    # Core dependencies
+    versions['numpy'] = get_package_version('numpy', 'numpy')
+    versions['matplotlib'] = get_package_version('matplotlib', 'matplotlib')
+    versions['pyserial'] = get_package_version('pyserial', 'serial', 'VERSION')
+    versions['pyelftools'] = get_package_version('pyelftools', 'elftools')
+
+    return jsonify(versions)
+
+
+def connect():
+    """Connect pyX2CScope using arguments coming from the web.
+
+    call {server_url}/connect to execute.
+    """
+    interface_type = request.form.get("interfaceType")
+    elf_file = request.files.get("elfFile")
+
+    interface_kwargs = {}
+
+    if interface_type == "CAN":
+        # CAN baud rate string to numeric mapping
+        baud_rate_map = {
+            "125K": 125000,
+            "250K": 250000,
+            "500K": 500000,
+            "1M": 1000000,
+        }
+        can_bus_type = request.form.get("canBusType", "USB")
+        can_channel = int(request.form.get("canChannel", 1))
+        can_baud_rate = request.form.get("canBaudrate", "125K")
+        can_mode = request.form.get("canMode", "Standard")
+        can_tx_id = request.form.get("canTxId", "7F1")
+        can_rx_id = request.form.get("canRxId", "7F0")
+
+        # Map bus_type to bustype
+        bustype_map = {
+            'usb': 'pcan_usb',
+            'pcan usb': 'pcan_usb',
+            'lan': 'pcan_lan',
+            'pcan lan': 'pcan_lan',
+            'socketcan': 'socketcan',
+            'socketcan (linux)': 'socketcan',
+            'vector': 'vector',
+            'kvaser': 'kvaser',
+        }
+        bustype = bustype_map.get(can_bus_type.lower(), 'pcan_usb')
+
+        # Map mode to standard/extended
+        mode_str = 'extended' if can_mode == "Extended" else 'standard'
+
+        interface_kwargs = {
+            "bustype": bustype,
+            "channel": can_channel,
+            "baud_rate": baud_rate_map.get(can_baud_rate, 125000),
+            "id_tx": int(can_tx_id, 16),
+            "id_rx": int(can_rx_id, 16),
+            "mode": mode_str,
+        }
+    elif interface_type == "TCP_IP":
+        host = request.form.get("host", "localhost")
+        tcp_port = int(request.form.get("tcpPort", 12666))
+        interface_kwargs = {
+            "host": host,
+            "tcp_port": tcp_port,
+        }
+    else:
+        # SERIAL
+        interface_arg_str = request.form.get("interfaceArgument")
+        interface_value_str = request.form.get("interfaceValue")
+        if interface_arg_str and interface_value_str:
+            interface_kwargs = {interface_arg_str: interface_value_str}
+
+    if elf_file and elf_file.filename.endswith((".elf", ".pkl", ".yml")):
+        web_lib_path = os.path.join(os.path.dirname(web.__file__), "upload")
+        if not os.path.exists(web_lib_path):
+            os.makedirs(web_lib_path)
+        file_name = os.path.join(web_lib_path, os.path.basename(elf_file.filename))
+        try:
+            elf_file.save(file_name)
+            web_scope.connect(**interface_kwargs)
+            web_scope.set_file(file_name)
+            return jsonify({"status": "success"})
+        except RuntimeError as e:
+            return jsonify({"status": "error", "msg": str(e)}), 401
+        except ValueError as e:
+            return jsonify({"status": "error", "msg": str(e)}), 401
+        except TimeoutError as e:
+            return jsonify({"status": "error", "msg": str(e)}), 401
+    return jsonify({"status": "error", "msg": "Interface argument or import file invalid."}), 400
+
+
+def is_connected():
+    """Check if pyX2Cscope is connected.
+
+    call {server_url}/is_disconnect to execute.
+    """
+    return jsonify({"status": web_scope.is_connected()})
+
+
+def disconnect():
+    """Disconnect pyX2CScope.
+
+    call {server_url}/disconnect to execute.
+    """
+    from pyx2cscope.gui.web.extensions import socketio as _socketio
+
+    web_scope.disconnect()
+    _socketio.emit("watch_table_update", {}, namespace="/watch-view")
+    _socketio.emit("scope_table_update", {}, namespace="/scope-view")
+    return jsonify({"status": "success"})
+
+
+def variables_autocomplete():
+    """Variable search filter.
+
+    Receiving at least 3 letters, the function will search on pyX2Cscope parsed variables to find similar matches,
+    returning a list of possible candidates. Access this function over {server_url}/variables.
+    Use the query parameter ``sfr=true`` to search SFRs instead of firmware variables.
+    """
+    query = request.args.get("q", "")
+    sfr = request.args.get("sfr", "false").lower() == "true"
+    items = []
+    if web_scope.is_connected():
+        var_list = web_scope.list_sfr() if sfr else web_scope.list_variables()
+        items = [
+            {"id": var, "text": var}
+            for var in var_list
+            if query.lower() in var.lower()
+        ]
+    return jsonify({"items": items})
+
+
+def get_variables():
+    """List all variables.
+
+    Returns a list of all variables available on the elf file.
+    Access this function over {server_url}/variables/all.
+    """
+    items = [{"id": var, "text": var} for var in web_scope.list_variables()]
+    return jsonify({"items": items})
+
+
+def export_variables():
+    """Export the currently loaded variable database as YML or PKL."""
+    if not web_scope.is_connected() or web_scope.x2c_scope is None:
+        return jsonify({"status": "error", "msg": "No variables are loaded."}), 400
+
+    ext = request.args.get("ext", "yml").lower()
+    if ext == "yml":
+        file_type = FileType.YAML
+        mimetype = "application/x-yaml"
+    elif ext == "pkl":
+        file_type = FileType.PICKLE
+        mimetype = "application/octet-stream"
+    else:
+        return jsonify({"status": "error", "msg": "Supported export formats are yml and pkl."}), 400
+
+    temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=file_type.value)
+    temp_file.close()
+    try:
+        selected_items = web_scope.get_selected_variables()
+        if not selected_items:
+            return jsonify({"status": "error", "msg": "No variables are selected in WatchView, ScopeView, or Dashboard."}), 400
+
+        web_scope.x2c_scope.export_variables(temp_file.name, ext=file_type, items=selected_items)
+        with open(temp_file.name, "rb") as file:
+            data = file.read()
+    finally:
+        if os.path.exists(temp_file.name):
+            os.remove(temp_file.name)
+
+    return Response(
+        data,
+        mimetype=mimetype,
+        headers={
+            "Content-disposition": f"attachment; filename={web_scope.get_export_filename(file_type.value)}"
+        },
+    )
+
+
+def save_config():
+    """Generate and download a unified JSON config with watch and scope variables.
+
+    The file contains only variable data (no connection settings), compatible
+    with the Qt app's config format for watch_view and scope_view sections.
+    """
+    watch_data = [web_scope.variable_to_json(v) for v in web_scope.watch_vars]
+    scope_data = [web_scope.variable_to_json(v) for v in web_scope.scope_vars]
+    config = {
+        "watch_view": watch_data,
+        "scope_view": scope_data,
+        "sample_control": web_scope.sample_control,
+        "trigger_control": web_scope.trigger_control,
+    }
+    return Response(
+        json.dumps(config, indent=4),
+        mimetype="application/json",
+        headers={"Content-disposition": "attachment; filename=pyx2cscope_config.json"},
+    )
+
+
+_WATCH_FLOAT_FIELDS = {"scaling", "offset", "value", "scaled_value"}
+_WATCH_INT_FIELDS = {"live"}
+_SCOPE_FLOAT_FIELDS = {"gain", "offset"}
+_SCOPE_INT_FIELDS = {"trigger", "enable"}
+
+
+def _restore_watch_vars(items, errors):
+    """Restore watch variables from a list of config dicts."""
+    from pyx2cscope.gui.web.extensions import socketio as _socketio
+
+    web_scope.clear_watch_var()
+    for item in items:
+        if not isinstance(item, dict) or "variable" not in item:
+            continue
+        var = web_scope.add_watch_var(item["variable"], sfr=item.get("sfr", False))
+        if var is None:
+            errors.append(item["variable"])
+        else:
+            for key, value in item.items():
+                if key in var and key != "variable" and key != "value":
+                    if key in _WATCH_FLOAT_FIELDS:
+                        var[key] = float(value)
+                    elif key in _WATCH_INT_FIELDS:
+                        var[key] = int(value)
+                    else:
+                        var[key] = value
+            # Re-read current value from device (add_watch_var already did one read,
+            # but we need it after scaling/offset are restored for scaled_value)
+            web_scope._update_watch_fields(var)
+    _socketio.emit("watch_table_update", {}, namespace="/watch-view")
+
+
+def _restore_scope_vars(items, errors):
+    """Restore scope variables from a list of config dicts."""
+    from pyx2cscope.gui.web.extensions import socketio as _socketio
+
+    web_scope.clear_scope_var()
+    for item in items:
+        if not isinstance(item, dict) or "variable" not in item:
+            continue
+        var = web_scope.add_scope_var(item["variable"], sfr=item.get("sfr", False))
+        if var is None:
+            errors.append(item["variable"])
+        else:
+            for key, value in item.items():
+                if key in var and key != "variable":
+                    if key in _SCOPE_FLOAT_FIELDS:
+                        var[key] = float(value)
+                    elif key in _SCOPE_INT_FIELDS:
+                        var[key] = int(value)
+                    else:
+                        var[key] = value
+    _socketio.emit("scope_table_update", {}, namespace="/scope-view")
+
+
+def _restore_sample_control(sample_control):
+    """Restore sample control settings and notify clients."""
+    from pyx2cscope.gui.web.extensions import socketio as _socketio
+
+    trigger_action = sample_control.get("triggerAction", "off")
+    sample_time = max(int(sample_control.get("sampleTime", 1)), 1)
+    sample_freq = float(sample_control.get("sampleFreq", 20))
+    web_scope.scope_set_sample(trigger_action, sample_time, sample_freq)
+    _socketio.emit("sample_control_updated", {
+        "status": "success",
+        "data": web_scope.sample_control,
+    }, namespace="/scope-view")
+
+
+def _restore_trigger_control(trigger_control):
+    """Restore trigger control settings and notify clients."""
+    from pyx2cscope.gui.web.extensions import socketio as _socketio
+
+    parsed = {
+        k: (float(v) if k == "trigger_level" else int(v))
+        for k, v in trigger_control.items()
+    }
+    web_scope.scope_set_trigger(**parsed)
+    _socketio.emit("trigger_control_updated", {
+        "status": "success",
+        "data": web_scope.trigger_control,
+    }, namespace="/scope-view")
+
+
+def load_config():
+    """Receive a unified JSON config and restore watch and scope variables.
+
+    Expects a JSON file with ``watch_view`` and/or ``scope_view`` keys,
+    each containing a list of variable dicts (same format as save_config).
+    Emits SocketIO events so all connected browsers reload their tables.
+    """
+    cfg_file = request.files.get("file")
+    msg = "Invalid config file."
+    if not (cfg_file and cfg_file.filename.endswith(".json")):
+        return jsonify({"status": "error", "msg": msg}), 400
+
+    try:
+        data = json.loads(cfg_file.read().decode("utf-8"))
+    except (ValueError, UnicodeDecodeError):
+        return jsonify({"status": "error", "msg": msg}), 400
+
+    if not isinstance(data, dict):
+        return jsonify({"status": "error", "msg": msg}), 400
+
+    errors = []
+
+    watch_items = data.get("watch_view", [])
+    if isinstance(watch_items, list) and watch_items:
+        _restore_watch_vars(watch_items, errors)
+
+    scope_items = data.get("scope_view", [])
+    if isinstance(scope_items, list) and scope_items:
+        _restore_scope_vars(scope_items, errors)
+
+    sample_control = data.get("sample_control")
+    if isinstance(sample_control, dict):
+        _restore_sample_control(sample_control)
+
+    trigger_control = data.get("trigger_control")
+    if isinstance(trigger_control, dict):
+        _restore_trigger_control(trigger_control)
+
+    if errors:
+        return jsonify({"status": "warning", "msg": "Variables not available: " + ", ".join(errors)})
+    return jsonify({"status": "success"})
+
+
+def open_browser(host="localhost", web_port=5000):
+    """Open a new browser pointing to the Flask server.
+
+    Only opens if no clients are already connected (e.g., from a previous session).
+    Existing browser tabs will reconnect automatically via Socket.IO.
+
+    Args:
+        host (str): the host address/name
+        web_port (int): the host port.
+    """
+    # Wait for any existing browser tabs to reconnect
+    socketio.sleep(2)
+
+    # Check if any clients are already connected via Socket.IO
+    has_clients = False
+    try:
+        if hasattr(socketio.server, 'eio') and hasattr(socketio.server.eio, 'sockets'):
+            has_clients = len(socketio.server.eio.sockets) > 0
+    except Exception:
+        pass
+
+    if not has_clients:
+        url = "http://" + ("localhost" if host == "0.0.0.0" else host) + ":" + str(web_port)
+        webbrowser.open(url)
+        print("Browser opened: " + url)
+    else:
+        print("Browser tab already connected - refresh the page to reflect changes")
+
+
+def main(host="localhost", web_port=5000, new=True, *args, **kwargs):
+    """Web X2Cscope main function. Calling this function will start Web X2Cscope.
+
+    Args:
+        host (string): Default 'localhost'. Use 0.0.0.0 to open the server for external requests.
+        web_port (int): Default 5000. The port where the web server is available.
+        new (bool): Default True. Should a new browser window/tab be opened at start?
+        *args: additional non-key arguments supplied on program call.
+        **kwargs: additional keyed arguments supplied on program call.
+    """
+    app = create_app()
+
+    log_level = kwargs["log_level"] if "log_level" in kwargs else "ERROR"
+    app.logger.setLevel(log_level)
+    logging.getLogger("werkzeug").setLevel(log_level)
+
+    # check if keys elf and port were supplied
+    if "elf" in kwargs and "port" in kwargs:
+        # check if both keys are not None
+        if kwargs["elf"] and kwargs["port"]:
+            print("Loading elf file...")
+            web_scope.connect(port=kwargs["port"])
+            web_scope.set_file(kwargs["elf"])
+
+    if new:
+         socketio.start_background_task(open_browser, web_port=web_port)
+    print("Listening at http://" + ("localhost" if host == "0.0.0.0" else host) + ":" + str(web_port))
+
+    if host == "0.0.0.0":
+        print("Server is open for external requests!")
+
+    if os.environ.get('DEBUG') != 'true':
+        socketio.run(app, debug=False, host=host, port=web_port,
+                     allow_unsafe_werkzeug=True)
+    else:
+        socketio.run(app, debug=True, host=host, port=web_port,
+                     allow_unsafe_werkzeug=True, use_reloader=False)
+
+if __name__ == "__main__":
+    main(new=True, host="0.0.0.0")

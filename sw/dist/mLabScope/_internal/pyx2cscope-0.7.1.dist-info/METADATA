@@ -1,0 +1,114 @@
+Metadata-Version: 2.4
+Name: pyx2cscope
+Version: 0.7.1
+Summary: python implementation of X2Cscope
+Author: Yash Agarwal, Christoph Baumgartner, Mark Wendler
+Author-email: Edras Pacola <edras.pacola@microchip.com>
+License-Expression: LicenseRef-Proprietary
+Project-URL: Homepage, https://x2cscope.github.io/
+Project-URL: Documentation, https://x2cscope.github.io/pyx2cscope
+Project-URL: Repository, https://github.com/X2Cscope/pyx2cscope
+Requires-Python: <3.15,>=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyserial<4.0,>=3.5
+Requires-Dist: python-can<5.0.0,>=4.0.0
+Requires-Dist: pyelftools<0.32,>=0.31
+Requires-Dist: pyyaml<7.0.0,>=6.0.1
+Requires-Dist: numpy<3.0.0,>=1.26.0
+Requires-Dist: matplotlib<4.0.0,>=3.7.2
+Requires-Dist: PyQt5<6.0.0,>=5.15.9
+Requires-Dist: pyqtgraph<0.14.0,>=0.13.7
+Requires-Dist: mchplnet==0.5.1
+Requires-Dist: flask<4.0.0,>=3.0.3
+Requires-Dist: flask-socketio<6.0.0,>=5.3.4
+Provides-Extra: dev
+Requires-Dist: pre-commit==4.3.0; extra == "dev"
+Requires-Dist: pylint==3.1.0; extra == "dev"
+Requires-Dist: pytest==8.1.1; extra == "dev"
+Requires-Dist: pytest-mock==3.14.0; extra == "dev"
+Requires-Dist: pytest-qt==4.4.0; extra == "dev"
+Requires-Dist: ruff==0.4.4; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: astroid<4.0.0; extra == "docs"
+Requires-Dist: furo==2024.1.29; extra == "docs"
+Requires-Dist: myst-parser==2.0.0; extra == "docs"
+Requires-Dist: sphinx==7.2.6; extra == "docs"
+Requires-Dist: sphinx-autoapi==3.0.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme==2.0.0; extra == "docs"
+Provides-Extra: build
+Requires-Dist: build>=1.2.2; extra == "build"
+Requires-Dist: pyinstaller>=6.11.0; extra == "build"
+Requires-Dist: requests==2.31.0; extra == "build"
+Requires-Dist: twine>=5.1.1; extra == "build"
+Dynamic: license-file
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/X2Cscope/pyx2cscope/refs/heads/main/doc/images/pyx2cscope_logo.png" alt="pyX2Cscope Logo" width="250">
+</p>
+
+# pyX2Cscope
+The pyx2cscope Python package communicates with X2Cscope enabled firmwares running on microcontrollers. Focusing real time control applications like motor control and power conversion.
+- It allows user to:
+  - Read - Write variables to the embedded target in runtime
+  - Record and Plot fast, continuous signals from the target firmware
+  - Implement Automated Unit Tests (TDD) and HIL tests for embedded development
+  - Record data in run-time for AI models
+  - Implement custom user interface, dashboards for embedded applications (QT, Tkinter, Web)
+
+Detailed documentation is hosted at GitHub.io:
+[https://x2cscope.github.io/pyx2cscope/](https://x2cscope.github.io/pyx2cscope/)
+
+## Install
+
+pyX2Cscope currently supports Python `3.10` to `3.14`.
+
+Create a virtual environment and install pyx2cscope using the following commands (Windows):
+```
+python -m venv .venv
+.venv\Scripts\activate
+pip install pyx2cscope
+```
+
+## Start GUI
+
+To execute Qt version, type:
+```
+   pyx2cscope
+```
+To execute the Browser based version type:
+
+```
+   pyx2cscope -w
+```
+
+## Basic scripting
+
+```py
+from pyx2cscope.x2cscope import X2CScope
+
+# Option 1: Default UART with Auto-detect COM port (recommended for single device)
+x2c_scope = X2CScope(elf_file="path/to/firmware.elf")
+
+# Option 2: Specify COM port explicitly
+# x2c_scope = X2CScope(port="COM8", elf_file="path/to/firmware.elf")
+
+# Or import variables after instantiation
+# x2c_scope.import_variables(r"..\..\tests\data\qspin_foc_same54.elf")
+
+# Collect some variables
+speed_reference = x2c_scope.get_variable("motor.apiData.velocityReference")
+speed_measured = x2c_scope.get_variable("motor.apiData.velocityMeasured")
+
+# Read the value of the "motor.apiData.velocityMeasured" variable from the target
+print(speed_measured.get_value())
+# Write a new value to the "motor.apiData.velocityReference" variable on the target
+speed_reference.set_value(1000)
+```
+
+Check [Examples](https://github.com/X2Cscope/pyx2cscope/tree/main/pyx2cscope/examples) directory in the pyX2Cscope project to see common uses of this library.
+
+## Development
+
+[https://github.com/X2Cscope/pyx2cscope/tree/main/doc/development.md](https://github.com/X2Cscope/pyx2cscope/tree/main/doc/development.md)
+

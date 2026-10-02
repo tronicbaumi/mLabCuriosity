@@ -1,0 +1,126 @@
+Metadata-Version: 2.4
+Name: mchplnet
+Version: 0.5.1
+Summary: Python implementation of Microchip LNet protocol
+Author: Yash Agarwal, Christoph Baumgartner, Mark Wendler
+Author-email: Edras Pacola <edras.pacola@microchip.com>
+License-Expression: LicenseRef-Proprietary
+Project-URL: Homepage, https://x2cscope.github.io/
+Project-URL: Documentation, https://x2cscope.github.io/
+Project-URL: Repository, https://github.com/X2Cscope/mchplnet
+Requires-Python: <3.15,>=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyserial<4.0,>=3.5
+Requires-Dist: python-socketio<6.0.0,>=5.16.1
+Requires-Dist: python-can<5.0.0,>=4.6.1
+Provides-Extra: dev
+Requires-Dist: pre-commit==4.3.0; extra == "dev"
+Requires-Dist: pylint==3.1.0; extra == "dev"
+Requires-Dist: pytest==8.1.1; extra == "dev"
+Requires-Dist: pytest-mock==3.14.0; extra == "dev"
+Requires-Dist: ruff==0.4.4; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: astroid<4.0.0; extra == "docs"
+Requires-Dist: furo==2024.1.29; extra == "docs"
+Requires-Dist: myst-parser==2.0.0; extra == "docs"
+Requires-Dist: sphinx==7.2.6; extra == "docs"
+Requires-Dist: sphinx-autoapi==3.0.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme==2.0.0; extra == "docs"
+Provides-Extra: build
+Requires-Dist: build>=1.2.2; extra == "build"
+Requires-Dist: twine>=5.1.1; extra == "build"
+Dynamic: license-file
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/X2Cscope/pyx2cscope/refs/heads/main/doc/images/pyx2cscope_logo.png" alt="PyX2CScope Logo" width="250">
+</p>
+
+# mchplnet
+- mchplnet is the Python implementation of the LNet protocol.
+- It implements multiple LNet services to communicate to embedded systems/microcontrollers.
+- Currently only pyserial interface is supported. 
+- It is recommended to use the pyx2cscope package, which offers a higher-level interface.
+
+## Getting Started
+1. Navigate to the Examples directory in the mchplnet project to explore the available examples or create a new .py file based on your requirements.
+2. Import the necessary classes:
+```python
+from mchplnet.interfaces.factory import InterfaceFactory
+from mchplnet.interfaces.factory import InterfaceType as IType
+from mchplnet.lnet import LNet
+```
+3. Create an interface according to your requirements and initialize the LNet with the interface:
+
+**Option A: Auto-detection (Recommended for single device)**
+```python
+# Automatically detect the COM port with an LNet device
+interface = InterfaceFactory.get_interface(IType.SERIAL, port="AUTO", baudrate=115200)
+l_net = LNet(interface)
+print(f"Connected to {interface.com_port}")
+```
+
+**Option B: Manual port specification**
+```python
+# Specify the COM port explicitly
+interface = InterfaceFactory.get_interface(IType.SERIAL, port="COM8", baudrate=115200)
+l_net = LNet(interface)
+```
+4. Use the appropriate functions, such as get_ram, to interact with variables by specifying their address and size:
+
+```
+var_address = 0x00000000
+var_size = 4 
+var_value = l_net.get_ram(var_address, var_size) 
+logging.debug(var_value)
+```
+5. To modify the value of a variable, use the put_ram function:
+
+```
+var_newValue = 500
+l_net.put_ram(var_address, var_size, var_newValue)
+```
+
+## Contribute
+If you discover a bug or have an idea for an improvement, we encourage you to contribute! You can do so by following these steps:
+
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Make the necessary changes and commit them. 
+4. Push your changes to your forked repository. 
+5. Open a pull request on the main repository, describing your changes.
+
+We appreciate your contribution!
+
+## Development Setup
+
+To set up the development environment:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/X2Cscope/mchplnet.git
+   cd mchplnet
+   ```
+
+2. Install development dependencies:
+   ```bash
+   pip install -e ".[dev,docs,build]"
+   ```
+
+3. Install pre-commit hooks:
+   ```bash
+   pre-commit install
+   ```
+
+4. The pre-commit hook will now run automatically on each commit to ensure code quality and version consistency.
+
+## Publishing a release
+
+Package releases are handled by GitHub Actions as part of the maintainer release workflow.
+
+
+
+-------------------------------------------------------------------
+
+
+

@@ -1,0 +1,2 @@
+[console_scripts]
+pyx2cscope = pyx2cscope.__main__:main
