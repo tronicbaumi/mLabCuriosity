@@ -99,3 +99,21 @@ ERROR:root:Error reading chunk 29: ord() expected a character, but string of len
 ERROR:root:Error reading chunk 14: ord() expected a character, but string of length 0 found
 ERROR:root:Error reading chunk 30: ord() expected a character, but string of length 0 found
 ERROR:root:Error reading chunk 15: ord() expected a character, but string of length 0 found
+ERROR:root:Received data size is invalid.
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Received data size is invalid.
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:ord() expected a character, but string of length 0 found
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Received data size is invalid.
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Received data size is invalid.
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:ord() expected a character, but string of length 0 found
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Received data size is invalid.
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:Received data size is invalid.
+ERROR:root:cannot convert 'NoneType' object to bytes
+ERROR:root:ord() expected a character, but string of length 0 found
+ERROR:root:cannot convert 'NoneType' object to bytes

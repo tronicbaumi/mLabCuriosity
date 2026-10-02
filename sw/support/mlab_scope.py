@@ -1,5 +1,6 @@
 """mLabCuriosity Scope GUI — ADC channels via pyx2cscope."""
 
+import json
 import sys
 import time
 from pathlib import Path
@@ -22,6 +23,7 @@ from PyQt5.QtWidgets import (
     QRadioButton,
     QSpinBox,
     QStatusBar,
+    QTabWidget,
     QVBoxLayout,
     QWidget,
 )
@@ -121,6 +123,7 @@ class MLAbScopeWindow(QMainWindow):
         self._gpo_vars: dict = {}
         self._gpi_vars: dict = {}
         self._detected_port = ""
+        self._last_config_path = ""
 
         self._autoconnect_timer = QTimer(self)
         self._gpi_timer = QTimer(self)
@@ -135,9 +138,12 @@ class MLAbScopeWindow(QMainWindow):
     # UI construction
     # ------------------------------------------------------------------
     def _build_ui(self):
-        central = QWidget()
-        self.setCentralWidget(central)
-        root = QVBoxLayout(central)
+        self._tabs = QTabWidget()
+        self.setCentralWidget(self._tabs)
+
+        main_tab = QWidget()
+        self._tabs.addTab(main_tab, "Main")
+        root = QVBoxLayout(main_tab)
         root.setSpacing(6)
 
         # ---- Connection ----
@@ -153,6 +159,12 @@ class MLAbScopeWindow(QMainWindow):
         conn_layout.addWidget(browse_btn)
         conn_layout.addWidget(QLabel(f"<i>{BAUD_RATE} baud · AUTO port</i>"))
         conn_layout.addStretch()
+        load_cfg_btn = QPushButton("Load Config")
+        load_cfg_btn.clicked.connect(self._load_config)
+        conn_layout.addWidget(load_cfg_btn)
+        save_cfg_btn = QPushButton("Save Config")
+        save_cfg_btn.clicked.connect(self._save_config)
+        conn_layout.addWidget(save_cfg_btn)
         self._connect_btn = QPushButton("Connect")
         self._connect_btn.setMinimumWidth(100)
         self._connect_btn.clicked.connect(self._on_connect_clicked)
@@ -385,6 +397,34 @@ class MLAbScopeWindow(QMainWindow):
         right_vbox.addWidget(self._scope_box)
         main_h.addWidget(right_side, stretch=1)
         root.addWidget(main_area, stretch=1)
+
+        # ---- Serial tab ----
+        serial_tab = QWidget()
+        self._tabs.addTab(serial_tab, "Serial")
+        serial_layout = QVBoxLayout(serial_tab)
+        serial_layout.addWidget(QLabel("Serial monitor — coming soon"))
+        serial_layout.addStretch()
+
+        # ---- I²C tab ----
+        i2c_tab = QWidget()
+        self._tabs.addTab(i2c_tab, "I²C")
+        i2c_layout = QVBoxLayout(i2c_tab)
+        i2c_layout.addWidget(QLabel("I²C monitor — coming soon"))
+        i2c_layout.addStretch()
+
+        # ---- SPI tab ----
+        spi_tab = QWidget()
+        self._tabs.addTab(spi_tab, "SPI")
+        spi_layout = QVBoxLayout(spi_tab)
+        spi_layout.addWidget(QLabel("SPI monitor — coming soon"))
+        spi_layout.addStretch()
+
+        # ---- Scripting tab ----
+        scripting_tab = QWidget()
+        self._tabs.addTab(scripting_tab, "Scripting")
+        scripting_layout = QVBoxLayout(scripting_tab)
+        scripting_layout.addWidget(QLabel("Scripting — coming soon"))
+        scripting_layout.addStretch()
 
         # ---- status bar ----
         self._status = QStatusBar()
@@ -731,6 +771,100 @@ class MLAbScopeWindow(QMainWindow):
     def _on_worker_error(self, msg: str):
         self._set_status(f"Scope error: {msg}", ok=False)
         self._stop_sampling()
+
+    # ------------------------------------------------------------------
+    # Configuration save / load
+    # ------------------------------------------------------------------
+    def _save_config(self):
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Save configuration",
+            self._last_config_path or "mlab_scope_config.json",
+            "JSON files (*.json);;All files (*)",
+        )
+        if not path:
+            return
+        cfg = {
+            "elf": self._elf_edit.text(),
+            "channels": [
+                {
+                    "enabled": self._ch_enable[i].isChecked(),
+                    "gain":    self._ch_gain[i].value(),
+                    "offset":  self._ch_offset[i].value(),
+                    "trig":    self._ch_trig[i].isChecked(),
+                }
+                for i in range(len(CHANNEL_LABELS))
+            ],
+            "pwm": [
+                {
+                    "duty":   self._pwm_dc_sb[i].value(),
+                    "period": self._pwm_f_sb[i].value(),
+                }
+                for i in range(PWM_COUNT)
+            ],
+            "scope": {
+                "sample_time": self._sample_time_sb.value(),
+                "trig_level":  self._trig_level_sb.value(),
+                "trig_edge":   self._trig_edge_combo.currentIndex(),
+                "trig_mode":   self._trig_mode_combo.currentIndex(),
+                "trig_delay":  self._trig_delay_sb.value(),
+                "single_shot": self._single_shot_cb.isChecked(),
+            },
+        }
+        try:
+            Path(path).write_text(json.dumps(cfg, indent=2))
+            self._last_config_path = path
+            self._set_status(f"Config saved: {path}", ok=True)
+        except Exception as exc:
+            self._set_status(f"Save failed: {exc}", ok=False)
+
+    def _load_config(self):
+        path, _ = QFileDialog.getOpenFileName(
+            self, "Load configuration",
+            self._last_config_path or "",
+            "JSON files (*.json);;All files (*)",
+        )
+        if not path:
+            return
+        try:
+            cfg = json.loads(Path(path).read_text())
+        except Exception as exc:
+            self._set_status(f"Load failed: {exc}", ok=False)
+            return
+
+        if "elf" in cfg:
+            self._elf_edit.setText(cfg["elf"])
+
+        for i, ch in enumerate(cfg.get("channels", [])):
+            if i >= len(CHANNEL_LABELS):
+                break
+            self._ch_enable[i].setChecked(ch.get("enabled", True))
+            self._ch_gain[i].setValue(ch.get("gain", 1.0))
+            self._ch_offset[i].setValue(ch.get("offset", 0.0))
+            if ch.get("trig", False):
+                self._ch_trig[i].setChecked(True)
+
+        for i, pw in enumerate(cfg.get("pwm", [])):
+            if i >= PWM_COUNT:
+                break
+            self._pwm_dc_sb[i].setValue(pw.get("duty", PWM_DC_DEFAULT))
+            self._pwm_f_sb[i].setValue(pw.get("period", PWM_F_DEFAULT))
+
+        sc = cfg.get("scope", {})
+        if "sample_time" in sc:
+            self._sample_time_sb.setValue(sc["sample_time"])
+        if "trig_level" in sc:
+            self._trig_level_sb.setValue(sc["trig_level"])
+        if "trig_edge" in sc:
+            self._trig_edge_combo.setCurrentIndex(sc["trig_edge"])
+        if "trig_mode" in sc:
+            self._trig_mode_combo.setCurrentIndex(sc["trig_mode"])
+        if "trig_delay" in sc:
+            self._trig_delay_sb.setValue(sc["trig_delay"])
+        if "single_shot" in sc:
+            self._single_shot_cb.setChecked(sc["single_shot"])
+
+        self._last_config_path = path
+        self._set_status(f"Config loaded: {path}", ok=True)
 
     # ------------------------------------------------------------------
     def closeEvent(self, event):
