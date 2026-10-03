@@ -1,7 +1,7 @@
 {
     "hashFileVersion": "1.1.0",
-    "projectFileHash": "856470b5a2e59b171642be3d2052c7562b74c43015f18db66ea0f0cb8c1c8039",
-    "cmakeFilesHash": "2729199aaae57acd806575256415bf98547e586fbc2236e8a875d13372da8eba",
+    "projectFileHash": "158fd7669281c2666b7dc2aae64f0086baed73ea47f0ab60e9d0eed7acc1d067",
+    "cmakeFilesHash": "8cad5c5047585ce0330e25f1c2ddd55f3b20f22771e1bcf037cf86009077450d",
     "cmakerVersion": "5.0.2",
     "workspacePath": "c:/_data/github/mlabcuriosity/fw/mlabcuriosity"
 }

@@ -1,6 +1,6 @@
 # The following functions contains all the flags passed to the different build stages.
 
-set(PACK_REPO_PATH "C:/Users/M91110/.mchp_packs" CACHE PATH "Path to the root of a pack repository.")
+set(PACK_REPO_PATH "C:/Users/Chris/.mchp_packs" CACHE PATH "Path to the root of a pack repository.")
 
 function(mLabCuriosity_default_default_XC_DSC_assemble_rule target)
     set(options

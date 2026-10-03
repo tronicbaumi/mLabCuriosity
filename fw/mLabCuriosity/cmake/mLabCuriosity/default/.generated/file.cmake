@@ -48,7 +48,9 @@ set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_compile
 set_source_files_properties(${mLabCuriosity_default_default_XC_DSC_FILE_TYPE_compile} PROPERTIES LANGUAGE C)
 set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_compile_cpp)
 set_source_files_properties(${mLabCuriosity_default_default_XC_DSC_FILE_TYPE_compile_cpp} PROPERTIES LANGUAGE CXX)
-set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_link "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/X2Cscope/libx2cscope-generic-32dsp-dspic33a-elf.a")
+set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_link
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/X2Cscope/libx2cscope-generic-32dsp-dspic33a-elf.a"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../helper/X2Cscope_library_make-3.1/dist/libx2cscope-generic-32dsp-dspic33a-elf.a")
 set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_bin2hex)
 set(mLabCuriosity_default_image_name "default.elf")
 set(mLabCuriosity_default_image_base_name "default")
