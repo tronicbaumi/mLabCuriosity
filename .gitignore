@@ -41,7 +41,7 @@
 *.app
 *.i*86
 *.x86_64
-*.hex
+#*.hex
 
 # Debug files
 *.dSYM/
@@ -92,3 +92,36 @@ disassembly/
 *.T3001B
 *.T3001C
 *.T3001OPEN
+
+# ============================================================
+# mLabCuriosity project specific
+# ============================================================
+
+# Logs (pyX2Cscope writes pyx2cscope*.log next to the GUI)
+*.log
+
+# --- sw/ : mLabScope GUI (Python, PyInstaller) ---
+sw/venv/
+sw/build/
+sw/dist/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+# keep mlab_scope.spec, it is the PyInstaller recipe
+
+# --- fw/ : MPLAB for VS Code / CMake / XC-DSC build output ---
+fw/**/_build/
+fw/**/.cache/
+fw/**/*.X/build/
+#fw/**/*.X/dist/
+fw/**/*.X/debug/
+**/.vscode/*.mplab-local.json
+
+# --- OS / editor clutter ---
+Thumbs.db
+desktop.ini
+.DS_Store
