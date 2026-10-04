@@ -1,0 +1,77 @@
+{
+  "blocks": {
+    "languageVersion": 0,
+    "blocks": [
+      {
+        "type": "controls_whileUntil",
+        "id": "#+n@s5FBsUUqoG|(`T.V",
+        "x": 40,
+        "y": 40,
+        "fields": {
+          "MODE": "WHILE"
+        },
+        "inputs": {
+          "BOOL": {
+            "shadow": {
+              "type": "logic_boolean",
+              "id": "oE0k5,#]u[`VHcuFq.-*",
+              "fields": {
+                "BOOL": "TRUE"
+              }
+            }
+          },
+          "DO": {
+            "block": {
+              "type": "mlab_do_toggle",
+              "id": "[e7N|OhH4j,2jP6WiH|z",
+              "fields": {
+                "CH": "0"
+              },
+              "next": {
+                "block": {
+                  "type": "mlab_wait_ms",
+                  "id": "`A9)Sz0l6nRE*VJR|X1}",
+                  "inputs": {
+                    "MS": {
+                      "shadow": {
+                        "type": "math_number",
+                        "id": "Rp*gUNuS9Y{bs6fc:KL#",
+                        "fields": {
+                          "NUM": 500
+                        }
+                      }
+                    }
+                  },
+                  "next": {
+                    "block": {
+                      "type": "text_print",
+                      "id": "%;G[:j))@a$2h)=HORe_",
+                      "inputs": {
+                        "TEXT": {
+                          "shadow": {
+                            "type": "text",
+                            "id": "VJ@9gSM}|l)5(p;X[^fs",
+                            "fields": {
+                              "TEXT": "hello"
+                            }
+                          },
+                          "block": {
+                            "type": "mlab_di_read",
+                            "id": "E2#dUXQP6RWst3p;YZJP",
+                            "fields": {
+                              "CH": "SW0"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

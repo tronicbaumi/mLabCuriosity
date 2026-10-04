@@ -2,11 +2,12 @@
 
 import json
 import sys
+import threading
 import time
 from pathlib import Path
 
 import numpy as np
-from PyQt5.QtCore import Qt, QThread, QTimer, pyqtSignal
+from PyQt5.QtCore import Qt, QThread, QTimer, QUrl, pyqtSignal
 from PyQt5.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -19,9 +20,12 @@ from PyQt5.QtWidgets import (
     QLabel,
     QLineEdit,
     QMainWindow,
+    QMessageBox,
+    QPlainTextEdit,
     QPushButton,
     QRadioButton,
     QSpinBox,
+    QSplitter,
     QStatusBar,
     QTabWidget,
     QVBoxLayout,
@@ -29,6 +33,15 @@ from PyQt5.QtWidgets import (
 )
 
 from pyx2cscope.x2cscope import X2CScope, TriggerConfig
+
+# Must be imported before QApplication exists. Optional: without PyQtWebEngine
+# the Blockly tab just shows an install hint.
+try:
+    from PyQt5.QtWebEngineWidgets import QWebEngineView
+    _WEBENGINE_ERROR = ""
+except ImportError as _exc:
+    QWebEngineView = None
+    _WEBENGINE_ERROR = str(_exc)
 
 # ---------------------------------------------------------------------------
 DEFAULT_ELF = str(
@@ -63,6 +76,14 @@ GPI_SW_VAR = "mLabCuriosity.SW0"
 
 GPI_REFRESH_MS = 100
 
+ADC_VREF = 3.3
+ADC_FULL_SCALE = 4095
+
+# Blockly assets: sw/support/blockly when run from source, <bundle>/blockly in the exe
+_BASE_DIR = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
+BLOCKLY_DIR = _BASE_DIR / "blockly"
+BLOCKLY_HIGHLIGHT_MIN_S = 0.05  # throttle block highlighting to ~20 Hz
+
 
 # ---------------------------------------------------------------------------
 class ScopeWorker(QThread):
@@ -72,31 +93,36 @@ class ScopeWorker(QThread):
 
     POLL_INTERVAL_S = 0.05  # 50 ms, matches pyx2cscope GUI polling cadence
 
-    def __init__(self, x2c: X2CScope, single_shot: bool = False):
+    def __init__(self, x2c: X2CScope, lock: threading.RLock, single_shot: bool = False):
         super().__init__()
         self._x2c = x2c
+        self._lock = lock
         self._single_shot = single_shot
         self._running = False
 
     def run(self):
         self._running = True
         try:
-            self._x2c.request_scope_data()  # kick off first capture
+            with self._lock:
+                self._x2c.request_scope_data()  # kick off first capture
         except Exception as exc:
             self.error.emit(str(exc))
             return
 
         while self._running:
             try:
-                if self._x2c.is_scope_data_ready():
-                    data = self._x2c.get_scope_channel_data()
+                with self._lock:
+                    ready = self._x2c.is_scope_data_ready()
+                    data = self._x2c.get_scope_channel_data() if ready else None
+                if ready:
                     if data:
                         self.data_ready.emit(data)
                     if self._single_shot:
                         self._running = False
                         self.done.emit()
                         return
-                    self._x2c.request_scope_data()  # arm for next capture
+                    with self._lock:
+                        self._x2c.request_scope_data()  # arm for next capture
                 time.sleep(self.POLL_INTERVAL_S)
             except Exception as exc:
                 self.error.emit(str(exc))
@@ -105,6 +131,160 @@ class ScopeWorker(QThread):
     def stop(self):
         self._running = False
         self.wait(3000)
+
+
+# ---------------------------------------------------------------------------
+class ScriptStopped(Exception):
+    """Raised inside a running Blockly script when Stop is pressed."""
+
+
+class BlocklyHAL:
+    """The `mlab` object generated Blockly code calls (see blockly/mlab_blocks.js).
+
+    Maps blocks onto the same X2Cscope variables the Main tab uses.
+    Runs in the BlocklyWorker thread; every X2Cscope access takes the shared lock.
+    """
+
+    def __init__(self, x2c: X2CScope, lock: threading.RLock, stop_event: threading.Event):
+        self._x2c = x2c
+        self._lock = lock
+        self._stop = stop_event
+        self._vars: dict = {}
+        self._t0 = time.monotonic()
+
+    # ---- plumbing ----
+    def check_stop(self):
+        if self._stop.is_set():
+            raise ScriptStopped()
+
+    def _sleep(self, seconds: float):
+        end = time.monotonic() + seconds
+        while True:
+            self.check_stop()
+            remaining = end - time.monotonic()
+            if remaining <= 0:
+                return
+            time.sleep(min(remaining, 0.02))
+
+    def _var(self, name: str):
+        var = self._vars.get(name)
+        if var is None:
+            with self._lock:
+                var = self._x2c.get_variable(name)
+            if var is None:
+                raise RuntimeError(f"Variable '{name}' not found in ELF")
+            self._vars[name] = var
+        return var
+
+    def _read(self, name: str):
+        self.check_stop()
+        var = self._var(name)
+        with self._lock:
+            val = var.get_value()
+        return 0 if val is None else val
+
+    def _write(self, name: str, value):
+        self.check_stop()
+        var = self._var(name)
+        with self._lock:
+            var.set_value(value)
+
+    @staticmethod
+    def _u16(value, low: int = 0) -> int:
+        return max(low, min(65535, int(round(float(value)))))
+
+    # ---- digital outputs ----
+    def set_do(self, ch, value):
+        self._write(GPO_VARS[int(ch)], 1 if value else 0)
+
+    def get_do(self, ch) -> bool:
+        return bool(self._read(GPO_VARS[int(ch)]))
+
+    def toggle_do(self, ch):
+        self.set_do(ch, not self.get_do(ch))
+
+    # ---- digital inputs ----
+    def get_di(self, ch) -> bool:
+        name = GPI_SW_VAR if ch == "SW0" else GPI_VARS[int(ch)]
+        return bool(self._read(name))
+
+    def wait_di(self, ch, level):
+        while self.get_di(ch) != bool(level):
+            self._sleep(0.02)
+
+    # ---- PWM ----
+    def set_pwm_duty(self, ch, value):
+        self._write(PWM_DC_VARS[int(ch)], self._u16(value, 0))
+
+    def set_pwm_period(self, ch, value):
+        self._write(PWM_F_VARS[int(ch)], self._u16(value, 1))
+
+    def set_pwm_duty_pct(self, ch, percent):
+        pct = max(0.0, min(100.0, float(percent)))
+        self.set_pwm_duty(ch, self.get_pwm_period(ch) * pct / 100.0)
+
+    def get_pwm_duty(self, ch) -> int:
+        return int(self._read(PWM_DC_VARS[int(ch)]))
+
+    def get_pwm_period(self, ch) -> int:
+        return int(self._read(PWM_F_VARS[int(ch)]))
+
+    # ---- ADC ----
+    def read_adc(self, ch) -> int:
+        return int(self._read(f"mLabCuriosity.adc{int(ch)}"))
+
+    def read_adc_volts(self, ch) -> float:
+        return self.read_adc(ch) * ADC_VREF / ADC_FULL_SCALE
+
+    # ---- time ----
+    def wait_ms(self, ms):
+        self._sleep(max(0.0, float(ms)) / 1000.0)
+
+    def millis(self) -> int:
+        return int((time.monotonic() - self._t0) * 1000)
+
+
+class BlocklyWorker(QThread):
+    """Executes Python generated from the Blockly workspace."""
+
+    log = pyqtSignal(str)
+    highlight = pyqtSignal(str)
+
+    def __init__(self, code: str, hal: BlocklyHAL):
+        super().__init__()
+        self._code = code
+        self._hal = hal
+
+    def run(self):
+        last = {"t": 0.0, "id": None}
+
+        def highlight(block_id):
+            self._hal.check_stop()
+            now = time.monotonic()
+            if block_id != last["id"] and now - last["t"] >= BLOCKLY_HIGHLIGHT_MIN_S:
+                last["t"], last["id"] = now, block_id
+                self.highlight.emit(block_id)
+
+        def _print(*args, **_kwargs):
+            self.log.emit(" ".join(str(a) for a in args))
+
+        env = {
+            "__name__": "__blockly__",
+            "mlab": self._hal,
+            "check_stop": self._hal.check_stop,
+            "highlight": highlight,
+            "print": _print,
+        }
+        self.log.emit("Script started.")
+        try:
+            exec(compile(self._code, "<blockly>", "exec"), env)
+            self.log.emit("Script finished.")
+        except ScriptStopped:
+            self.log.emit("Script stopped.")
+        except Exception as exc:
+            self.log.emit(f"Error: {type(exc).__name__}: {exc}")
+        finally:
+            self.highlight.emit("")
 
 
 # ---------------------------------------------------------------------------
@@ -124,6 +304,13 @@ class MLAbScopeWindow(QMainWindow):
         self._gpi_vars: dict = {}
         self._detected_port = ""
         self._last_config_path = ""
+        # Serialises X2Cscope access between GUI, scope worker and Blockly worker
+        self._x2c_lock = threading.RLock()
+
+        self._blockly_view = None
+        self._blockly_worker: BlocklyWorker | None = None
+        self._blockly_stop_event: threading.Event | None = None
+        self._blockly_last_path = ""
 
         self._autoconnect_timer = QTimer(self)
         self._gpi_timer = QTimer(self)
@@ -398,6 +585,9 @@ class MLAbScopeWindow(QMainWindow):
         main_h.addWidget(right_side, stretch=1)
         root.addWidget(main_area, stretch=1)
 
+        # ---- Blockly tab ----
+        self._build_blockly_tab()
+
         # ---- Serial tab ----
         serial_tab = QWidget()
         self._tabs.addTab(serial_tab, "Serial")
@@ -430,6 +620,73 @@ class MLAbScopeWindow(QMainWindow):
         self._status = QStatusBar()
         self.setStatusBar(self._status)
         self._set_status("Ready — not connected", ok=None)
+
+    def _build_blockly_tab(self):
+        tab = QWidget()
+        self._tabs.addTab(tab, "Blockly")
+        layout = QVBoxLayout(tab)
+        layout.setSpacing(4)
+
+        if QWebEngineView is None:
+            msg = QLabel(
+                "Blockly needs the Qt web engine. Install it with "
+                "<code>pip install PyQtWebEngine</code> and restart.<br>"
+                f"<i>{_WEBENGINE_ERROR}</i>"
+            )
+            msg.setWordWrap(True)
+            layout.addWidget(msg)
+            layout.addStretch()
+            return
+
+        bar = QHBoxLayout()
+        self._blockly_run_btn = QPushButton("\u25b6 Run")
+        self._blockly_run_btn.setToolTip("Run the blocks on the connected board")
+        self._blockly_run_btn.clicked.connect(self._blockly_run)
+        bar.addWidget(self._blockly_run_btn)
+        self._blockly_stop_btn = QPushButton("\u25a0 Stop")
+        self._blockly_stop_btn.clicked.connect(lambda: self._blockly_stop())
+        bar.addWidget(self._blockly_stop_btn)
+        bar.addSpacing(16)
+        for text, slot in [
+            ("New", self._blockly_new),
+            ("Load…", self._blockly_load),
+            ("Save…", self._blockly_save),
+            ("Show code", self._blockly_show_code),
+        ]:
+            btn = QPushButton(text)
+            btn.clicked.connect(slot)
+            bar.addWidget(btn)
+        bar.addStretch()
+        layout.addLayout(bar)
+
+        self._blockly_fetch_btn = QPushButton("Download Blockly")
+        self._blockly_fetch_btn.setToolTip("Fetch the Blockly library files (runs fetch_blockly.py)")
+        self._blockly_fetch_btn.clicked.connect(self._blockly_fetch)
+        bar.insertWidget(bar.count() - 1, self._blockly_fetch_btn)
+
+        self._blockly_view = QWebEngineView()
+        self._blockly_load_page()
+
+        self._blockly_code = QPlainTextEdit()
+        self._blockly_code.setReadOnly(True)
+        self._blockly_code.setPlaceholderText("Generated Python (click Show code)")
+        self._blockly_log = QPlainTextEdit()
+        self._blockly_log.setReadOnly(True)
+        self._blockly_log.setMaximumBlockCount(2000)
+        self._blockly_log.setPlaceholderText("Script output")
+        for edit in (self._blockly_code, self._blockly_log):
+            edit.setStyleSheet("font-family: Consolas, monospace;")
+
+        bottom = QSplitter(Qt.Horizontal)
+        bottom.addWidget(self._blockly_code)
+        bottom.addWidget(self._blockly_log)
+        split = QSplitter(Qt.Vertical)
+        split.addWidget(self._blockly_view)
+        split.addWidget(bottom)
+        split.setStretchFactor(0, 4)
+        split.setStretchFactor(1, 1)
+        layout.addWidget(split, stretch=1)
+        self._update_blockly_buttons()
 
     def _build_plot(self):
         self._plot_widget = pg.PlotWidget()
@@ -475,6 +732,14 @@ class MLAbScopeWindow(QMainWindow):
             btn.setEnabled(self._connected)
         for cb in self._gpo_cbs:
             cb.setEnabled(self._connected)
+        self._update_blockly_buttons()
+
+    def _update_blockly_buttons(self):
+        if self._blockly_view is None:
+            return
+        running = self._blockly_worker is not None
+        self._blockly_run_btn.setEnabled(self._connected and not running)
+        self._blockly_stop_btn.setEnabled(running)
 
     # ------------------------------------------------------------------
     # Connection — only establishes serial link, no scope setup
@@ -512,11 +777,13 @@ class MLAbScopeWindow(QMainWindow):
 
     def _disconnect(self):
         self._gpi_timer.stop()
+        self._blockly_stop(wait=True)
         self._stop_sampling()
         if self._x2c:
             try:
-                self._x2c.clear_all_scope_channel()
-                self._x2c.disconnect()
+                with self._x2c_lock:
+                    self._x2c.clear_all_scope_channel()
+                    self._x2c.disconnect()
             except Exception:
                 pass
             self._x2c = None
@@ -544,7 +811,8 @@ class MLAbScopeWindow(QMainWindow):
         if not self._connected or self._x2c is None:
             return
         try:
-            self._x2c.clear_all_scope_channel()
+            with self._x2c_lock:
+                self._x2c.clear_all_scope_channel()
             self._vars = {}
             enabled = [
                 (i, name) for i, name in enumerate(ADC_CHANNELS)
@@ -554,7 +822,8 @@ class MLAbScopeWindow(QMainWindow):
                 self._set_status("No channels enabled — check channel enable boxes", ok=False)
                 return
             for i, name in enabled:
-                var = self._x2c.get_variable(name)
+                with self._x2c_lock:
+                    var = self._x2c.get_variable(name)
                 if var is None:
                     avail = [v for v in self._x2c.list_variables() if "adc" in v.lower()]
                     self._set_status(
@@ -563,13 +832,14 @@ class MLAbScopeWindow(QMainWindow):
                     )
                     return
                 self._vars[name] = var
-                self._x2c.add_scope_channel(var)
+                with self._x2c_lock:
+                    self._x2c.add_scope_channel(var)
             self._apply_scope_settings()
         except Exception as exc:
             self._set_status(f"Scope setup failed: {exc}", ok=False)
             return
 
-        self._worker = ScopeWorker(self._x2c, single_shot=single_shot)
+        self._worker = ScopeWorker(self._x2c, self._x2c_lock, single_shot=single_shot)
         self._worker.data_ready.connect(self._on_scope_data)
         self._worker.error.connect(self._on_worker_error)
         self._worker.done.connect(self._on_single_shot_done)
@@ -611,11 +881,13 @@ class MLAbScopeWindow(QMainWindow):
                 (PWM_DC_VARS[i], self._pwm_dc_sb[i]),
                 (PWM_F_VARS[i],  self._pwm_f_sb[i]),
             ]:
-                var = self._x2c.get_variable(name)
+                with self._x2c_lock:
+                    var = self._x2c.get_variable(name)
                 if var is not None:
                     self._pwm_vars[name] = var
                     try:
-                        val = var.get_value()
+                        with self._x2c_lock:
+                            val = var.get_value()
                         if val is not None:
                             sb.setValue(int(val))
                     except Exception:
@@ -635,7 +907,8 @@ class MLAbScopeWindow(QMainWindow):
                 errors.append(f"{name} not found")
                 continue
             try:
-                var.set_value(sb.value())
+                with self._x2c_lock:
+                    var.set_value(sb.value())
             except Exception as exc:
                 errors.append(f"{name}: {exc}")
         if errors:
@@ -654,11 +927,13 @@ class MLAbScopeWindow(QMainWindow):
         """Fetch GPO/GPI Variable objects and read initial GPO state into checkboxes."""
         self._gpo_vars = {}
         for i, name in enumerate(GPO_VARS):
-            var = self._x2c.get_variable(name)
+            with self._x2c_lock:
+                var = self._x2c.get_variable(name)
             if var is not None:
                 self._gpo_vars[name] = var
                 try:
-                    val = var.get_value()
+                    with self._x2c_lock:
+                        val = var.get_value()
                     if val is not None:
                         cb = self._gpo_cbs[i]
                         cb.blockSignals(True)
@@ -669,7 +944,8 @@ class MLAbScopeWindow(QMainWindow):
 
         self._gpi_vars = {}
         for name in GPI_VARS + [GPI_SW_VAR]:
-            var = self._x2c.get_variable(name)
+            with self._x2c_lock:
+                var = self._x2c.get_variable(name)
             if var is not None:
                 self._gpi_vars[name] = var
 
@@ -683,7 +959,8 @@ class MLAbScopeWindow(QMainWindow):
             self._set_status(f"{name} not found", ok=False)
             return
         try:
-            var.set_value(1 if state else 0)
+            with self._x2c_lock:
+                var.set_value(1 if state else 0)
             self._set_status(
                 f"{GPO_LABELS[channel]} = {'1' if state else '0'}", ok=True
             )
@@ -699,14 +976,16 @@ class MLAbScopeWindow(QMainWindow):
             if var is None:
                 continue
             try:
-                val = var.get_value()
+                with self._x2c_lock:
+                    val = var.get_value()
                 self._gpi_value_labels[i].setText("1" if val else "0")
             except Exception:
                 pass
         sw_var = self._gpi_vars.get(GPI_SW_VAR)
         if sw_var is not None:
             try:
-                val = sw_var.get_value()
+                with self._x2c_lock:
+                    val = sw_var.get_value()
                 self._gpi_sw_label.setText("1" if val else "0")
             except Exception:
                 pass
@@ -717,6 +996,10 @@ class MLAbScopeWindow(QMainWindow):
     def _apply_scope_settings(self):
         if self._x2c is None:
             return
+        with self._x2c_lock:
+            self._apply_scope_settings_locked()
+
+    def _apply_scope_settings_locked(self):
         self._x2c.set_sample_time(self._sample_time_sb.value())
         mode = self._trig_mode_combo.currentIndex()  # 0=Auto, 1=Triggered
         if mode == 0:
@@ -771,6 +1054,165 @@ class MLAbScopeWindow(QMainWindow):
     def _on_worker_error(self, msg: str):
         self._set_status(f"Scope error: {msg}", ok=False)
         self._stop_sampling()
+
+    # ------------------------------------------------------------------
+    # Blockly
+    # ------------------------------------------------------------------
+    def _blockly_js(self, script: str, callback=None):
+        if self._blockly_view is None:
+            return
+        if callback is None:
+            self._blockly_view.page().runJavaScript(script)
+        else:
+            self._blockly_view.page().runJavaScript(script, callback)
+
+    def _blockly_load_page(self):
+        lib = BLOCKLY_DIR / "blockly_compressed.js"
+        missing = not lib.exists()
+        self._blockly_fetch_btn.setVisible(missing)
+        if missing:
+            self._blockly_view.setHtml(
+                "<body style='font-family:sans-serif;padding:20px'>"
+                "<h3>Blockly library files are missing</h3>"
+                f"<p>Not found: <code>{lib}</code></p>"
+                "<p>Click <b>Download Blockly</b> above, or run "
+                "<code>venv\\Scripts\\python fetch_blockly.py</code> in the <code>sw</code> folder.</p>"
+                "</body>"
+            )
+        else:
+            self._blockly_view.setUrl(QUrl.fromLocalFile(str(BLOCKLY_DIR / "blockly.html")))
+
+    def _blockly_fetch(self):
+        sw_dir = Path(__file__).resolve().parent.parent
+        if not (sw_dir / "fetch_blockly.py").exists():
+            self._set_status(f"fetch_blockly.py not found in {sw_dir}", ok=False)
+            return
+        if str(sw_dir) not in sys.path:
+            sys.path.insert(0, str(sw_dir))
+        QApplication.setOverrideCursor(Qt.WaitCursor)
+        self._set_status("Downloading Blockly…", ok=None)
+        QApplication.processEvents()
+        try:
+            import fetch_blockly
+            ok = fetch_blockly.main() == 0
+        except Exception as exc:
+            ok = False
+            self._set_status(f"Blockly download failed: {exc}", ok=False)
+        finally:
+            QApplication.restoreOverrideCursor()
+        if ok:
+            self._set_status("Blockly downloaded", ok=True)
+            self._blockly_load_page()
+
+    def _blockly_log_line(self, text: str):
+        self._blockly_log.appendPlainText(f"[{time.strftime('%H:%M:%S')}] {text}")
+
+    def _blockly_run(self):
+        if self._blockly_worker is not None:
+            return
+        if not self._connected or self._x2c is None:
+            self._set_status("Blockly: connect to the board first", ok=False)
+            return
+        self._blockly_js("mlabGenerate(false)", self._blockly_code.setPlainText)
+        self._blockly_js("mlabGenerate(true)", self._blockly_start)
+
+    def _blockly_start(self, code):
+        if self._blockly_worker is not None or not self._connected or self._x2c is None:
+            return
+        if code is None:
+            self._blockly_log_line("Error: could not generate code from the workspace.")
+            return
+        if not code.strip():
+            self._blockly_log_line("Workspace is empty.")
+            return
+        self._blockly_stop_event = threading.Event()
+        hal = BlocklyHAL(self._x2c, self._x2c_lock, self._blockly_stop_event)
+        worker = BlocklyWorker(code, hal)
+        worker.log.connect(self._blockly_log_line)
+        worker.highlight.connect(
+            lambda block_id: self._blockly_js(f"mlabHighlight({json.dumps(block_id)})")
+        )
+        worker.finished.connect(lambda w=worker: self._blockly_finished(w))
+        self._blockly_worker = worker
+        worker.start()
+        self._update_blockly_buttons()
+        self._set_status("Blockly script running", ok=True)
+
+    def _blockly_stop(self, wait: bool = False):
+        if self._blockly_worker is None:
+            return
+        self._blockly_stop_event.set()
+        if wait:
+            self._blockly_worker.wait(3000)
+
+    def _blockly_finished(self, worker: BlocklyWorker):
+        if worker is not self._blockly_worker:
+            return
+        self._blockly_worker = None
+        self._update_blockly_buttons()
+        if self._connected and self._x2c is not None:
+            # script may have changed outputs/PWM: resync the Main tab widgets
+            self._load_pwm_vars()
+            self._load_gpio_vars()
+            self._set_status("Blockly script ended", ok=None)
+
+    def _blockly_new(self):
+        if QMessageBox.question(
+            self, "New workspace", "Discard the current blocks?"
+        ) == QMessageBox.Yes:
+            self._blockly_js("mlabNew()")
+
+    def _blockly_show_code(self):
+        self._blockly_js("mlabGenerate(false)", self._blockly_code.setPlainText)
+
+    def _blockly_save(self):
+        if self._blockly_view is None:
+            return
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Save Blockly workspace",
+            self._blockly_last_path or "blockly_program.json",
+            "Blockly workspace (*.json);;All files (*)",
+        )
+        if not path:
+            return
+
+        def write(text):
+            if text is None:
+                self._set_status("Blockly save failed: could not read workspace", ok=False)
+                return
+            try:
+                Path(path).write_text(text, encoding="utf-8")
+                self._blockly_last_path = path
+                self._set_status(f"Blockly workspace saved: {path}", ok=True)
+            except Exception as exc:
+                self._set_status(f"Blockly save failed: {exc}", ok=False)
+
+        self._blockly_js("mlabSave()", write)
+
+    def _blockly_load(self):
+        if self._blockly_view is None:
+            return
+        path, _ = QFileDialog.getOpenFileName(
+            self, "Load Blockly workspace",
+            self._blockly_last_path or "",
+            "Blockly workspace (*.json);;All files (*)",
+        )
+        if not path:
+            return
+        try:
+            text = Path(path).read_text(encoding="utf-8")
+        except Exception as exc:
+            self._set_status(f"Blockly load failed: {exc}", ok=False)
+            return
+
+        def done(ok):
+            if ok:
+                self._blockly_last_path = path
+                self._set_status(f"Blockly workspace loaded: {path}", ok=True)
+            else:
+                self._set_status(f"Blockly load failed: not a valid workspace: {path}", ok=False)
+
+        self._blockly_js(f"mlabLoad({json.dumps(text)})", done)
 
     # ------------------------------------------------------------------
     # Configuration save / load
@@ -877,6 +1319,7 @@ class MLAbScopeWindow(QMainWindow):
 # ---------------------------------------------------------------------------
 def main():
     global pg
+    QApplication.setAttribute(Qt.AA_ShareOpenGLContexts)  # required by QtWebEngine
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
     import pyqtgraph as pg  # delayed: requires QApplication to exist first

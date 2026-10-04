@@ -21,6 +21,20 @@ if errorlevel 1 (
     venv\Scripts\pip.exe install pyinstaller
 )
 
+:: ---------- ensure PyQtWebEngine (Blockly tab) is present ----------
+venv\Scripts\pip.exe show PyQtWebEngine >nul 2>&1
+if errorlevel 1 (
+    echo Installing PyQtWebEngine...
+    venv\Scripts\pip.exe install PyQtWebEngine
+)
+
+:: ---------- ensure Blockly library files are present ----------
+if not exist "support\blockly\blockly_compressed.js" (
+    echo Downloading Blockly...
+    venv\Scripts\python.exe fetch_blockly.py
+    if errorlevel 1 exit /b 1
+)
+
 :: ---------- clean previous build ----------
 if exist dist\mLabScope (
     echo Removing old dist\mLabScope...

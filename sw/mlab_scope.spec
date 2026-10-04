@@ -20,6 +20,7 @@ a = Analysis(
     ),
     datas=(
         pyx2c_datas + mchpl_datas + eio_datas + sio_datas + flask_datas
+        + [("support/blockly", "blockly")]   # Blockly tab assets (HTML/JS/media)
     ),
     hiddenimports=(
         pyx2c_hiddens + mchpl_hiddens + eio_hiddens + sio_hiddens + flask_hiddens
@@ -28,6 +29,11 @@ a = Analysis(
         + collect_submodules("can")
         + collect_submodules("yaml")
         + [
+            "PyQt5.QtWebEngineWidgets",     # Blockly tab
+            "PyQt5.QtWebChannel",
+            "PyQt5.QtNetwork",
+            "random",                       # used by generated Blockly code
+            "math",
             "serial.tools.list_ports_windows",
             "serial.tools.list_ports_posix",
             "pkg_resources.py2_warn",
@@ -70,6 +76,6 @@ coll = COLLECT(
     a.datas,
     strip=False,
     upx=True,
-    upx_exclude=[],
+    upx_exclude=["Qt5WebEngineCore.dll", "QtWebEngineProcess.exe"],
     name="mLabScope",
 )

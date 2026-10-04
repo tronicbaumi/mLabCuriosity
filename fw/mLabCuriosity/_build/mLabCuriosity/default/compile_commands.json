@@ -13,6 +13,12 @@
 },
 {
   "directory": "C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default",
+  "command": "\"c:\\Program Files\\Microchip\\xc-dsc\\v4.00\\bin\\xc-dsc-gcc.exe\" -DXPRJ_default=default -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16 -o CMakeFiles\\mLabCuriosity_default_default_XC_DSC_compile.dir\\C_\\_data\\github\\mLabCuriosity\\fw\\mLabCuriosity\\config.mcc\\app\\uart_rxbuf.c.o -c C:\\_data\\github\\mLabCuriosity\\fw\\mLabCuriosity\\config.mcc\\app\\uart_rxbuf.c",
+  "file": "C:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/app/uart_rxbuf.c",
+  "output": "C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/app/uart_rxbuf.c.o"
+},
+{
+  "directory": "C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default",
   "command": "\"c:\\Program Files\\Microchip\\xc-dsc\\v4.00\\bin\\xc-dsc-gcc.exe\" -DXPRJ_default=default -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16 -o CMakeFiles\\mLabCuriosity_default_default_XC_DSC_compile.dir\\C_\\_data\\github\\mLabCuriosity\\fw\\mLabCuriosity\\config.mcc\\main.c.o -c C:\\_data\\github\\mLabCuriosity\\fw\\mLabCuriosity\\config.mcc\\main.c",
   "file": "C:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c",
   "output": "C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c.o"

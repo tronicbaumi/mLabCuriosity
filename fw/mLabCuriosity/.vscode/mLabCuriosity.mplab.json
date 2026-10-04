@@ -46,6 +46,7 @@
                 "config.mcc/mcc_generated_files/system/src/where_was_i.s",
                 "config.mcc/mcc_generated_files/system/src/traps.c",
                 "config.mcc/main.c",
+                "config.mcc/app/uart_rxbuf.c",
                 "config.mcc/mcc_generated_files/system/src/system.c",
                 "config.mcc/mcc_generated_files/system/src/pins.c",
                 "config.mcc/mcc_generated_files/system/src/reset.c",

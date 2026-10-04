@@ -29,6 +29,7 @@
 #include "mcc_generated_files/pwm/sccp2.h"
 #include "mcc_generated_files/pwm/sccp3.h"
 #include "mcc_generated_files/pwm/sccp4.h"
+#include "app/uart_rxbuf.h"
 
 
 typedef struct {
@@ -116,6 +117,7 @@ static void TMR1_Callback(void)
 int main(void)
 {
     SYSTEM_Initialize();
+    UART_RXBUF_Initialize();   // 64-byte RX ring buffers for UART2/UART3
     TMR1_TimeoutCallbackRegister(TMR1_Callback);
 
 mLabCuriosity.pwm_dc0 = 1000;

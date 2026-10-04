@@ -18,6 +18,7 @@ foreach(source_file ${mLabCuriosity_default_default_XC_DSC_FILE_TYPE_assemblePre
 endforeach()
 
 set(mLabCuriosity_default_default_XC_DSC_FILE_TYPE_compile
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/app/uart_rxbuf.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/main.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c"
