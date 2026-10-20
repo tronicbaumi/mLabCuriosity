@@ -7,7 +7,7 @@ import time
 from pathlib import Path
 
 import numpy as np
-from PyQt5.QtCore import Qt, QThread, QTimer, QUrl, pyqtSignal
+from PyQt5.QtCore import QObject, Qt, QThread, QTimer, QUrl, pyqtSignal
 from PyQt5.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -24,10 +24,12 @@ from PyQt5.QtWidgets import (
     QPlainTextEdit,
     QPushButton,
     QRadioButton,
+    QSlider,
     QSpinBox,
     QSplitter,
     QStatusBar,
     QTabWidget,
+    QTextBrowser,
     QVBoxLayout,
     QWidget,
 )
@@ -76,6 +78,10 @@ GPI_SW_VAR = "mLabCuriosity.SW0"
 
 GPI_REFRESH_MS = 100
 
+SLIDER_COUNT = 4
+SLIDER_RANGE = (-50, 50)
+SLIDER_DEFAULT = 0
+
 ADC_VREF = 3.3
 ADC_FULL_SCALE = 4095
 
@@ -83,6 +89,136 @@ ADC_FULL_SCALE = 4095
 _BASE_DIR = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
 BLOCKLY_DIR = _BASE_DIR / "blockly"
 BLOCKLY_HIGHLIGHT_MIN_S = 0.05  # throttle block highlighting to ~20 Hz
+
+DOCUMENTATION_HTML = """
+<h1>mLabCuriosity Scope — Documentation</h1>
+
+<h2>Main tab</h2>
+<ul>
+  <li><b>Connection</b> — pick the firmware <code>.elf</code>, then Connect/Disconnect.
+      AUTO port detection scans for the LNet device; Load/Save Config stores the whole
+      tab's state (ELF, channels, PWM, scope settings) to a JSON file.</li>
+  <li><b>Channels</b> — per ADC channel (adc1–adc4): <b>En</b> shows/hides it on the plot,
+      <b>Gain</b>/<b>Off</b> rescale the plotted trace (<code>value * gain + offset</code>),
+      <b>Trig</b> selects which channel the scope trigger watches.</li>
+  <li><b>PWM Control</b> — duty cycle and period (raw timer counts) for PWM0–PWM3; press
+      <b>Set</b> to write both to the MCU.</li>
+  <li><b>Digital I/O</b> — <b>GPO</b> checkboxes drive DO0–DO3 outputs; <b>GPI</b> LEDs show
+      DI0–DI3 and SW0 inputs (green = 1, red = 0), polled every 100&nbsp;ms.</li>
+  <li><b>Sliders</b> — four general-purpose on-screen sliders (S0–S3, range &minus;50 to
+      +50, default 0). They
+      aren't wired to any MCU variable; they exist as simple, scriptable GUI inputs — read
+      or drive them from a Python script (see below) to parameterize a test sequence.</li>
+  <li><b>Scope Settings</b> — sample-time decimation, trigger level/edge/mode/delay, and
+      Single-shot. <b>Apply</b> pushes trigger/sample settings to a running scope;
+      <b>Sample</b> starts/stops continuous (or single-shot) capture.</li>
+</ul>
+
+<h2>Blockly tab</h2>
+<p>Build a program visually; <b>Run</b> generates Python and executes it the same way the
+Scripting tab does (same <code>mlab</code> API below). <b>Show code</b> lets you inspect the
+generated Python. New/Load/Save manage workspace files (<code>.json</code>).</p>
+
+<h2>Scripting tab</h2>
+<p><b>Load Script…</b> opens a <code>.py</code> file and shows it read-only; <b>Reload</b>
+re-reads that same file from disk (handy after editing it externally); <b>Execute</b> runs
+it on a background thread against the connected board; <b>Stop</b> requests a cooperative
+stop. Console output below shows everything the script <code>print()</code>s, plus
+start/finish/error messages.</p>
+
+<h3>Script execution environment</h3>
+<p>Scripts run with <code>exec()</code> in a namespace containing:</p>
+<ul>
+  <li><code>mlab</code> — the hardware/GUI access object, see the API reference below.</li>
+  <li><code>check_stop()</code> — raises if Stop was pressed; call it inside tight loops you
+      write yourself so they react to Stop promptly.</li>
+  <li><code>print(...)</code> — routed to the on-screen console instead of stdout.</li>
+</ul>
+<p>A script must be connected to the board before it can run; <code>mlab</code> calls block
+the calling (worker) thread until the board/GUI responds, and are safe to call from the
+script's top level or from loops.</p>
+
+<h3><code>mlab</code> API reference</h3>
+
+<p><i>Digital outputs</i></p>
+<ul>
+  <li><code>mlab.set_do(ch, value)</code> — drive DO<i>ch</i> (ch 0–3), value truthy/0/1</li>
+  <li><code>mlab.get_do(ch) -&gt; bool</code></li>
+  <li><code>mlab.toggle_do(ch)</code></li>
+</ul>
+
+<p><i>Digital inputs</i></p>
+<ul>
+  <li><code>mlab.get_di(ch) -&gt; bool</code> — ch 0–3, or the string <code>"SW0"</code></li>
+  <li><code>mlab.wait_di(ch, level)</code> — blocks until DI<i>ch</i> equals <code>level</code></li>
+</ul>
+
+<p><i>PWM</i></p>
+<ul>
+  <li><code>mlab.set_pwm_duty(ch, value)</code> / <code>mlab.get_pwm_duty(ch) -&gt; int</code></li>
+  <li><code>mlab.set_pwm_period(ch, value)</code> / <code>mlab.get_pwm_period(ch) -&gt; int</code></li>
+  <li><code>mlab.set_pwm_duty_pct(ch, percent)</code> — duty as 0–100% of the current period</li>
+</ul>
+
+<p><i>ADC</i></p>
+<ul>
+  <li><code>mlab.read_adc(ch) -&gt; int</code> — ch 1–4, raw counts</li>
+  <li><code>mlab.read_adc_volts(ch) -&gt; float</code></li>
+</ul>
+
+<p><i>Timing</i></p>
+<ul>
+  <li><code>mlab.wait_ms(ms)</code> — cooperative sleep (reacts to Stop)</li>
+  <li><code>mlab.millis() -&gt; int</code> — milliseconds since the script started</li>
+</ul>
+
+<p><i>Connection</i></p>
+<ul>
+  <li><code>mlab.is_connected() -&gt; bool</code></li>
+</ul>
+
+<p><i>Channel display (Main tab "Channels" box)</i></p>
+<ul>
+  <li><code>mlab.get_channel_enabled(ch)</code> / <code>mlab.set_channel_enabled(ch, value)</code></li>
+  <li><code>mlab.get_channel_gain(ch)</code> / <code>mlab.set_channel_gain(ch, value)</code></li>
+  <li><code>mlab.get_channel_offset(ch)</code> / <code>mlab.set_channel_offset(ch, value)</code></li>
+  <li><code>mlab.set_trigger_channel(ch)</code> — selects channel <i>ch</i>'s trigger radio button</li>
+</ul>
+
+<p><i>Scope settings / sampling</i></p>
+<ul>
+  <li><code>mlab.get_sample_time()</code> / <code>mlab.set_sample_time(value)</code></li>
+  <li><code>mlab.get_trig_level()</code> / <code>mlab.set_trig_level(value)</code></li>
+  <li><code>mlab.get_trig_edge()</code> / <code>mlab.set_trig_edge(value)</code> — 0=Falling, 1=Rising</li>
+  <li><code>mlab.get_trig_mode()</code> / <code>mlab.set_trig_mode(value)</code> — 0=Auto, 1=Triggered</li>
+  <li><code>mlab.get_trig_delay()</code> / <code>mlab.set_trig_delay(value)</code></li>
+  <li><code>mlab.get_single_shot()</code> / <code>mlab.set_single_shot(value)</code></li>
+  <li><code>mlab.apply_scope_settings()</code> — push the above to the running scope
+      (equivalent to pressing Apply)</li>
+  <li><code>mlab.is_sampling() -&gt; bool</code></li>
+  <li><code>mlab.start_sampling(single_shot=None)</code> — <code>None</code> uses the
+      Single-shot checkbox's current state</li>
+  <li><code>mlab.stop_sampling()</code></li>
+</ul>
+
+<p><i>Sliders</i></p>
+<ul>
+  <li><code>mlab.get_slider(i) -&gt; int</code> / <code>mlab.set_slider(i, value)</code> —
+      i is 0–3, value is clamped to the slider's range (&minus;50 to +50 by default)</li>
+</ul>
+
+<h3>Example script</h3>
+<pre>
+# Sweep PWM0 duty with the value of Slider 0 (-50..+50 -> 0..100%), blink DO0, log ADC1.
+while True:
+    check_stop()
+    pct = mlab.get_slider(0) + 50
+    mlab.set_pwm_duty_pct(0, pct)
+    mlab.toggle_do(0)
+    print(f"duty={pct}%  adc1={mlab.read_adc_volts(1):.3f} V")
+    mlab.wait_ms(200)
+</pre>
+"""
 
 
 # ---------------------------------------------------------------------------
@@ -134,23 +270,105 @@ class ScopeWorker(QThread):
 
 
 # ---------------------------------------------------------------------------
+class GpiWorker(QThread):
+    """Polls GPI/SW0 variables off the GUI thread.
+
+    Each variable read is a synchronous serial round-trip (pyx2cscope has no batch
+    read), so doing this on a QTimer in the GUI thread blocked the UI for the duration
+    of all 5 reads every cycle. Running it here keeps the UI responsive; results are
+    delivered via a signal and painted onto the LEDs on the GUI thread.
+    """
+
+    data_ready = pyqtSignal(dict)
+
+    POLL_INTERVAL_S = GPI_REFRESH_MS / 1000.0
+
+    def __init__(self, lock: threading.RLock, gpi_vars: dict):
+        super().__init__()
+        self._lock = lock
+        self._gpi_vars = gpi_vars
+        self._running = False
+
+    def run(self):
+        self._running = True
+        while self._running:
+            values = {}
+            with self._lock:
+                for name, var in self._gpi_vars.items():
+                    try:
+                        values[name] = var.get_value()
+                    except Exception:
+                        pass
+            if values:
+                self.data_ready.emit(values)
+            time.sleep(self.POLL_INTERVAL_S)
+
+    def stop(self):
+        self._running = False
+        self.wait(1000)
+
+
+# ---------------------------------------------------------------------------
 class ScriptStopped(Exception):
     """Raised inside a running Blockly script when Stop is pressed."""
 
 
-class BlocklyHAL:
-    """The `mlab` object generated Blockly code calls (see blockly/mlab_blocks.js).
+class GuiBridge(QObject):
+    """Marshals a callable from a worker thread onto the GUI thread and returns its result.
 
-    Maps blocks onto the same X2Cscope variables the Main tab uses.
-    Runs in the BlocklyWorker thread; every X2Cscope access takes the shared lock.
+    Qt widgets may only be touched from the thread that owns them. This object lives on
+    the GUI thread (created in MLAbScopeWindow.__init__); `call()` is invoked from the
+    Blockly/Script worker thread and blocks until the GUI thread has run `func`.
     """
 
-    def __init__(self, x2c: X2CScope, lock: threading.RLock, stop_event: threading.Event):
+    _request = pyqtSignal(object)
+
+    def __init__(self):
+        super().__init__()
+        self._request.connect(self._run, Qt.BlockingQueuedConnection)
+
+    def _run(self, job):
+        func, holder = job
+        try:
+            holder["result"] = func()
+        except Exception as exc:
+            holder["error"] = exc
+
+    def call(self, func):
+        holder: dict = {}
+        self._request.emit((func, holder))
+        if "error" in holder:
+            raise holder["error"]
+        return holder.get("result")
+
+
+class BlocklyHAL:
+    """The `mlab` object generated Blockly code (and Scripting-tab scripts) call.
+
+    Maps blocks/script calls onto the same X2Cscope variables and GUI widgets the Main
+    tab uses. Runs in the BlocklyWorker/ScriptWorker thread; every X2Cscope access takes
+    the shared lock, and every GUI widget access goes through `bridge` onto the GUI thread.
+    """
+
+    def __init__(
+        self,
+        x2c: X2CScope,
+        lock: threading.RLock,
+        stop_event: threading.Event,
+        window=None,
+        bridge: "GuiBridge | None" = None,
+    ):
         self._x2c = x2c
         self._lock = lock
         self._stop = stop_event
         self._vars: dict = {}
         self._t0 = time.monotonic()
+        self._win = window
+        self._bridge = bridge
+
+    def _gui(self, func):
+        self.check_stop()
+        return self._bridge.call(func)
 
     # ---- plumbing ----
     def check_stop(self):
@@ -243,6 +461,91 @@ class BlocklyHAL:
     def millis(self) -> int:
         return int((time.monotonic() - self._t0) * 1000)
 
+    # ---- connection ----
+    def is_connected(self) -> bool:
+        return bool(self._gui(lambda: self._win._connected))
+
+    # ---- channel display (enable/gain/offset/trigger select) ----
+    def get_channel_enabled(self, ch) -> bool:
+        return bool(self._gui(lambda: self._win._ch_enable[int(ch)].isChecked()))
+
+    def set_channel_enabled(self, ch, value):
+        self._gui(lambda: self._win._ch_enable[int(ch)].setChecked(bool(value)))
+
+    def get_channel_gain(self, ch) -> float:
+        return float(self._gui(lambda: self._win._ch_gain[int(ch)].value()))
+
+    def set_channel_gain(self, ch, value):
+        self._gui(lambda: self._win._ch_gain[int(ch)].setValue(float(value)))
+
+    def get_channel_offset(self, ch) -> float:
+        return float(self._gui(lambda: self._win._ch_offset[int(ch)].value()))
+
+    def set_channel_offset(self, ch, value):
+        self._gui(lambda: self._win._ch_offset[int(ch)].setValue(float(value)))
+
+    def set_trigger_channel(self, ch):
+        self._gui(lambda: self._win._ch_trig[int(ch)].setChecked(True))
+
+    # ---- scope settings / sampling ----
+    def get_sample_time(self) -> int:
+        return int(self._gui(lambda: self._win._sample_time_sb.value()))
+
+    def set_sample_time(self, value):
+        self._gui(lambda: self._win._sample_time_sb.setValue(int(value)))
+
+    def get_trig_level(self) -> float:
+        return float(self._gui(lambda: self._win._trig_level_sb.value()))
+
+    def set_trig_level(self, value):
+        self._gui(lambda: self._win._trig_level_sb.setValue(float(value)))
+
+    def get_trig_edge(self) -> int:
+        return int(self._gui(lambda: self._win._trig_edge_combo.currentIndex()))
+
+    def set_trig_edge(self, value):
+        self._gui(lambda: self._win._trig_edge_combo.setCurrentIndex(int(value)))
+
+    def get_trig_mode(self) -> int:
+        return int(self._gui(lambda: self._win._trig_mode_combo.currentIndex()))
+
+    def set_trig_mode(self, value):
+        self._gui(lambda: self._win._trig_mode_combo.setCurrentIndex(int(value)))
+
+    def get_trig_delay(self) -> int:
+        return int(self._gui(lambda: self._win._trig_delay_sb.value()))
+
+    def set_trig_delay(self, value):
+        self._gui(lambda: self._win._trig_delay_sb.setValue(int(value)))
+
+    def get_single_shot(self) -> bool:
+        return bool(self._gui(lambda: self._win._single_shot_cb.isChecked()))
+
+    def set_single_shot(self, value):
+        self._gui(lambda: self._win._single_shot_cb.setChecked(bool(value)))
+
+    def apply_scope_settings(self):
+        self._gui(self._win._apply_scope_settings)
+
+    def is_sampling(self) -> bool:
+        return bool(self._gui(lambda: self._win._sampling))
+
+    def start_sampling(self, single_shot=None):
+        def _do():
+            ss = self._win._single_shot_cb.isChecked() if single_shot is None else bool(single_shot)
+            self._win._start_sampling(single_shot=ss)
+        self._gui(_do)
+
+    def stop_sampling(self):
+        self._gui(self._win._stop_sampling)
+
+    # ---- sliders ----
+    def get_slider(self, i) -> int:
+        return int(self._gui(lambda: self._win._sliders[int(i)].value()))
+
+    def set_slider(self, i, value):
+        self._gui(lambda: self._win._sliders[int(i)].setValue(int(value)))
+
 
 class BlocklyWorker(QThread):
     """Executes Python generated from the Blockly workspace."""
@@ -306,15 +609,22 @@ class MLAbScopeWindow(QMainWindow):
         self._last_config_path = ""
         # Serialises X2Cscope access between GUI, scope worker and Blockly worker
         self._x2c_lock = threading.RLock()
+        # Marshals mlab-script GUI widget access from worker threads onto the GUI thread
+        self._gui_bridge = GuiBridge()
 
         self._blockly_view = None
         self._blockly_worker: BlocklyWorker | None = None
         self._blockly_stop_event: threading.Event | None = None
         self._blockly_last_path = ""
 
+        self._script_worker: BlocklyWorker | None = None
+        self._script_stop_event: threading.Event | None = None
+        self._script_path = ""
+        self._script_code = ""
+
+        self._gpi_worker: GpiWorker | None = None
+
         self._autoconnect_timer = QTimer(self)
-        self._gpi_timer = QTimer(self)
-        self._gpi_timer.timeout.connect(self._refresh_gpi)
         self._autoconnect_timer.timeout.connect(self._try_autoconnect)
 
         self._build_ui()
@@ -481,19 +791,15 @@ class MLAbScopeWindow(QMainWindow):
 
         gpi_box = QGroupBox("GPI (read)")
         gpi_grid = QGridLayout(gpi_box)
-        self._gpi_value_labels: list[QLabel] = []
+        self._gpi_leds: list[QLabel] = []
         for i, label in enumerate(GPI_LABELS):
             gpi_grid.addWidget(QLabel(f"<b>{label}</b>"), 0, i, Qt.AlignCenter)
-            lbl = QLabel("—")
-            lbl.setAlignment(Qt.AlignCenter)
-            lbl.setMinimumWidth(32)
-            gpi_grid.addWidget(lbl, 1, i, Qt.AlignCenter)
-            self._gpi_value_labels.append(lbl)
+            led = self._make_led()
+            gpi_grid.addWidget(led, 1, i, Qt.AlignCenter)
+            self._gpi_leds.append(led)
         gpi_grid.addWidget(QLabel("<b>SW0</b>"), 0, GPI_COUNT, Qt.AlignCenter)
-        self._gpi_sw_label = QLabel("—")
-        self._gpi_sw_label.setAlignment(Qt.AlignCenter)
-        self._gpi_sw_label.setMinimumWidth(32)
-        gpi_grid.addWidget(self._gpi_sw_label, 1, GPI_COUNT, Qt.AlignCenter)
+        self._gpi_sw_led = self._make_led()
+        gpi_grid.addWidget(self._gpi_sw_led, 1, GPI_COUNT, Qt.AlignCenter)
         dio_layout.addWidget(gpi_box)
 
         self._dio_box = dio_box  # inserted into left sidebar below
@@ -557,7 +863,32 @@ class MLAbScopeWindow(QMainWindow):
         scope_layout.addStretch()
         self._scope_box = scope_box  # inserted below plot in main area
 
-        # ---- main area: left sidebar (channels + PWM + DIO) + plot ----
+        # ---- Sliders (generic user inputs, exposed to scripts via mlab.get/set_slider) ----
+        # Short — sized to sit in the sidebar under the DI0-SW0 row, not full width.
+        sliders_box = QGroupBox("Sliders")
+        sliders_grid = QGridLayout(sliders_box)
+        sliders_grid.setSpacing(6)
+        self._sliders: list[QSlider] = []
+        self._slider_spinboxes: list[QSpinBox] = []
+        for i in range(SLIDER_COUNT):
+            sliders_grid.addWidget(QLabel(f"<b>S{i}</b>"), i, 0)
+            slider = QSlider(Qt.Horizontal)
+            slider.setRange(*SLIDER_RANGE)
+            slider.setValue(SLIDER_DEFAULT)
+            slider.setMaximumWidth(110)
+            sliders_grid.addWidget(slider, i, 1)
+            spin = QSpinBox()
+            spin.setRange(*SLIDER_RANGE)
+            spin.setValue(SLIDER_DEFAULT)
+            spin.setFixedWidth(50)
+            spin.setToolTip("Manual entry — stays in sync with the slider")
+            sliders_grid.addWidget(spin, i, 2)
+            slider.valueChanged.connect(spin.setValue)
+            spin.valueChanged.connect(slider.setValue)
+            self._sliders.append(slider)
+            self._slider_spinboxes.append(spin)
+
+        # ---- main area: left sidebar (channels + PWM + DIO + sliders) + plot ----
         main_area = QWidget()
         main_h = QHBoxLayout(main_area)
         main_h.setContentsMargins(0, 0, 0, 0)
@@ -570,6 +901,7 @@ class MLAbScopeWindow(QMainWindow):
         sidebar_vbox.addWidget(self._ch_box)
         sidebar_vbox.addWidget(self._pwm_box)
         sidebar_vbox.addWidget(self._dio_box)
+        sidebar_vbox.addWidget(sliders_box)
         sidebar_vbox.addStretch()
         main_h.addWidget(sidebar)
 
@@ -610,11 +942,10 @@ class MLAbScopeWindow(QMainWindow):
         spi_layout.addStretch()
 
         # ---- Scripting tab ----
-        scripting_tab = QWidget()
-        self._tabs.addTab(scripting_tab, "Scripting")
-        scripting_layout = QVBoxLayout(scripting_tab)
-        scripting_layout.addWidget(QLabel("Scripting — coming soon"))
-        scripting_layout.addStretch()
+        self._build_scripting_tab()
+
+        # ---- Documentation tab ----
+        self._build_documentation_tab()
 
         # ---- status bar ----
         self._status = QStatusBar()
@@ -688,6 +1019,64 @@ class MLAbScopeWindow(QMainWindow):
         layout.addWidget(split, stretch=1)
         self._update_blockly_buttons()
 
+    def _build_scripting_tab(self):
+        tab = QWidget()
+        self._tabs.addTab(tab, "Scripting")
+        layout = QVBoxLayout(tab)
+        layout.setSpacing(4)
+
+        bar = QHBoxLayout()
+        load_btn = QPushButton("Load Script…")
+        load_btn.clicked.connect(self._script_load)
+        bar.addWidget(load_btn)
+        self._script_path_label = QLabel("<i>No script loaded</i>")
+        bar.addWidget(self._script_path_label)
+        bar.addStretch()
+        self._script_reload_btn = QPushButton("↻ Reload")
+        self._script_reload_btn.setToolTip("Re-read the current script file from disk")
+        self._script_reload_btn.setEnabled(False)
+        self._script_reload_btn.clicked.connect(self._script_reload)
+        bar.addWidget(self._script_reload_btn)
+        self._script_run_btn = QPushButton("▶ Execute")
+        self._script_run_btn.setToolTip("Run the script on the connected board")
+        self._script_run_btn.setEnabled(False)
+        self._script_run_btn.clicked.connect(self._script_execute)
+        bar.addWidget(self._script_run_btn)
+        self._script_stop_btn = QPushButton("■ Stop")
+        self._script_stop_btn.setEnabled(False)
+        self._script_stop_btn.clicked.connect(lambda: self._script_stop())
+        bar.addWidget(self._script_stop_btn)
+        layout.addLayout(bar)
+
+        self._script_edit = QPlainTextEdit()
+        self._script_edit.setReadOnly(True)
+        self._script_edit.setPlaceholderText(
+            "Load a Python script (Load Script…) — the script runs with the same "
+            "`mlab` board-access object, check_stop() and print() as Blockly scripts."
+        )
+        self._script_log = QPlainTextEdit()
+        self._script_log.setReadOnly(True)
+        self._script_log.setMaximumBlockCount(2000)
+        self._script_log.setPlaceholderText("Console output")
+        for edit in (self._script_edit, self._script_log):
+            edit.setStyleSheet("font-family: Consolas, monospace;")
+
+        split = QSplitter(Qt.Vertical)
+        split.addWidget(self._script_edit)
+        split.addWidget(self._script_log)
+        split.setStretchFactor(0, 2)
+        split.setStretchFactor(1, 1)
+        layout.addWidget(split, stretch=1)
+
+    def _build_documentation_tab(self):
+        tab = QWidget()
+        self._tabs.addTab(tab, "Documentation")
+        layout = QVBoxLayout(tab)
+        browser = QTextBrowser()
+        browser.setOpenExternalLinks(True)
+        browser.setHtml(DOCUMENTATION_HTML)
+        layout.addWidget(browser)
+
     def _build_plot(self):
         self._plot_widget = pg.PlotWidget()
         self._plot_placeholder.addWidget(self._plot_widget)
@@ -698,11 +1087,19 @@ class MLAbScopeWindow(QMainWindow):
         self._plot.setLabel("left", "Value")
         self._plot.setLabel("bottom", "Time (ms)")
         self._plot.addLegend(offset=(10, 10))
+        # Real-time redraw cost: clip to the visible range and decimate instead of
+        # plotting every sample, per pyqtgraph's own guidance for continuous updates.
+        self._plot.setClipToView(True)
 
         self._curves = []
+        self._curve_cleared = []
         for label, color in zip(CHANNEL_LABELS, COLORS):
             pen = pg.mkPen(color=color, width=2)
-            self._curves.append(self._plot.plot(pen=pen, name=label))
+            curve = self._plot.plot(pen=pen, name=label)
+            curve.setDownsampling(auto=True, method="peak")
+            curve.setClipToView(True)
+            self._curves.append(curve)
+            self._curve_cleared.append(True)
 
     # ------------------------------------------------------------------
     # Helpers
@@ -720,6 +1117,21 @@ class MLAbScopeWindow(QMainWindow):
         color = {"True": "#2ecc71", "False": "#e74c3c", "None": "#cdd6f4"}[str(ok)]
         self._status.setStyleSheet(f"color: {color};")
 
+    @staticmethod
+    def _make_led() -> QLabel:
+        """A small circular indicator: red = 0, green = 1."""
+        led = QLabel()
+        led.setFixedSize(16, 16)
+        MLAbScopeWindow._set_led(led, False)
+        return led
+
+    @staticmethod
+    def _set_led(led: QLabel, on: bool):
+        color = "#2ecc71" if on else "#e74c3c"
+        led.setStyleSheet(
+            f"background-color: {color}; border-radius: 8px; border: 1px solid #11111b;"
+        )
+
     def _update_buttons(self):
         self._elf_edit.setEnabled(not self._connected)
         self._connect_btn.setText("Disconnect" if self._connected else "Connect")
@@ -733,6 +1145,7 @@ class MLAbScopeWindow(QMainWindow):
         for cb in self._gpo_cbs:
             cb.setEnabled(self._connected)
         self._update_blockly_buttons()
+        self._update_script_buttons()
 
     def _update_blockly_buttons(self):
         if self._blockly_view is None:
@@ -740,6 +1153,12 @@ class MLAbScopeWindow(QMainWindow):
         running = self._blockly_worker is not None
         self._blockly_run_btn.setEnabled(self._connected and not running)
         self._blockly_stop_btn.setEnabled(running)
+
+    def _update_script_buttons(self):
+        running = self._script_worker is not None
+        self._script_reload_btn.setEnabled(bool(self._script_path) and not running)
+        self._script_run_btn.setEnabled(self._connected and bool(self._script_code) and not running)
+        self._script_stop_btn.setEnabled(running)
 
     # ------------------------------------------------------------------
     # Connection — only establishes serial link, no scope setup
@@ -769,15 +1188,26 @@ class MLAbScopeWindow(QMainWindow):
         self._update_buttons()
         self._load_pwm_vars()
         self._load_gpio_vars()
-        self._gpi_timer.start(GPI_REFRESH_MS)
+        self._start_gpi_worker()
         self._set_status(
             f"Connected — {self._detected_port} @ {BAUD_RATE}  · click Sample to start",
             ok=True,
         )
 
+    def _start_gpi_worker(self):
+        self._gpi_worker = GpiWorker(self._x2c_lock, self._gpi_vars)
+        self._gpi_worker.data_ready.connect(self._on_gpi_data)
+        self._gpi_worker.start()
+
+    def _stop_gpi_worker(self):
+        if self._gpi_worker:
+            self._gpi_worker.stop()
+            self._gpi_worker = None
+
     def _disconnect(self):
-        self._gpi_timer.stop()
+        self._stop_gpi_worker()
         self._blockly_stop(wait=True)
+        self._script_stop(wait=True)
         self._stop_sampling()
         if self._x2c:
             try:
@@ -791,9 +1221,9 @@ class MLAbScopeWindow(QMainWindow):
         self._pwm_vars = {}
         self._gpo_vars = {}
         self._gpi_vars = {}
-        for lbl in self._gpi_value_labels:
-            lbl.setText("—")
-        self._gpi_sw_label.setText("—")
+        for led in self._gpi_leds:
+            self._set_led(led, False)
+        self._set_led(self._gpi_sw_led, False)
         self._connected = False
         self._update_buttons()
         self._set_status("Disconnected", ok=None)
@@ -967,28 +1397,13 @@ class MLAbScopeWindow(QMainWindow):
         except Exception as exc:
             self._set_status(f"GPO write error: {exc}", ok=False)
 
-    def _refresh_gpi(self):
-        """Poll GPI values from MCU and update display labels."""
-        if not self._connected or self._x2c is None:
-            return
+    def _on_gpi_data(self, values: dict):
+        """Paint GPI/SW0 values polled by GpiWorker onto the LED indicators."""
         for i, name in enumerate(GPI_VARS):
-            var = self._gpi_vars.get(name)
-            if var is None:
-                continue
-            try:
-                with self._x2c_lock:
-                    val = var.get_value()
-                self._gpi_value_labels[i].setText("1" if val else "0")
-            except Exception:
-                pass
-        sw_var = self._gpi_vars.get(GPI_SW_VAR)
-        if sw_var is not None:
-            try:
-                with self._x2c_lock:
-                    val = sw_var.get_value()
-                self._gpi_sw_label.setText("1" if val else "0")
-            except Exception:
-                pass
+            if name in values:
+                self._set_led(self._gpi_leds[i], bool(values[name]))
+        if GPI_SW_VAR in values:
+            self._set_led(self._gpi_sw_led, bool(values[GPI_SW_VAR]))
 
     # ------------------------------------------------------------------
     # Scope settings
@@ -1038,7 +1453,9 @@ class MLAbScopeWindow(QMainWindow):
     def _on_scope_data(self, data: dict):
         for i, name in enumerate(ADC_CHANNELS):
             if not self._ch_enable[i].isChecked():
-                self._curves[i].setData([], [])
+                if not self._curve_cleared[i]:
+                    self._curves[i].setData([], [])
+                    self._curve_cleared[i] = True
                 continue
             # pyx2cscope key may be full name or short name depending on version
             ch_data = data.get(name) or data.get(CHANNEL_LABELS[i])
@@ -1050,6 +1467,7 @@ class MLAbScopeWindow(QMainWindow):
             dt_ms = self._sample_time_sb.value() * 0.005  # sample_time × 5 µs → ms
             t = np.arange(len(y)) * dt_ms
             self._curves[i].setData(t, y)
+            self._curve_cleared[i] = False
 
     def _on_worker_error(self, msg: str):
         self._set_status(f"Scope error: {msg}", ok=False)
@@ -1126,7 +1544,10 @@ class MLAbScopeWindow(QMainWindow):
             self._blockly_log_line("Workspace is empty.")
             return
         self._blockly_stop_event = threading.Event()
-        hal = BlocklyHAL(self._x2c, self._x2c_lock, self._blockly_stop_event)
+        hal = BlocklyHAL(
+            self._x2c, self._x2c_lock, self._blockly_stop_event,
+            window=self, bridge=self._gui_bridge,
+        )
         worker = BlocklyWorker(code, hal)
         worker.log.connect(self._blockly_log_line)
         worker.highlight.connect(
@@ -1213,6 +1634,79 @@ class MLAbScopeWindow(QMainWindow):
                 self._set_status(f"Blockly load failed: not a valid workspace: {path}", ok=False)
 
         self._blockly_js(f"mlabLoad({json.dumps(text)})", done)
+
+    # ------------------------------------------------------------------
+    # Scripting
+    # ------------------------------------------------------------------
+    def _script_load(self):
+        path, _ = QFileDialog.getOpenFileName(
+            self, "Load Python script", self._script_path or "",
+            "Python files (*.py);;All files (*)",
+        )
+        if not path:
+            return
+        self._script_read_from(path)
+
+    def _script_reload(self):
+        if not self._script_path:
+            return
+        self._script_read_from(self._script_path)
+
+    def _script_read_from(self, path: str):
+        try:
+            code = Path(path).read_text(encoding="utf-8")
+        except Exception as exc:
+            self._set_status(f"Script load failed: {exc}", ok=False)
+            return
+        self._script_path = path
+        self._script_code = code
+        self._script_edit.setPlainText(code)
+        self._script_path_label.setText(f"<b>{Path(path).name}</b>")
+        self._update_script_buttons()
+        self._set_status(f"Script loaded: {path}", ok=True)
+
+    def _script_log_line(self, text: str):
+        self._script_log.appendPlainText(f"[{time.strftime('%H:%M:%S')}] {text}")
+
+    def _script_execute(self):
+        if self._script_worker is not None:
+            return
+        if not self._connected or self._x2c is None:
+            self._set_status("Script: connect to the board first", ok=False)
+            return
+        if not self._script_code.strip():
+            self._script_log_line("No script loaded.")
+            return
+        self._script_stop_event = threading.Event()
+        hal = BlocklyHAL(
+            self._x2c, self._x2c_lock, self._script_stop_event,
+            window=self, bridge=self._gui_bridge,
+        )
+        worker = BlocklyWorker(self._script_code, hal)
+        worker.log.connect(self._script_log_line)
+        worker.finished.connect(lambda w=worker: self._script_finished(w))
+        self._script_worker = worker
+        worker.start()
+        self._update_script_buttons()
+        self._set_status("Script running", ok=True)
+
+    def _script_stop(self, wait: bool = False):
+        if self._script_worker is None:
+            return
+        self._script_stop_event.set()
+        if wait:
+            self._script_worker.wait(3000)
+
+    def _script_finished(self, worker: BlocklyWorker):
+        if worker is not self._script_worker:
+            return
+        self._script_worker = None
+        self._update_script_buttons()
+        if self._connected and self._x2c is not None:
+            # script may have changed outputs/PWM: resync the Main tab widgets
+            self._load_pwm_vars()
+            self._load_gpio_vars()
+            self._set_status("Script ended", ok=None)
 
     # ------------------------------------------------------------------
     # Configuration save / load
@@ -1311,7 +1805,7 @@ class MLAbScopeWindow(QMainWindow):
     # ------------------------------------------------------------------
     def closeEvent(self, event):
         self._autoconnect_timer.stop()
-        self._gpi_timer.stop()
+        self._stop_gpi_worker()
         self._disconnect()
         super().closeEvent(event)
 
@@ -1323,7 +1817,9 @@ def main():
     app = QApplication(sys.argv)
     app.setStyle("Fusion")
     import pyqtgraph as pg  # delayed: requires QApplication to exist first
-    pg.setConfigOptions(antialias=True, background="#1e1e2e", foreground="#cdd6f4")
+    # antialias=False: with continuous ~20 Hz redraws, antialiasing is the single
+    # biggest cost per frame; clipping/downsampling below cuts the rest.
+    pg.setConfigOptions(antialias=False, background="#1e1e2e", foreground="#cdd6f4")
     win = MLAbScopeWindow()
     win.show()
     sys.exit(app.exec_())
