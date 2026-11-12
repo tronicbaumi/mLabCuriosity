@@ -108,11 +108,11 @@
       previousStatement: null,
       nextStatement: null,
       colour: COLOUR_PWM,
-      tooltip: 'Duty as percent of the current period (pwm_fN).',
+      tooltip: 'Duty cycle in percent (0..100).',
     },
     {
-      type: 'mlab_pwm_period',
-      message0: 'set %1 period to %2 counts',
+      type: 'mlab_pwm_freq',
+      message0: 'set %1 frequency to %2 Hz',
       args0: [
         { type: 'field_dropdown', name: 'CH', options: PWM_CHANNELS },
         { type: 'input_value', name: 'VALUE', check: 'Number' },
@@ -121,18 +121,18 @@
       previousStatement: null,
       nextStatement: null,
       colour: COLOUR_PWM,
-      tooltip: 'Write mLabCuriosity.pwm_fN (1..65535).',
+      tooltip: 'PWM frequency in Hz (about 1221 Hz to 1 MHz, 80 MHz timer clock). Duty % is kept.',
     },
     {
       type: 'mlab_pwm_get',
       message0: '%1 %2',
       args0: [
         { type: 'field_dropdown', name: 'CH', options: PWM_CHANNELS },
-        { type: 'field_dropdown', name: 'WHAT', options: [['duty', 'duty'], ['period', 'period']] },
+        { type: 'field_dropdown', name: 'WHAT', options: [['duty [%]', 'duty'], ['frequency [Hz]', 'freq']] },
       ],
       output: 'Number',
       colour: COLOUR_PWM,
-      tooltip: 'Read back PWM duty or period in counts.',
+      tooltip: 'Read back PWM duty cycle in % or frequency in Hz.',
     },
     // ---- ADC ----
     {
@@ -205,12 +205,12 @@
     const v = g.valueToCode(block, 'VALUE', Order.NONE) || '0';
     return 'mlab.set_pwm_duty_pct(' + ch(block) + ', ' + v + ')\n';
   };
-  gen.forBlock['mlab_pwm_period'] = function (block, g) {
-    const v = g.valueToCode(block, 'VALUE', Order.NONE) || '1';
-    return 'mlab.set_pwm_period(' + ch(block) + ', ' + v + ')\n';
+  gen.forBlock['mlab_pwm_freq'] = function (block, g) {
+    const v = g.valueToCode(block, 'VALUE', Order.NONE) || '1000';
+    return 'mlab.set_pwm_freq(' + ch(block) + ', ' + v + ')\n';
   };
   gen.forBlock['mlab_pwm_get'] = function (block) {
-    const fn = block.getFieldValue('WHAT') === 'duty' ? 'get_pwm_duty' : 'get_pwm_period';
+    const fn = block.getFieldValue('WHAT') === 'duty' ? 'get_pwm_duty_pct' : 'get_pwm_freq';
     return ['mlab.' + fn + '(' + ch(block) + ')', Order.FUNCTION_CALL];
   };
   gen.forBlock['mlab_adc_read'] = function (block) {
@@ -255,7 +255,7 @@
         contents: [
           { kind: 'block', type: 'mlab_pwm_duty_pct', inputs: { VALUE: num(50) } },
           { kind: 'block', type: 'mlab_pwm_duty', inputs: { VALUE: num(1000) } },
-          { kind: 'block', type: 'mlab_pwm_period', inputs: { VALUE: num(20000) } },
+          { kind: 'block', type: 'mlab_pwm_freq', inputs: { VALUE: num(4000) } },
           { kind: 'block', type: 'mlab_pwm_get' },
         ],
       },

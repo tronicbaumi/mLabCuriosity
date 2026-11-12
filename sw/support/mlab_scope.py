@@ -64,8 +64,24 @@ COLORS = ["#e74c3c", "#2ecc71", "#3498db", "#f39c12"]
 PWM_COUNT = 4
 PWM_DC_VARS  = [f"mLabCuriosity.pwm_dc{i}" for i in range(PWM_COUNT)]
 PWM_F_VARS   = [f"mLabCuriosity.pwm_f{i}"  for i in range(PWM_COUNT)]
-PWM_DC_DEFAULT = 1000
-PWM_F_DEFAULT  = 20000
+PWM_CLK_HZ     = 80_000_000          # SCCP timer clock: Fosc/2 = 80 MHz, prescaler 1:1
+PWM_PERIOD_MIN = 1
+PWM_PERIOD_MAX = 65535               # 16-bit period register
+PWM_F_MIN_HZ   = PWM_CLK_HZ / PWM_PERIOD_MAX   # ~1220.7 Hz
+PWM_F_MAX_HZ   = 1_000_000.0
+PWM_DC_DEFAULT = 5.0                 # %
+PWM_F_DEFAULT  = 4000.0              # Hz (= 20000 counts, firmware default)
+
+
+def pwm_freq_to_period(freq_hz) -> int:
+    """Frequency in Hz -> period register counts (clamped to the 16-bit range)."""
+    f = max(float(freq_hz), 1e-9)
+    return max(PWM_PERIOD_MIN, min(PWM_PERIOD_MAX, int(round(PWM_CLK_HZ / f))))
+
+
+def pwm_period_to_freq(period) -> float:
+    """Period register counts -> frequency in Hz."""
+    return PWM_CLK_HZ / max(int(period), 1)
 
 GPO_COUNT = 4
 GPO_VARS   = [f"mLabCuriosity.dpo{i}" for i in range(GPO_COUNT)]
@@ -101,11 +117,11 @@ DOCUMENTATION_HTML = """
   <li><b>Channels</b> — per ADC channel (adc1–adc4): <b>En</b> shows/hides it on the plot,
       <b>Gain</b>/<b>Off</b> rescale the plotted trace (<code>value * gain + offset</code>),
       <b>Trig</b> selects which channel the scope trigger watches.</li>
-  <li><b>PWM Control</b> — duty cycle and period (raw timer counts) for PWM0–PWM3; press
-      <b>Set</b> to write both to the MCU.</li>
+  <li><b>PWM Control</b> — frequency (Hz) and duty cycle (%) for PWM0–PWM3 (timer clock
+      80 MHz, so ~1.22 kHz … 1 MHz); press <b>Set</b> to write both to the MCU.</li>
   <li><b>Digital I/O</b> — <b>GPO</b> checkboxes drive DO0–DO3 outputs; <b>GPI</b> LEDs show
       DI0–DI3 and SW0 inputs (green = 1, red = 0), polled every 100&nbsp;ms.</li>
-  <li><b>Sliders</b> — four general-purpose on-screen sliders (S0–S3, range &minus;50 to
+  <li><b>Servos</b> — four general-purpose on-screen servo sliders (Servo0–Servo3, range &minus;50 to
       +50, default 0). They
       aren't wired to any MCU variable; they exist as simple, scriptable GUI inputs — read
       or drive them from a Python script (see below) to parameterize a test sequence.</li>
@@ -156,8 +172,10 @@ script's top level or from loops.</p>
 <p><i>PWM</i></p>
 <ul>
   <li><code>mlab.set_pwm_duty(ch, value)</code> / <code>mlab.get_pwm_duty(ch) -&gt; int</code></li>
-  <li><code>mlab.set_pwm_period(ch, value)</code> / <code>mlab.get_pwm_period(ch) -&gt; int</code></li>
-  <li><code>mlab.set_pwm_duty_pct(ch, percent)</code> — duty as 0–100% of the current period</li>
+  <li><code>mlab.set_pwm_period(ch, value)</code> / <code>mlab.get_pwm_period(ch) -&gt; int</code> (raw counts)</li>
+  <li><code>mlab.set_pwm_freq(ch, hz)</code> / <code>mlab.get_pwm_freq(ch) -&gt; float</code> — frequency in Hz;
+      the duty cycle (%) is kept constant</li>
+  <li><code>mlab.set_pwm_duty_pct(ch, percent)</code> / <code>mlab.get_pwm_duty_pct(ch) -&gt; float</code> — duty as 0–100%</li>
 </ul>
 
 <p><i>ADC</i></p>
@@ -201,18 +219,18 @@ script's top level or from loops.</p>
   <li><code>mlab.stop_sampling()</code></li>
 </ul>
 
-<p><i>Sliders</i></p>
+<p><i>Servos</i></p>
 <ul>
-  <li><code>mlab.get_slider(i) -&gt; int</code> / <code>mlab.set_slider(i, value)</code> —
-      i is 0–3, value is clamped to the slider's range (&minus;50 to +50 by default)</li>
+  <li><code>mlab.get_servo(i) -&gt; int</code> / <code>mlab.set_servo(i, value)</code> (<code>get_slider</code>/<code>set_slider</code> still work) —
+      i is 0–3, value is clamped to the servo's range (&minus;50 to +50 by default)</li>
 </ul>
 
 <h3>Example script</h3>
 <pre>
-# Sweep PWM0 duty with the value of Slider 0 (-50..+50 -> 0..100%), blink DO0, log ADC1.
+# Sweep PWM0 duty with the value of Servo 0 (-50..+50 -> 0..100%), blink DO0, log ADC1.
 while True:
     check_stop()
-    pct = mlab.get_slider(0) + 50
+    pct = mlab.get_servo(0) + 50
     mlab.set_pwm_duty_pct(0, pct)
     mlab.toggle_do(0)
     print(f"duty={pct}%  adc1={mlab.read_adc_volts(1):.3f} V")
@@ -227,7 +245,7 @@ class ScopeWorker(QThread):
     error = pyqtSignal(str)
     done = pyqtSignal()  # fired once after a single-shot capture completes
 
-    POLL_INTERVAL_S = 0.05  # 50 ms, matches pyx2cscope GUI polling cadence
+    POLL_INTERVAL_S = 0.02  # 20 ms: lower capture-to-display latency than the old 50 ms
 
     def __init__(self, x2c: X2CScope, lock: threading.RLock, single_shot: bool = False):
         super().__init__()
@@ -259,7 +277,8 @@ class ScopeWorker(QThread):
                         return
                     with self._lock:
                         self._x2c.request_scope_data()  # arm for next capture
-                time.sleep(self.POLL_INTERVAL_S)
+                else:
+                    time.sleep(self.POLL_INTERVAL_S)
             except Exception as exc:
                 self.error.emit(str(exc))
                 self._running = False
@@ -288,6 +307,7 @@ class GpiWorker(QThread):
         self._lock = lock
         self._gpi_vars = gpi_vars
         self._running = False
+        self._last: dict = {}
 
     def run(self):
         self._running = True
@@ -299,7 +319,8 @@ class GpiWorker(QThread):
                         values[name] = var.get_value()
                     except Exception:
                         pass
-            if values:
+            if values and values != self._last:
+                self._last = dict(values)
                 self.data_ready.emit(values)
             time.sleep(self.POLL_INTERVAL_S)
 
@@ -447,6 +468,20 @@ class BlocklyHAL:
     def get_pwm_period(self, ch) -> int:
         return int(self._read(PWM_F_VARS[int(ch)]))
 
+    def get_pwm_duty_pct(self, ch) -> float:
+        period = max(self.get_pwm_period(ch), 1)
+        return 100.0 * self.get_pwm_duty(ch) / period
+
+    def set_pwm_freq(self, ch, hz):
+        """Set PWM frequency in Hz, keeping the current duty cycle in %."""
+        pct = min(self.get_pwm_duty_pct(ch), 100.0)
+        period = pwm_freq_to_period(hz)
+        self._write(PWM_F_VARS[int(ch)], period)
+        self._write(PWM_DC_VARS[int(ch)], self._u16(period * pct / 100.0, 0))
+
+    def get_pwm_freq(self, ch) -> float:
+        return pwm_period_to_freq(self.get_pwm_period(ch))
+
     # ---- ADC ----
     def read_adc(self, ch) -> int:
         return int(self._read(f"mLabCuriosity.adc{int(ch)}"))
@@ -546,6 +581,10 @@ class BlocklyHAL:
     def set_slider(self, i, value):
         self._gui(lambda: self._win._sliders[int(i)].setValue(int(value)))
 
+    # servo names (aliases of the slider calls)
+    get_servo = get_slider
+    set_servo = set_slider
+
 
 class BlocklyWorker(QThread):
     """Executes Python generated from the Blockly workspace."""
@@ -603,6 +642,7 @@ class MLAbScopeWindow(QMainWindow):
         self._sampling = False
         self._vars: dict = {}
         self._pwm_vars: dict = {}
+        self._t_cache = (None, None)  # (len, dt_ms) -> time axis, reused between frames
         self._gpo_vars: dict = {}
         self._gpi_vars: dict = {}
         self._detected_port = ""
@@ -733,32 +773,40 @@ class MLAbScopeWindow(QMainWindow):
         pwm_grid = QGridLayout(pwm_box)
         pwm_grid.setSpacing(4)
         pwm_grid.setContentsMargins(6, 4, 6, 4)
-        for col, hdr in enumerate(["Ch", "Duty", "Period", "Set"]):
+        for col, hdr in enumerate(["Ch", "Duty [%]", "Freq [Hz]", "Set"]):
             pwm_grid.addWidget(QLabel(f"<b>{hdr}</b>"), 0, col)
 
-        self._pwm_dc_sb: list[QSpinBox] = []
-        self._pwm_f_sb: list[QSpinBox] = []
+        self._pwm_dc_sb: list[QDoubleSpinBox] = []
+        self._pwm_f_sb: list[QDoubleSpinBox] = []
         self._pwm_set_btns: list[QPushButton] = []
 
         for i in range(PWM_COUNT):
             row = i + 1
             pwm_grid.addWidget(QLabel(f"PWM{i}"), row, 0)
 
-            dc_sb = QSpinBox()
-            dc_sb.setRange(0, 65535)
+            dc_sb = QDoubleSpinBox()
+            dc_sb.setRange(0.0, 100.0)
+            dc_sb.setDecimals(2)
+            dc_sb.setSingleStep(1.0)
+            dc_sb.setSuffix(" %")
             dc_sb.setValue(PWM_DC_DEFAULT)
-            dc_sb.setToolTip(f"PWM{i} duty cycle (0–65535)")
+            dc_sb.setToolTip(f"PWM{i} duty cycle (0–100 %)")
             dc_sb.setEnabled(False)
-            dc_sb.setFixedWidth(68)
+            dc_sb.setFixedWidth(78)
             pwm_grid.addWidget(dc_sb, row, 1)
             self._pwm_dc_sb.append(dc_sb)
 
-            f_sb = QSpinBox()
-            f_sb.setRange(1, 65535)
+            f_sb = QDoubleSpinBox()
+            f_sb.setRange(round(PWM_F_MIN_HZ, 1) + 0.1, PWM_F_MAX_HZ)
+            f_sb.setDecimals(1)
+            f_sb.setSingleStep(100.0)
+            f_sb.setSuffix(" Hz")
             f_sb.setValue(PWM_F_DEFAULT)
-            f_sb.setToolTip(f"PWM{i} period (1–65535)")
+            f_sb.setToolTip(
+                f"PWM{i} frequency ({PWM_F_MIN_HZ:.0f} Hz – {PWM_F_MAX_HZ/1e6:.0f} MHz, "
+                f"timer clock {PWM_CLK_HZ/1e6:.0f} MHz)")
             f_sb.setEnabled(False)
-            f_sb.setFixedWidth(68)
+            f_sb.setFixedWidth(96)
             pwm_grid.addWidget(f_sb, row, 2)
             self._pwm_f_sb.append(f_sb)
 
@@ -863,15 +911,15 @@ class MLAbScopeWindow(QMainWindow):
         scope_layout.addStretch()
         self._scope_box = scope_box  # inserted below plot in main area
 
-        # ---- Sliders (generic user inputs, exposed to scripts via mlab.get/set_slider) ----
+        # ---- Servos (user inputs, exposed to scripts via mlab.get/set_servo) ----
         # Short — sized to sit in the sidebar under the DI0-SW0 row, not full width.
-        sliders_box = QGroupBox("Sliders")
+        sliders_box = QGroupBox("Servos")
         sliders_grid = QGridLayout(sliders_box)
         sliders_grid.setSpacing(6)
         self._sliders: list[QSlider] = []
         self._slider_spinboxes: list[QSpinBox] = []
         for i in range(SLIDER_COUNT):
-            sliders_grid.addWidget(QLabel(f"<b>S{i}</b>"), i, 0)
+            sliders_grid.addWidget(QLabel(f"<b>Servo{i}</b>"), i, 0)
             slider = QSlider(Qt.Horizontal)
             slider.setRange(*SLIDER_RANGE)
             slider.setValue(SLIDER_DEFAULT)
@@ -881,7 +929,7 @@ class MLAbScopeWindow(QMainWindow):
             spin.setRange(*SLIDER_RANGE)
             spin.setValue(SLIDER_DEFAULT)
             spin.setFixedWidth(50)
-            spin.setToolTip("Manual entry — stays in sync with the slider")
+            spin.setToolTip("Manual entry — stays in sync with the servo slider")
             sliders_grid.addWidget(spin, i, 2)
             slider.valueChanged.connect(spin.setValue)
             spin.valueChanged.connect(slider.setValue)
@@ -1127,6 +1175,9 @@ class MLAbScopeWindow(QMainWindow):
 
     @staticmethod
     def _set_led(led: QLabel, on: bool):
+        if led.property("_on") is on:
+            return
+        led.setProperty("_on", on)
         color = "#2ecc71" if on else "#e74c3c"
         led.setStyleSheet(
             f"background-color: {color}; border-radius: 8px; border: 1px solid #11111b;"
@@ -1307,48 +1358,56 @@ class MLAbScopeWindow(QMainWindow):
         """Fetch PWM Variable objects and read current MCU values into spinboxes."""
         self._pwm_vars = {}
         for i in range(PWM_COUNT):
-            for name, sb in [
-                (PWM_DC_VARS[i], self._pwm_dc_sb[i]),
-                (PWM_F_VARS[i],  self._pwm_f_sb[i]),
-            ]:
+            vals = {}
+            for name in (PWM_DC_VARS[i], PWM_F_VARS[i]):
                 with self._x2c_lock:
                     var = self._x2c.get_variable(name)
-                if var is not None:
-                    self._pwm_vars[name] = var
-                    try:
-                        with self._x2c_lock:
-                            val = var.get_value()
-                        if val is not None:
-                            sb.setValue(int(val))
-                    except Exception:
-                        pass
+                if var is None:
+                    continue
+                self._pwm_vars[name] = var
+                try:
+                    with self._x2c_lock:
+                        val = var.get_value()
+                    if val is not None:
+                        vals[name] = int(val)
+                except Exception:
+                    pass
+            period = vals.get(PWM_F_VARS[i])
+            if period:
+                self._pwm_f_sb[i].setValue(pwm_period_to_freq(period))
+                if PWM_DC_VARS[i] in vals:
+                    self._pwm_dc_sb[i].setValue(min(100.0, 100.0 * vals[PWM_DC_VARS[i]] / period))
 
     def _write_pwm(self, channel: int):
-        """Write duty cycle and period for one PWM channel to the MCU."""
+        """Write frequency (Hz) and duty cycle (%) of one PWM channel to the MCU as counts."""
         if not self._connected:
             return
+        freq = self._pwm_f_sb[channel].value()
+        pct = self._pwm_dc_sb[channel].value()
+        period = pwm_freq_to_period(freq)
+        duty = max(0, min(period, int(round(period * pct / 100.0))))
         errors = []
-        for name, sb in [
-            (PWM_DC_VARS[channel], self._pwm_dc_sb[channel]),
-            (PWM_F_VARS[channel],  self._pwm_f_sb[channel]),
-        ]:
+        # period first so the new duty is never larger than the active period
+        for name, value in ((PWM_F_VARS[channel], period), (PWM_DC_VARS[channel], duty)):
             var = self._pwm_vars.get(name)
             if var is None:
                 errors.append(f"{name} not found")
                 continue
             try:
                 with self._x2c_lock:
-                    var.set_value(sb.value())
+                    var.set_value(value)
             except Exception as exc:
                 errors.append(f"{name}: {exc}")
         if errors:
             self._set_status(f"PWM write error: {'; '.join(errors)}", ok=False)
         else:
             self._set_status(
-                f"PWM{channel} set — dc={self._pwm_dc_sb[channel].value()} "
-                f"period={self._pwm_f_sb[channel].value()}",
+                f"PWM{channel} set — {pwm_period_to_freq(period):.1f} Hz, "
+                f"{100.0 * duty / period:.2f} % (period={period}, duty={duty} counts)",
                 ok=True,
             )
+            # show the value actually realised after count quantisation
+            self._pwm_f_sb[channel].setValue(pwm_period_to_freq(period))
 
     # ------------------------------------------------------------------
     # GPIO control
@@ -1451,6 +1510,8 @@ class MLAbScopeWindow(QMainWindow):
     # Data
     # ------------------------------------------------------------------
     def _on_scope_data(self, data: dict):
+        dt_ms = self._sample_time_sb.value() * 0.005  # sample_time × 5 µs → ms
+        t = None
         for i, name in enumerate(ADC_CHANNELS):
             if not self._ch_enable[i].isChecked():
                 if not self._curve_cleared[i]:
@@ -1463,10 +1524,17 @@ class MLAbScopeWindow(QMainWindow):
                 continue
             gain = self._ch_gain[i].value()
             offset = self._ch_offset[i].value()
-            y = np.array(ch_data, dtype=float) * gain + offset
-            dt_ms = self._sample_time_sb.value() * 0.005  # sample_time × 5 µs → ms
-            t = np.arange(len(y)) * dt_ms
-            self._curves[i].setData(t, y)
+            y = np.asarray(ch_data, dtype=float)
+            if gain != 1.0:
+                y *= gain
+            if offset:
+                y += offset
+            if t is None or len(t) != len(y):
+                key = (len(y), dt_ms)
+                if self._t_cache[0] != key:
+                    self._t_cache = (key, np.arange(len(y)) * dt_ms)
+                t = self._t_cache[1]
+            self._curves[i].setData(t, y, skipFiniteCheck=True)
             self._curve_cleared[i] = False
 
     def _on_worker_error(self, msg: str):
@@ -1732,8 +1800,8 @@ class MLAbScopeWindow(QMainWindow):
             ],
             "pwm": [
                 {
-                    "duty":   self._pwm_dc_sb[i].value(),
-                    "period": self._pwm_f_sb[i].value(),
+                    "duty_pct": self._pwm_dc_sb[i].value(),
+                    "freq_hz":  self._pwm_f_sb[i].value(),
                 }
                 for i in range(PWM_COUNT)
             ],
@@ -1782,8 +1850,13 @@ class MLAbScopeWindow(QMainWindow):
         for i, pw in enumerate(cfg.get("pwm", [])):
             if i >= PWM_COUNT:
                 break
-            self._pwm_dc_sb[i].setValue(pw.get("duty", PWM_DC_DEFAULT))
-            self._pwm_f_sb[i].setValue(pw.get("period", PWM_F_DEFAULT))
+            if "freq_hz" in pw or "duty_pct" in pw:
+                self._pwm_dc_sb[i].setValue(pw.get("duty_pct", PWM_DC_DEFAULT))
+                self._pwm_f_sb[i].setValue(pw.get("freq_hz", PWM_F_DEFAULT))
+            else:  # legacy config: raw counts
+                period = max(int(pw.get("period", 20000)), 1)
+                self._pwm_f_sb[i].setValue(pwm_period_to_freq(period))
+                self._pwm_dc_sb[i].setValue(min(100.0, 100.0 * pw.get("duty", 0) / period))
 
         sc = cfg.get("scope", {})
         if "sample_time" in sc:

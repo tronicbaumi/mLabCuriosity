@@ -28,20 +28,20 @@
   ],
   "pwm": [
     {
-      "duty": 0,
-      "period": 20000
+      "duty_pct": 0.0,
+      "freq_hz": 4000.0
     },
     {
-      "duty": 0,
-      "period": 20000
+      "duty_pct": 0.0,
+      "freq_hz": 4000.0
     },
     {
-      "duty": 0,
-      "period": 20000
+      "duty_pct": 0.0,
+      "freq_hz": 4000.0
     },
     {
-      "duty": 0,
-      "period": 20000
+      "duty_pct": 0.0,
+      "freq_hz": 4000.0
     }
   ],
   "scope": {
