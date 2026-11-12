@@ -2,22 +2,22 @@
 
 manifest_file_version: 1.0.0
 project: config
-creation_date: 2026-10-02T08:38:43.072+02:00[Europe/Berlin]
+creation_date: 2026-11-12T14:07:16.123+01:00[Europe/Berlin]
 operating_system: Windows 11
 mcc_mode: VSCodePlugin
 mcc_mode_version: Unknown
 device_name: dsPIC33AK512MPS506
 compiler: N/A
-mcc_version: 5.7.1
-mcc_core_version: 5.9.1
-content_manager_version: 7.0.0
+mcc_version: 5.7.2
+mcc_core_version: 5.9.2
+content_manager_version: 7.0.1
 is_mcc_offline: false
-is_using_prerelease_versions: true
+is_using_prerelease_versions: false
 mcc_content_registries: https://registry.npmjs.org/
 device_library: {library_class: com.microchip.mcc.melody.Library, name: Melody, version: 2.10.1}
 packs: {name: N/A, version: N/A}
 modules:
-- {name: com.microchip.mcc.x2cscope.X2CScopeLibrary, type: CLASSIC, version: 3.0.0-dev.1}
+- {name: com.microchip.mcc.x2cscope.X2CScopeLibrary, type: CLASSIC, version: 3.0.0}
 - {name: '@mchp-mcc/adc-driver', type: MELODY, version: 1.1.4}
 - {name: '@mchp-mcc/dmt-16bit-driver', type: MELODY, version: 1.0.8}
 - {name: '@mchp-mcc/dspic33a-adc', type: MELODY, version: 1.2.2}

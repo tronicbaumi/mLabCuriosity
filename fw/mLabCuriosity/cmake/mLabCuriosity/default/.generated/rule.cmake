@@ -2,7 +2,7 @@
 
 set(PACK_REPO_PATH "C:/Users/Chris/.mchp_packs" CACHE PATH "Path to the root of a pack repository.")
 
-function(mLabCuriosity_default_default_XC_DSC_assemble_rule target)
+function(mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble_rule target)
     set(options
         "-g"
         "-mcpu=33AK512MPS506"
@@ -12,7 +12,7 @@ function(mLabCuriosity_default_default_XC_DSC_assemble_rule target)
     target_compile_options(${target} PRIVATE "${options}")
     target_compile_definitions(${target} PRIVATE "XPRJ_default=default")
 endfunction()
-function(mLabCuriosity_default_default_XC_DSC_assemblePreproc_rule target)
+function(mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemblePreproc_rule target)
     set(options
         "-x"
         "assembler-with-cpp"
@@ -24,7 +24,7 @@ function(mLabCuriosity_default_default_XC_DSC_assemblePreproc_rule target)
     target_compile_options(${target} PRIVATE "${options}")
     target_compile_definitions(${target} PRIVATE "XPRJ_default=default")
 endfunction()
-function(mLabCuriosity_default_default_XC_DSC_compile_rule target)
+function(mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_rule target)
     set(options
         "-g"
         "-mcpu=33AK512MPS506"
@@ -37,7 +37,7 @@ function(mLabCuriosity_default_default_XC_DSC_compile_rule target)
     target_compile_options(${target} PRIVATE "${options}")
     target_compile_definitions(${target} PRIVATE "XPRJ_default=default")
 endfunction()
-function(mLabCuriosity_default_default_XC_DSC_compile_cpp_rule target)
+function(mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_cpp_rule target)
     set(options
         "-g"
         "${CC_PRE}"
@@ -74,6 +74,7 @@ function(mLabCuriosity_default_bin2hex_rule target)
     add_custom_target(
         mLabCuriosity_default_Bin2Hex ALL
         COMMAND ${MP_BIN2HEX} ${mLabCuriosity_default_image_name} -a -mdfp=${PACK_REPO_PATH}/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
+        DEPENDS "${mLabCuriosity_default_output_dir}/${mLabCuriosity_default_image_name}"
         WORKING_DIRECTORY ${mLabCuriosity_default_output_dir}
         BYPRODUCTS "${mLabCuriosity_default_output_dir}/${mLabCuriosity_default_image_base_name}.hex"
         COMMENT "Convert build file to .hex")

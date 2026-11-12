@@ -49,6 +49,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "C:/Users/Chris/.mplab/app-finder/apps/ninja/v1.13.2/ninja-build.com"
       - "C:/Users/Chris/.mplab/app-finder/apps/ninja/v1.13.2/ninja-build.exe"
@@ -77,6 +78,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -124,6 +126,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "message-v1"
     backtrace:
@@ -198,6 +201,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-ranlib.com"
     found: "C:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-ranlib.exe"
@@ -223,6 +227,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -264,6 +269,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-strip.com"
     found: "C:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-strip.exe"
@@ -289,6 +295,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -330,6 +337,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-ld.com"
     found: "C:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-ld.exe"
@@ -355,6 +363,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -396,6 +405,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-nm.com"
     found: "C:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-nm.exe"
@@ -421,6 +431,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -462,6 +473,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-objdump.com"
     found: "C:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-objdump.exe"
@@ -487,6 +499,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -528,6 +541,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-objcopy.com"
     found: "C:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-objcopy.exe"
@@ -553,6 +567,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -594,6 +609,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-readelf.com"
     found: "C:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-readelf.exe"
@@ -619,6 +635,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -660,6 +677,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-dlltool.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-dlltool.exe"
@@ -721,6 +739,9 @@ events:
       - "/bin/xc-dsc-dlltool.com"
       - "/bin/xc-dsc-dlltool.exe"
       - "/bin/xc-dsc-dlltool"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-dlltool.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-dlltool.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-dlltool"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/dlltool.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/dlltool.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/dlltool"
@@ -781,6 +802,9 @@ events:
       - "/bin/dlltool.com"
       - "/bin/dlltool.exe"
       - "/bin/dlltool"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/dlltool.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/dlltool.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/dlltool"
     found: false
     search_context:
       ENV{PATH}:
@@ -804,6 +828,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -845,6 +870,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-addr2line.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-addr2line.exe"
@@ -906,6 +932,9 @@ events:
       - "/bin/xc-dsc-addr2line.com"
       - "/bin/xc-dsc-addr2line.exe"
       - "/bin/xc-dsc-addr2line"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-addr2line.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-addr2line.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-addr2line"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/addr2line.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/addr2line.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/addr2line"
@@ -966,6 +995,9 @@ events:
       - "/bin/addr2line.com"
       - "/bin/addr2line.exe"
       - "/bin/addr2line"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/addr2line.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/addr2line.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/addr2line"
     found: false
     search_context:
       ENV{PATH}:
@@ -989,6 +1021,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -1030,6 +1063,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-tapi.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-tapi.exe"
@@ -1091,6 +1125,9 @@ events:
       - "/bin/xc-dsc-tapi.com"
       - "/bin/xc-dsc-tapi.exe"
       - "/bin/xc-dsc-tapi"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-tapi.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-tapi.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-tapi"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/tapi.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/tapi.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/tapi"
@@ -1151,6 +1188,9 @@ events:
       - "/bin/tapi.com"
       - "/bin/tapi.exe"
       - "/bin/tapi"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/tapi.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/tapi.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/tapi"
     found: false
     search_context:
       ENV{PATH}:
@@ -1174,6 +1214,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -1217,6 +1258,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-8.3.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-8.3.exe"
@@ -1278,6 +1320,9 @@ events:
       - "/bin/xc-dsc-gcc-ar-8.3.com"
       - "/bin/xc-dsc-gcc-ar-8.3.exe"
       - "/bin/xc-dsc-gcc-ar-8.3"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8.3.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8.3.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8.3"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-8.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-8.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-8"
@@ -1338,6 +1383,9 @@ events:
       - "/bin/xc-dsc-gcc-ar-8.com"
       - "/bin/xc-dsc-gcc-ar-8.exe"
       - "/bin/xc-dsc-gcc-ar-8"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar8.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar8.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar8"
@@ -1398,6 +1446,9 @@ events:
       - "/bin/xc-dsc-gcc-ar8.com"
       - "/bin/xc-dsc-gcc-ar8.exe"
       - "/bin/xc-dsc-gcc-ar8"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar8.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar8.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar8"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar"
@@ -1458,6 +1509,9 @@ events:
       - "/bin/xc-dsc-gcc-ar.com"
       - "/bin/xc-dsc-gcc-ar.exe"
       - "/bin/xc-dsc-gcc-ar"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar"
     found: false
     search_context:
       ENV{PATH}:
@@ -1481,6 +1535,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -1524,6 +1579,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-8.3.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-8.3.exe"
@@ -1585,6 +1641,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib-8.3.com"
       - "/bin/xc-dsc-gcc-ranlib-8.3.exe"
       - "/bin/xc-dsc-gcc-ranlib-8.3"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8.3.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8.3.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8.3"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-8.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-8.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-8"
@@ -1645,6 +1704,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib-8.com"
       - "/bin/xc-dsc-gcc-ranlib-8.exe"
       - "/bin/xc-dsc-gcc-ranlib-8"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib8.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib8.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib8"
@@ -1705,6 +1767,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib8.com"
       - "/bin/xc-dsc-gcc-ranlib8.exe"
       - "/bin/xc-dsc-gcc-ranlib8"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib8.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib8.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib8"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib"
@@ -1765,6 +1830,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib.com"
       - "/bin/xc-dsc-gcc-ranlib.exe"
       - "/bin/xc-dsc-gcc-ranlib"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib"
     found: false
     search_context:
       ENV{PATH}:
@@ -1788,6 +1856,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -1835,6 +1904,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "message-v1"
     backtrace:
@@ -1911,6 +1981,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-8.3.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-8.3.exe"
@@ -1972,6 +2043,9 @@ events:
       - "/bin/xc-dsc-gcc-ar-8.3.com"
       - "/bin/xc-dsc-gcc-ar-8.3.exe"
       - "/bin/xc-dsc-gcc-ar-8.3"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8.3.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8.3.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8.3"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-8.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-8.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-8"
@@ -2032,6 +2106,9 @@ events:
       - "/bin/xc-dsc-gcc-ar-8.com"
       - "/bin/xc-dsc-gcc-ar-8.exe"
       - "/bin/xc-dsc-gcc-ar-8"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-8"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar8.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar8.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar8"
@@ -2092,6 +2169,9 @@ events:
       - "/bin/xc-dsc-gcc-ar8.com"
       - "/bin/xc-dsc-gcc-ar8.exe"
       - "/bin/xc-dsc-gcc-ar8"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar8.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar8.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar8"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar"
@@ -2152,6 +2232,9 @@ events:
       - "/bin/xc-dsc-gcc-ar.com"
       - "/bin/xc-dsc-gcc-ar.exe"
       - "/bin/xc-dsc-gcc-ar"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar"
     found: false
     search_context:
       ENV{PATH}:
@@ -2175,6 +2258,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -2218,6 +2302,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-8.3.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-8.3.exe"
@@ -2279,6 +2364,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib-8.3.com"
       - "/bin/xc-dsc-gcc-ranlib-8.3.exe"
       - "/bin/xc-dsc-gcc-ranlib-8.3"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8.3.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8.3.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8.3"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-8.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-8.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-8"
@@ -2339,6 +2427,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib-8.com"
       - "/bin/xc-dsc-gcc-ranlib-8.exe"
       - "/bin/xc-dsc-gcc-ranlib-8"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-8"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib8.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib8.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib8"
@@ -2399,6 +2490,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib8.com"
       - "/bin/xc-dsc-gcc-ranlib8.exe"
       - "/bin/xc-dsc-gcc-ranlib8"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib8.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib8.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib8"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib"
@@ -2459,6 +2553,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib.com"
       - "/bin/xc-dsc-gcc-ranlib.exe"
       - "/bin/xc-dsc-gcc-ranlib"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib"
     found: false
     search_context:
       ENV{PATH}:
@@ -2482,6 +2579,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "message-v1"
     backtrace:
@@ -2539,6 +2637,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-.exe"
@@ -2600,6 +2699,9 @@ events:
       - "/bin/xc-dsc-gcc-ar-.com"
       - "/bin/xc-dsc-gcc-ar-.exe"
       - "/bin/xc-dsc-gcc-ar-"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar-"
@@ -2660,6 +2762,9 @@ events:
       - "/bin/xc-dsc-gcc-ar-.com"
       - "/bin/xc-dsc-gcc-ar-.exe"
       - "/bin/xc-dsc-gcc-ar-"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar-"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar"
@@ -2720,6 +2825,9 @@ events:
       - "/bin/xc-dsc-gcc-ar.com"
       - "/bin/xc-dsc-gcc-ar.exe"
       - "/bin/xc-dsc-gcc-ar"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ar"
@@ -2780,6 +2888,9 @@ events:
       - "/bin/xc-dsc-gcc-ar.com"
       - "/bin/xc-dsc-gcc-ar.exe"
       - "/bin/xc-dsc-gcc-ar"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ar"
     found: false
     search_context:
       ENV{PATH}:
@@ -2803,6 +2914,7 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
   -
     kind: "find-v1"
     backtrace:
@@ -2846,6 +2958,7 @@ events:
       - "C:/Users/Chris/AppData/Local/Python/bin/"
       - "C:/Users/Chris/AppData/Local/Programs/MiKTeX/miktex/bin/x64/"
       - "/bin/"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/"
     searched_directories:
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-.exe"
@@ -2907,6 +3020,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib-.com"
       - "/bin/xc-dsc-gcc-ranlib-.exe"
       - "/bin/xc-dsc-gcc-ranlib-"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib-"
@@ -2967,6 +3083,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib-.com"
       - "/bin/xc-dsc-gcc-ranlib-.exe"
       - "/bin/xc-dsc-gcc-ranlib-"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib-"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib"
@@ -3027,6 +3146,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib.com"
       - "/bin/xc-dsc-gcc-ranlib.exe"
       - "/bin/xc-dsc-gcc-ranlib"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib.com"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib.exe"
       - "c:/Program Files/Microchip/xc-dsc/v4.00/bin/xc-dsc-gcc-ranlib"
@@ -3087,6 +3209,9 @@ events:
       - "/bin/xc-dsc-gcc-ranlib.com"
       - "/bin/xc-dsc-gcc-ranlib.exe"
       - "/bin/xc-dsc-gcc-ranlib"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib.com"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib.exe"
+      - "C:/Users/Chris/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim/xc-dsc-gcc-ranlib"
     found: false
     search_context:
       ENV{PATH}:
@@ -3110,4 +3235,5 @@ events:
         - "C:\\Users\\Chris\\.local\\bin"
         - "C:\\Users\\Chris\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
         - "\\bin"
+        - "C:\\Users\\Chris\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\copilot-shim"
 ...

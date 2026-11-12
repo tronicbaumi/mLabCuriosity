@@ -46,7 +46,7 @@ uint8_t receiveSerial()
     True -> Serial data ready to read.
     False -> No data.
  */
-uint8_t isReceiveDataAvailable()
+bool isReceiveDataAvailable()
 {
     return X2CScopeUart.IsRxReady();
 }
@@ -59,7 +59,7 @@ uint8_t isReceiveDataAvailable()
     True -> Transmit buffer is not full, at least one more character can be written.
     False -> Transmit buffer is full.
  */
-uint8_t isSendReady()
+bool isSendReady()
 {
     return X2CScopeUart.IsTxReady();
 }

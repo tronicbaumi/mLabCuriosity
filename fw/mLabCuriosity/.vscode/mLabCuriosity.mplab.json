@@ -3,9 +3,10 @@
     "configurations": [
         {
             "name": "default",
-            "id": "conf1",
+            "id": "",
             "device": "dsPIC33AK512MPS506",
             "imagePath": "./out/mLabCuriosity/default.elf",
+            "toolProperties": "default-tool-base_1",
             "tool": "PKOB nano",
             "packs": [
                 {
@@ -15,15 +16,42 @@
                 }
             ],
             "fileSet": "default",
-            "toolchain": "default-XC-DSC"
+            "toolchain": "toolchain XC-DSC 4.00.00",
+            "microchip.mplab-core-da:debugOptions": "default-debug"
         }
     ],
     "propertyGroups": [
+        {
+            "name": "toolchain XC-DSC 4.00.00",
+            "extend": "",
+            "type": "toolchain",
+            "provider": "microchip.toolchains:xc-dsc@4.00.00",
+            "properties": {}
+        },
         {
             "name": "default-XC-DSC",
             "type": "toolchain",
             "provider": "microchip.toolchains:xc-dsc@4.00.00",
             "properties": {}
+        },
+        {
+            "name": "default-tool-base_1",
+            "extend": "default-tool-base",
+            "type": "tool",
+            "properties": {}
+        },
+        {
+            "name": "default-tool-base",
+            "type": "tool",
+            "properties": {}
+        },
+        {
+            "name": "default-debug",
+            "type": "debug",
+            "provider": "microchip.mplab-core-da:DebugPropertyGroup",
+            "properties": {
+                "useOnDemandDebugStrategy": "false"
+            }
         }
     ],
     "fileSets": [

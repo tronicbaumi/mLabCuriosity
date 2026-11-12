@@ -36,338 +36,338 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/
 # =============================================================================
-# Object build statements for OBJECT_LIBRARY target mLabCuriosity_default_default_XC_DSC_assemble
+# Object build statements for OBJECT_LIBRARY target mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble
 
 
 #############################################
-# Order-only phony target for mLabCuriosity_default_default_XC_DSC_assemble
+# Order-only phony target for mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble
 
-build cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_assemble: phony || .
+build cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble: phony || .
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt_asm.s.o: ASM_COMPILER__mLabCuriosity_default_default_XC_DSC_assemble_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt_asm.s || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_assemble
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt_asm.s.o: ASM_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt_asm.s || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_assemble.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\dmt_asm.s.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\dmt_asm.s.o.d
   FLAGS = -g -mcpu=33AK512MPS506 -Wa,--defsym=__MPLAB_BUILD=1,--no-relax -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
   INCLUDES = -IC:\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_assemble.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_assemble.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_assemble.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_assemble.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/where_was_i.s.o: ASM_COMPILER__mLabCuriosity_default_default_XC_DSC_assemble_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/where_was_i.s || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_assemble
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/system/src/where_was_i.s.o: ASM_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/where_was_i.s || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_assemble.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\where_was_i.s.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir\6779a729c384e3a9767c098a16f00a9e\config.mcc\mcc_generated_files\system\src\where_was_i.s.o.d
   FLAGS = -g -mcpu=33AK512MPS506 -Wa,--defsym=__MPLAB_BUILD=1,--no-relax -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
   INCLUDES = -IC:\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_assemble.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_assemble.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_assemble.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir\6779a729c384e3a9767c098a16f00a9e\config.mcc\mcc_generated_files\system\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_assemble.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir
 
 
 
 #############################################
-# Object library mLabCuriosity_default_default_XC_DSC_assemble
+# Object library mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble
 
-build mLabCuriosity_default_default_XC_DSC_assemble: phony CMakeFiles/mLabCuriosity_default_default_XC_DSC_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt_asm.s.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/where_was_i.s.o
+build mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble: phony CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt_asm.s.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/system/src/where_was_i.s.o
 
 # =============================================================================
-# Object build statements for OBJECT_LIBRARY target mLabCuriosity_default_default_XC_DSC_compile
+# Object build statements for OBJECT_LIBRARY target mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
 
 
 #############################################
-# Order-only phony target for mLabCuriosity_default_default_XC_DSC_compile
+# Order-only phony target for mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
 
-build cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile: phony || .
+build cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile: phony || .
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/app/uart_rxbuf.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/app/uart_rxbuf.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/app/uart_rxbuf.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/app/uart_rxbuf.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\app\uart_rxbuf.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\app\uart_rxbuf.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\app
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\app
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\main.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\main.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\X2Cscope\X2Cscope.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\X2Cscope\X2Cscope.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\X2Cscope
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\X2Cscope
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\X2Cscope\X2CscopeComm.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\6779a729c384e3a9767c098a16f00a9e\config.mcc\mcc_generated_files\X2Cscope\X2CscopeComm.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\X2Cscope
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\6779a729c384e3a9767c098a16f00a9e\config.mcc\mcc_generated_files\X2Cscope
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc1.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc1.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc1.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc1.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src\adc1.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src\adc1.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc2.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc2.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc2.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc2.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src\adc2.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src\adc2.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc3.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc3.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc3.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc3.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src\adc3.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src\adc3.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc4.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc4.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc4.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc4.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src\adc4.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src\adc4.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc5.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc5.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc5.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc5.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src\adc5.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src\adc5.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\adc\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/i2c_host/src/i2c1.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/i2c_host/src/i2c1.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/i2c_host/src/i2c1.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/i2c_host/src/i2c1.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\i2c_host\src\i2c1.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\i2c_host\src\i2c1.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\i2c_host\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\i2c_host\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pulse_output/src/sccp5.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pulse_output/src/sccp5.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/pulse_output/src/sccp5.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pulse_output/src/sccp5.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pulse_output\src\sccp5.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\6779a729c384e3a9767c098a16f00a9e\config.mcc\mcc_generated_files\pulse_output\src\sccp5.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pulse_output\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\6779a729c384e3a9767c098a16f00a9e\config.mcc\mcc_generated_files\pulse_output\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp1.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp1.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp1.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp1.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src\sccp1.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src\sccp1.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp2.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp2.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp2.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp2.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src\sccp2.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src\sccp2.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp3.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp3.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp3.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp3.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src\sccp3.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src\sccp3.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp4.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp4.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp4.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp4.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src\sccp4.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src\sccp4.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\pwm\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/spi_host/src/spi1.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/spi_host/src/spi1.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/spi_host/src/spi1.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/spi_host/src/spi1.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\spi_host\src\spi1.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\spi_host\src\spi1.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\spi_host\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\spi_host\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/clock.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/clock.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/clock.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/clock.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\clock.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\clock.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/config_bits.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/config_bits.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/system/src/config_bits.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/config_bits.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\config_bits.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\6779a729c384e3a9767c098a16f00a9e\config.mcc\mcc_generated_files\system\src\config_bits.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\6779a729c384e3a9767c098a16f00a9e\config.mcc\mcc_generated_files\system\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\dmt.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\dmt.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/interrupt.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/interrupt.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/interrupt.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/interrupt.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\interrupt.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\interrupt.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/pins.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/pins.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/pins.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/pins.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\pins.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\pins.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/reset.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/reset.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/reset.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/reset.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\reset.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\reset.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/system.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/system.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/system.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/system.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\system.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\system.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/traps.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/traps.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/traps.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/traps.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\traps.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src\traps.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\system\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/timer/src/tmr1.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/timer/src/tmr1.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/timer/src/tmr1.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/timer/src/tmr1.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\timer\src\tmr1.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\timer\src\tmr1.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\timer\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\timer\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart1.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart1.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart1.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart1.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src\uart1.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src\uart1.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart2.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart2.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart2.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart2.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src\uart2.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src\uart2.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
-build CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart3.c.o: C_COMPILER__mLabCuriosity_default_default_XC_DSC_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart3.c || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart3.c.o: C_COMPILER__mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile_unscanned_ C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart3.c || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   DEFINES = -DXPRJ_default=default
-  DEP_FILE = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src\uart3.c.o.d
+  DEP_FILE = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src\uart3.c.o.d
   FLAGS = -x c -fdiagnostics-color=always -g -mcpu=33AK512MPS506 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
-  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
-  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src
-  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir\
+  OBJECT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
+  OBJECT_FILE_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\C_\_data\github\mLabCuriosity\fw\mLabCuriosity\config.mcc\mcc_generated_files\uart\src
+  TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir\
   TARGET_PDB = ""
-  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_default_XC_DSC_compile.dir
+  TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir
 
 
 
 #############################################
-# Object library mLabCuriosity_default_default_XC_DSC_compile
+# Object library mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
 
-build mLabCuriosity_default_default_XC_DSC_compile: phony CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/app/uart_rxbuf.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc2.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc3.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc4.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc5.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/i2c_host/src/i2c1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pulse_output/src/sccp5.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp2.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp3.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp4.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/spi_host/src/spi1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/clock.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/config_bits.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/interrupt.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/pins.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/reset.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/system.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/traps.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/timer/src/tmr1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart2.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart3.c.o
+build mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile: phony CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/app/uart_rxbuf.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc2.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc3.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc4.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc5.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/i2c_host/src/i2c1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/pulse_output/src/sccp5.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp2.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp3.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp4.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/spi_host/src/spi1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/clock.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/system/src/config_bits.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/interrupt.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/pins.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/reset.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/system.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/traps.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/timer/src/tmr1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart2.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart3.c.o
 
 # =============================================================================
 # Object build statements for EXECUTABLE target mLabCuriosity_default_image__L_givq0
@@ -376,7 +376,7 @@ build mLabCuriosity_default_default_XC_DSC_compile: phony CMakeFiles/mLabCuriosi
 #############################################
 # Order-only phony target for mLabCuriosity_default_image__L_givq0
 
-build cmake_object_order_depends_target_mLabCuriosity_default_image__L_givq0: phony || cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_assemble cmake_object_order_depends_target_mLabCuriosity_default_default_XC_DSC_compile
+build cmake_object_order_depends_target_mLabCuriosity_default_image__L_givq0: phony || cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble cmake_object_order_depends_target_mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
 
 
 # =============================================================================
@@ -386,17 +386,18 @@ build cmake_object_order_depends_target_mLabCuriosity_default_image__L_givq0: ph
 #############################################
 # Link the executable default.elf
 
-build default.elf C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/out/mLabCuriosity: C_EXECUTABLE_LINKER__mLabCuriosity_default_image__L_givq0_ CMakeFiles/mLabCuriosity_default_default_XC_DSC_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt_asm.s.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/where_was_i.s.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/app/uart_rxbuf.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc2.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc3.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc4.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc5.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/i2c_host/src/i2c1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pulse_output/src/sccp5.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp2.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp3.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp4.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/spi_host/src/spi1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/clock.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/config_bits.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/interrupt.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/pins.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/reset.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/system.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/traps.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/timer/src/tmr1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart1.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart2.c.o CMakeFiles/mLabCuriosity_default_default_XC_DSC_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart3.c.o | C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/cmake/mLabCuriosity/default/../../../config.mcc/mcc_generated_files/X2Cscope/libx2cscope-generic-32dsp-dspic33a-elf.a C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/cmake/mLabCuriosity/default/../../../helper/X2Cscope_library_make-3.1/dist/libx2cscope-generic-32dsp-dspic33a-elf.a || mLabCuriosity_default_default_XC_DSC_assemble mLabCuriosity_default_default_XC_DSC_compile
+build default.elf C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/out/mLabCuriosity/default.elf: C_EXECUTABLE_LINKER__mLabCuriosity_default_image__L_givq0_ CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt_asm.s.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/system/src/where_was_i.s.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/app/uart_rxbuf.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/main.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/X2Cscope/X2Cscope.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/X2Cscope/X2CscopeComm.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc2.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc3.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc4.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/adc/src/adc5.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/i2c_host/src/i2c1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/pulse_output/src/sccp5.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp2.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp3.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/pwm/src/sccp4.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/spi_host/src/spi1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/clock.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/6779a729c384e3a9767c098a16f00a9e/config.mcc/mcc_generated_files/system/src/config_bits.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/dmt.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/interrupt.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/pins.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/reset.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/system.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/system/src/traps.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/timer/src/tmr1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart1.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart2.c.o CMakeFiles/mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile.dir/C_/_data/github/mLabCuriosity/fw/mLabCuriosity/config.mcc/mcc_generated_files/uart/src/uart3.c.o | C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/cmake/mLabCuriosity/default/../../../config.mcc/mcc_generated_files/X2Cscope/libx2cscope-generic-32dsp-dspic33a-elf.a C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/cmake/mLabCuriosity/default/../../../helper/X2Cscope_library_make-3.1/dist/libx2cscope-generic-32dsp-dspic33a-elf.a || mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   LINK_FLAGS = -g -mcpu=33AK512MPS506 -Wl,--script=p33AK512MPS506.gld,--local-stack,--defsym=__MPLAB_BUILD=1,--stack=16,--check-sections,--data-init,--pack-data,--handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,--report-mem,--memorysummary,memoryfile.xml -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16
   LINK_LIBRARIES = C:/_data/github/mLabCuriosity/fw/mLabCuriosity/cmake/mLabCuriosity/default/../../../config.mcc/mcc_generated_files/X2Cscope/libx2cscope-generic-32dsp-dspic33a-elf.a  C:/_data/github/mLabCuriosity/fw/mLabCuriosity/cmake/mLabCuriosity/default/../../../helper/X2Cscope_library_make-3.1/dist/libx2cscope-generic-32dsp-dspic33a-elf.a
   OBJECT_DIR = CMakeFiles\mLabCuriosity_default_image__L_givq0.dir
-  POST_BUILD = cmd.exe /C "cd /D C:\_data\github\mLabCuriosity\fw\mLabCuriosity\_build\mLabCuriosity\default && C:\Users\Chris\.mplab\app-finder\apps\cmake\v4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -E make_directory C:/_data/github/mLabCuriosity/fw/mLabCuriosity/cmake/mLabCuriosity/default/../../../out/mLabCuriosity && C:\Users\Chris\.mplab\app-finder\apps\cmake\v4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -E copy C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/default.elf C:/_data/github/mLabCuriosity/fw/mLabCuriosity/cmake/mLabCuriosity/default/../../../out/mLabCuriosity/"
+  POST_BUILD = cmd.exe /C "cd /D C:\_data\github\mLabCuriosity\fw\mLabCuriosity\_build\mLabCuriosity\default && C:\Users\Chris\.mplab\app-finder\apps\cmake\v4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -E make_directory C:/_data/github/mLabCuriosity/fw/mLabCuriosity/cmake/mLabCuriosity/default/../../../out/mLabCuriosity && C:\Users\Chris\.mplab\app-finder\apps\cmake\v4.4.3\cmake-4.4.3-windows-x86_64\bin\cmake.exe -E copy C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default/default.elf C:/_data/github/mLabCuriosity/fw/mLabCuriosity/cmake/mLabCuriosity/default/../../../out/mLabCuriosity/default.elf"
   PRE_LINK = cd .
   RESTAT = 1
   TARGET_COMPILE_PDB = CMakeFiles\mLabCuriosity_default_image__L_givq0.dir\
   TARGET_FILE = default.elf
   TARGET_PDB = default.pdb
   TARGET_SUPPORT_DIR = CMakeFiles\mLabCuriosity_default_image__L_givq0.dir
+  RSP_FILE = CMakeFiles\mLabCuriosity_default_image__L_givq0.rsp
 
 
 #############################################
@@ -432,7 +433,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Custom command for CMakeFiles\mLabCuriosity_default_Bin2Hex
 
-build CMakeFiles/mLabCuriosity_default_Bin2Hex C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/out/mLabCuriosity/default.hex | ${cmake_ninja_workdir}CMakeFiles/mLabCuriosity_default_Bin2Hex: CUSTOM_COMMAND || default.elf mLabCuriosity_default_default_XC_DSC_assemble mLabCuriosity_default_default_XC_DSC_compile
+build CMakeFiles/mLabCuriosity_default_Bin2Hex C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/out/mLabCuriosity/default.hex | ${cmake_ninja_workdir}CMakeFiles/mLabCuriosity_default_Bin2Hex: CUSTOM_COMMAND C$:/_data/github/mLabCuriosity/fw/mLabCuriosity/out/mLabCuriosity/default.elf || default.elf mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile
   COMMAND = cmd.exe /C "cd /D C:\_data\github\mLabCuriosity\fw\mLabCuriosity\out\mLabCuriosity && "c:\Program Files\Microchip\xc-dsc\v4.00\bin\xc-dsc-bin2hex.exe" default.elf -a -mdfp=C:/Users/Chris/.mchp_packs/Microchip/dsPIC33AK-MP_DFP/1.6.273/xc16"
   DESC = Convert build file to .hex
   restat = 1
@@ -450,7 +451,7 @@ build mLabCuriosity_default_image__L_givq0: phony default.elf
 #############################################
 # Folder: C:/_data/github/mLabCuriosity/fw/mLabCuriosity/_build/mLabCuriosity/default
 
-build all: phony mLabCuriosity_default_default_XC_DSC_assemble mLabCuriosity_default_default_XC_DSC_compile default.elf mLabCuriosity_default_Bin2Hex
+build all: phony mLabCuriosity_default_toolchain_XC_DSC_4_00_00_assemble mLabCuriosity_default_toolchain_XC_DSC_4_00_00_compile default.elf mLabCuriosity_default_Bin2Hex
 
 # =============================================================================
 # Built-in targets

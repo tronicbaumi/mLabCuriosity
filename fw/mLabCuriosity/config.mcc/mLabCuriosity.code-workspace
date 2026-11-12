@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"name": "mLabCuriosity",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"mplab.clangd.compileCommandsDir": "${workspaceFolder}/fw/mLabCuriosity/_build/mLabCuriosity/default",
+		"mplab.clangd.arguments": [
+			"--header-insertion=never"
+		],
+		"mplab.clangd.path": "c:\\Program Files\\Microchip\\xc-dsc\\v4.00\\bin\\xc-dsc-clangd.exe",
+		"memory-inspector.debugTypes": [
+			"arm-debugger",
+			"embedded-debug",
+			"gdb",
+			"gdbtarget",
+			"mplab-core-da"
+		]
+	}
+}
